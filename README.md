@@ -1,12 +1,12 @@
-# 4PDAClient
+# 4PDAClient v1.0.0.34 (v1.0-alpha)
 My attempt to recover discontinued [4PDAClient app](https://www.microsoft.com/ru-ru/p/4pdaclient/9nblggh0ggvj).
 
 ## About
 Simple UWP application to display 4PDA web site on "winphone" with Windows 10 Mobile.
 
 ## Screenshots
-![Main "page"](Images/shot1.png)
-![Forum "page"](Images/shot2.png)
+![Desktop](Images/shot1.png)
+![Mobile](Images/shot2.png)
 
 ## Tech/dev details
 - Platforms: UWP only
@@ -15,12 +15,15 @@ Simple UWP application to display 4PDA web site on "winphone" with Windows 10 Mo
 
 ## Status
 - Draft. Prototype / Alpha version.
-- "Web parsing" not realized yet 
+- "Web parsing" not realized yet ... so, no push notifications, etc.
 - "Astoria" compatibility added (os build 10240)
 
 ## Credits / Thanks
 - [jetspiking](https://github.com/jetspiking) for very 
   handy & useful [WebWhatsApp](https://github.com/jetspiking/WindowsPhone_WebWhatsApp) repo!
+
+## Licensing
+MIT License
 
 ## ..
 AS IS. No support. RnD only / DIY

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using Windows.Foundation.Metadata;
 using Windows.UI;
+using Windows.UI.Core; // * Smart Navigation *
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -17,7 +18,7 @@ namespace FourPDAClientApp
             new Uri("ms-appx-web:///Html/index.html", UriKind.Absolute);                                                                                                                                  // Included HTML file.
       
         private static readonly Uri 
-            WhatsAppUri = new Uri("https://4pda.to", UriKind.Absolute);  
+            FourPDAAppUri = new Uri("https://4pda.to", UriKind.Absolute);  
                                                                                                                                           // URI FourPDAClientApp.
 
         private static readonly String UserAgentPersonal = 
@@ -114,12 +115,65 @@ namespace FourPDAClientApp
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             //ToFourPDAClientApp();
-            //ForcePageOnScreen();            
+            //ForcePageOnScreen();
+            base.OnNavigatedTo(e);
+
+            // 0.
+            //SystemNavigationManager CurrentView = SystemNavigationManager.GetForCurrentView();
+
+            // 1. make the "Back" button visible
+            //CurrentView.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible; //show button
+
+            // 2. Detect button pressed
+            //CurrentView.BackRequested += BackButton_Tapped; 
+
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += (s, a) =>
+            {
+                Debug.WriteLine("Special Back button Requested");
+                if (WebViewControl.CanGoBack)
+                {
+                    WebViewControl.GoBack();
+                    a.Handled = true;
+                }
+            };
+
+            if (ApiInformation.IsApiContractPresent("Windows.Phone.PhoneContract", 1, 0))
+            {
+                Windows.Phone.UI.Input.HardwareButtons.BackPressed += (s, a) =>
+                {
+                    Debug.WriteLine("Hardware Back button Requested");
+                    if (WebViewControl.CanGoBack)
+                    {
+                        WebViewControl.GoBack();
+                        //a.Handled = true;
+                    }
+                    a.Handled = true;
+                };
+            }
+        }
+
+        private void BackButton_Tapped(object sender, BackRequestedEventArgs e)
+        {
+            // 3. Log it
+            Debug.WriteLine("BACK button pressed: " + e.ToString());
+
+            if (WebViewControl.CanGoBack)//( Frame.CanGoBack )
+            {
+                //Frame.GoBack();
+                WebViewControl.GoBack();
+
+                //Debug.WriteLine("BaseUri: " + WebViewControl.BaseUri.ToString());
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            //
+            
+            //SystemNavigationManager CurrentView = SystemNavigationManager.GetForCurrentView();
+
+            // 4. Clear BackButton_Tapped event handler
+            //CurrentView.BackRequested -= BackButton_Tapped;
         }
 
         private void Browser_NavigationCompleted(WebView sender, 
@@ -156,7 +210,7 @@ namespace FourPDAClientApp
             StoreUIThemeData();
         }
 
-        private void RefreshFourPDAClientApp_Click(object sender, RoutedEventArgs e)
+        private void Home_Click(object sender, RoutedEventArgs e)
         {
             ToFourPDAClientApp();
         }
@@ -194,7 +248,7 @@ namespace FourPDAClientApp
 
         private void ToFourPDAClientApp()
         {
-            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, WhatsAppUri);
+            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, FourPDAAppUri);
             
             //RnD
             //requestMessage.Headers.Add("User-Agent", UserAgentPersonal); // Previously 'UserAgentEdge'
@@ -210,28 +264,49 @@ namespace FourPDAClientApp
             StoreZoomFactor();
         }
 
-        private void Contacts_Click(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if (Chat.IsChecked.Value)
-                Chat.IsChecked = false;
+            //if (Chat.IsChecked.Value)
+            //    Chat.IsChecked = false;
 
-            ChangeViewMode(FourPDAClientApp.WebViewMode.Contacts);
+            //ChangeViewMode(FourPDAClientApp.WebViewMode.Contacts);
+
+            // Log it
+            Debug.WriteLine("Toolbar BACK button pressed: " + e.ToString());
+
+            if (WebViewControl.CanGoBack)//( Frame.CanGoBack )
+            {
+                //Frame.GoBack();
+                WebViewControl.GoBack();
+
+                //Debug.WriteLine("BaseUri: " + WebViewControl.BaseUri.ToString());
+            }
         }
 
-        private void Chat_Click(object sender, RoutedEventArgs e)
+        private void Forward_Click(object sender, RoutedEventArgs e)
         {
-            if (Contacts.IsChecked.Value)
-                Contacts.IsChecked = false;
+            //if (Contacts.IsChecked.Value)
+            //    Contacts.IsChecked = false;
+            //
+            //ChangeViewMode(FourPDAClientApp.WebViewMode.Chat);
 
-            ChangeViewMode(FourPDAClientApp.WebViewMode.Chat);
+            // Log it
+            Debug.WriteLine("Toolbar FORWARD button pressed: " + e.ToString());
+
+            if (WebViewControl.CanGoForward)
+            {
+                WebViewControl.GoForward();
+
+                //Debug.WriteLine("BaseUri: " + WebViewControl.BaseUri.ToString());
+            }
         }
 
         private void CheckAnyChecked()
         {
-            if (!Contacts.IsChecked.Value && !Chat.IsChecked.Value)
-            {
-                ChangeViewMode(FourPDAClientApp.WebViewMode.Compact);
-            }
+            //if (!Contacts.IsChecked.Value && !Chat.IsChecked.Value)
+            //{
+            //    ChangeViewMode(FourPDAClientApp.WebViewMode.Compact);
+            //}
         }
 
         private void ForcePageOnScreen()

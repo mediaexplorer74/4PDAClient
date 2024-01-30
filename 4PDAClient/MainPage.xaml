@@ -16,17 +16,19 @@
         <CommandBar>
             <CommandBar.PrimaryCommands>
                 <AppBarToggleButton
-                    x:Name="Contacts"
-                    x:Uid="Contacts"
-                    Click="Contacts_Click"
-                    Icon="Contact"
-                    Label="Contacts"/>
+                    x:Name="Back"
+                    x:Uid="Back"
+                    Click="Back_Click"
+                    Icon="Back"
+                    Label="Back"/>
+                
                 <AppBarToggleButton
-                    x:Name="Chat"
-                    x:Uid="Chat"
-                    Click="Chat_Click"
-                    Icon="Message"
-                    Label="Chat"/>
+                    x:Name="Forward"
+                    x:Uid="Forward"
+                    Click="Forward_Click"
+                    Icon="Forward"
+                    Label="Forward"/>
+                
                 <AppBarButton
                     x:Name="ZoomIn"
                     x:Uid="ZoomIn"
@@ -39,6 +41,7 @@
                     Click="ZoomOut_Click"
                     Icon="ZoomOut"
                     Label="Zoom out"/>
+                
                 <!--<AppBarToggleButton
                     x:Name="Settings"
                     x:Uid="Settings"
@@ -47,19 +50,21 @@
                     Label="settings"/>-->
 
             </CommandBar.PrimaryCommands>
+            
+            
             <CommandBar.SecondaryCommands>
                 <AppBarButton
                     x:Name="AboutMe"
                     x:Uid="AboutMe"
                     Click="AboutApp_Click"
                     Icon="Contact"
-                    Label="About me"/>
+                    Label="About"/>
                 <AppBarButton
-                    x:Name="RefreshFourPDAClientApp"
-                    x:Uid="RefreshFourPDAClientApp"
-                    Click="RefreshFourPDAClientApp_Click"
-                    Icon="Refresh"
-                    Label="Refresh"/>
+                    x:Name="Home"
+                    x:Uid="Home"
+                    Click="Home_Click"
+                    Icon="Home"
+                    Label="Home"/>
                 <AppBarToggleButton
                     x:Name="UiThemeToggle"
                     x:Uid="UiThemeToggle"
