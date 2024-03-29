@@ -71,6 +71,12 @@
                     Click="UiThemeToggle_Click"
                     Icon="Clock"
                     Label="Dark theme"/>
+                <AppBarToggleButton
+                    x:Name="ForumModeToggle"
+                    x:Uid="ForumModeToggle"
+                    Click="ForumModeToggle_Click"
+                    Icon="Document"
+                    Label="Forum mode"/>    
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

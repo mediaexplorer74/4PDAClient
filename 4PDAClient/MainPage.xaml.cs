@@ -12,22 +12,25 @@ using Windows.Web.Http;
 
 namespace FourPDAClientApp
 {
+    // MainPage class 
     public sealed partial class MainPage : Page
     {
         private static readonly Uri HomeUri = 
             new Uri("ms-appx-web:///Html/index.html", UriKind.Absolute);                                                                                                                                  // Included HTML file.
       
         private static readonly Uri 
-            FourPDAAppUri = new Uri("https://4pda.to", UriKind.Absolute);  
-                                                                                                                                          // URI FourPDAClientApp.
+            FourPDAAppUri = new Uri("https://4pda.to", UriKind.Absolute);
 
+        private static readonly Uri
+           FourPDAForumUri = new Uri("https://4pda.to/forum", UriKind.Absolute);
+       
         private static readonly String UserAgentPersonal = 
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
             "AppleWebKit/537.36 (KHTML, like Gecko) " +
             "Chrome/70.0.3538.102 Safari/537.36 Edge/18.19041";  // User-agent "const"
 
-        private static readonly Color ThemeLight = Color.FromArgb(255, 230, 230, 230);// UWP light color.
-        private static readonly Color ThemeDark = Color.FromArgb(255, 31, 31, 31);   // UWP dark color.
+        private static readonly Color ThemeLight = Color.FromArgb(255, 230, 230, 230);
+        private static readonly Color ThemeDark = Color.FromArgb(255, 31, 31, 31);   
 
         private static int ZoomFactor = 100;                                                                                                                                                                                                // Zoom percentage (100 default, but might set smaller in future since the text is a bit large in my opinion).
 
@@ -36,6 +39,7 @@ namespace FourPDAClientApp
             = FourPDAClientApp.WebViewMode.Compact; // Launch in compact mode.
 
 
+        //MainPage
         public MainPage()
         {
             this.InitializeComponent();
@@ -49,51 +53,54 @@ namespace FourPDAClientApp
 
             ZoomFactor -= 1;
             UpdateWebViewZoom();
+        }//MainPage
 
-        }
 
+        // Initialize
         public void Initialize()
-        {
-            SetStatusBarColor(Colors.Black);
-
-            this.Background = new SolidColorBrush(ThemeLight);
-            
-            WebViewControl.Settings.IsJavaScriptEnabled = true;
-            
+        {             
+            WebViewControl.Settings.IsJavaScriptEnabled = true;            
             WebViewControl.Settings.IsIndexedDBEnabled = true;
 
-            StorageManager.Init();
-            
+            StorageManager.Init();            
             ReadAppData();
 
-            
+            RemoveClutterFromPage();
+
             UpdateWebViewZoom();
-
-            ChangeViewMode(FourPDAClientApp.WebViewMode.Compact);
-
-            ToFourPDAClientApp();
+         
+        }//Initialize
 
 
-            //ForcePageOnScreen();
-
-            //ToFourPDAClientApp();
-           
-        }
-
+        // StoreUIThemeData
         public void StoreUIThemeData()
         {
             StorageManager.WriteSimpleSetting(FourPDAClientApp.SAVE_DATA_DARKMODE, 
                 UiThemeToggle.IsChecked.Value);
-        }
+        }//StoreUIThemeData
 
+
+        // StoreForumModeData
+        public void StoreForumModeData()
+        {
+            StorageManager.WriteSimpleSetting(FourPDAClientApp.SAVE_DATA_FORUMMODE,
+                ForumModeToggle.IsChecked.Value);
+        }//StoreForumModeData
+
+
+        // StoreZoomFactor
         public void StoreZoomFactor()
         {
             StorageManager.WriteSimpleSetting(FourPDAClientApp.SAVE_DATA_ZOOMFACTOR, 
                 ZoomFactor);
-        }
+        }//StoreZoomFactor
 
+
+        // ReadAppData
+        // Reads settings from storage and init(s) Light/Dark mode and Zoom factor
         public void ReadAppData()
         {
+            // Light/Dark mode
             Object isUiThemeToggleChecked = StorageManager.ReadSimpleSetting(
                 FourPDAClientApp.SAVE_DATA_DARKMODE);
 
@@ -101,36 +108,52 @@ namespace FourPDAClientApp
                 UiThemeToggle.IsChecked = (bool)isUiThemeToggleChecked;
 
             if (UiThemeToggle.IsChecked.Value)
+            {
                 UiThemeToggle_Click(null, null);
+            }
 
+
+            // Forum mode
+            Object isForumModeChecked = StorageManager.ReadSimpleSetting(
+                FourPDAClientApp.SAVE_DATA_FORUMMODE);
+
+            if (isForumModeChecked != null)
+                ForumModeToggle.IsChecked = (bool)isForumModeChecked;
+
+            if (ForumModeToggle.IsChecked.Value)
+            {
+                ForumModeToggle_Click(null, null);
+            }
+            else
+            {
+                ToFourPDAClientApp();
+            }
+
+
+            // Zoom factor
             Object textZoomFactor = StorageManager.ReadSimpleSetting(
                 FourPDAClientApp.SAVE_DATA_ZOOMFACTOR);
 
             if (textZoomFactor != null)
                 ZoomFactor = (int)textZoomFactor;
 
-            ChangeUIThemeThroughWhatsApp(UiThemeToggle.IsChecked.Value);
-        }
+            //ChangeUIThemeThroughApp(UiThemeToggle.IsChecked.Value);
+        }//ReadAppData
 
+
+        // OnNavigatedTo 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             //ToFourPDAClientApp();
             //ForcePageOnScreen();
             base.OnNavigatedTo(e);
 
-            // 0.
-            //SystemNavigationManager CurrentView = SystemNavigationManager.GetForCurrentView();
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility
+                = AppViewBackButtonVisibility.Visible;
 
-            // 1. make the "Back" button visible
-            //CurrentView.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible; //show button
-
-            // 2. Detect button pressed
-            //CurrentView.BackRequested += BackButton_Tapped; 
-
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, a) =>
             {
-                Debug.WriteLine("Special Back button Requested");
+                //Debug.WriteLine("Special Back button Requested");
                 if (WebViewControl.CanGoBack)
                 {
                     WebViewControl.GoBack();
@@ -142,52 +165,53 @@ namespace FourPDAClientApp
             {
                 Windows.Phone.UI.Input.HardwareButtons.BackPressed += (s, a) =>
                 {
-                    Debug.WriteLine("Hardware Back button Requested");
+                    //Debug.WriteLine("Hardware Back button Requested");
                     if (WebViewControl.CanGoBack)
                     {
                         WebViewControl.GoBack();
-                        //a.Handled = true;
                     }
                     a.Handled = true;
                 };
             }
         }
 
+        // BackButton handler
         private void BackButton_Tapped(object sender, BackRequestedEventArgs e)
         {
-            // 3. Log it
-            Debug.WriteLine("BACK button pressed: " + e.ToString());
+            //Debug.WriteLine("BACK button pressed: " + e.ToString());
 
-            if (WebViewControl.CanGoBack)//( Frame.CanGoBack )
+            if (WebViewControl.CanGoBack)
             {
-                //Frame.GoBack();
                 WebViewControl.GoBack();
-
                 //Debug.WriteLine("BaseUri: " + WebViewControl.BaseUri.ToString());
             }
         }
 
+
+        // OnNavigatedFrom
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            
-            //SystemNavigationManager CurrentView = SystemNavigationManager.GetForCurrentView();
-
-            // 4. Clear BackButton_Tapped event handler
-            //CurrentView.BackRequested -= BackButton_Tapped;
+            // do nothing
         }
 
+
+        // Browser_NavigationCompleted
         private void Browser_NavigationCompleted(WebView sender, 
             WebViewNavigationCompletedEventArgs args)
         {
-            // RnD
+            // to do more things
             UpdateWebViewZoom();
-        }
+        }//Browser_NavigationCompleted
 
+
+        // About init click handler
         private void AboutApp_Click(object sender, RoutedEventArgs e)
         {
             ToAboutMe();
-        }
+        }//AboutApp_Click
 
+
+        // UiThemeToggle_Click
         private void UiThemeToggle_Click(object sender, RoutedEventArgs e)
         {
             if (Window.Current.Content is FrameworkElement frameworkElement)
@@ -198,72 +222,126 @@ namespace FourPDAClientApp
             }
 
             //RnD
-            SetStatusBarColor(UiThemeToggle.IsChecked.Value 
-                ? (Color)this.Resources["SystemAccentColor"] 
-                : ThemeDark);
+            try
+            {
+                SetStatusBarColor(UiThemeToggle.IsChecked.Value
+                    ? (Color)this.Resources["SystemAccentColor"]
+                    : ThemeDark);
+            }
+            catch { }
+
+            try
+            {
+                this.Background = new SolidColorBrush(
+                    UiThemeToggle.IsChecked.Value ? ThemeDark : ThemeLight);
+            }
+            catch { }
             
-            this.Background = new SolidColorBrush(
-                UiThemeToggle.IsChecked.Value ? ThemeDark : ThemeLight);
-            
-            ChangeUIThemeThroughWhatsApp(UiThemeToggle.IsChecked.Value);
+            ChangeUIThemeThroughApp(UiThemeToggle.IsChecked.Value);
             
             StoreUIThemeData();
-        }
 
+        }//UiThemeToggle_Click
+
+
+        // ForumModeToggle_Click
+        private void ForumModeToggle_Click(object sender, RoutedEventArgs e)
+        {
+           
+            if (ForumModeToggle.IsChecked.Value)
+            {
+                ToForumMode();
+            }
+            else
+            {
+                ToFourPDAClientApp();
+            }
+
+            StoreForumModeData();
+        }//ForumModeToggle_Click
+
+
+        //Home_Click
         private void Home_Click(object sender, RoutedEventArgs e)
         {
             ToFourPDAClientApp();
-        }
+        }//Home_Click
 
 
+
+        // ZoomIn handler
         private void ZoomIn_Click(object sender, RoutedEventArgs e)
         {
-
             ZoomFactor += 1;
             UpdateWebViewZoom();
         }
 
+        // ZoomOut handler
         private void ZoomOut_Click(object sender, RoutedEventArgs e)
         {
             ZoomFactor -= 1;
             UpdateWebViewZoom();
         }
 
+        // SetStatusBarColor
         private void SetStatusBarColor(Color foregroundColor)
         {
             if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
-                var statusBar = StatusBar.GetForCurrentView();
-                if (statusBar != null)
+                try
                 {
-                    statusBar.ForegroundColor = foregroundColor;
+                    StatusBar statusBar = StatusBar.GetForCurrentView();
+                    if (statusBar != null)
+                    {
+                        statusBar.ForegroundColor = foregroundColor;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("[ex] SetStatusBarColor error: " + ex.Message);
                 }
             }
         }
 
+        // ToAboutMe
         private void ToAboutMe()
         {
             WebViewControl.Navigate(HomeUri);
         }
 
+
+        // ToFourPDAClientApp
         private void ToFourPDAClientApp()
         {
             HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, FourPDAAppUri);
-            
-            //RnD
-            //requestMessage.Headers.Add("User-Agent", UserAgentPersonal); // Previously 'UserAgentEdge'
-            
+           //requestMessage.Headers.Add("User-Agent", UserAgentPersonal);             
             WebViewControl.NavigateWithHttpRequestMessage(requestMessage);
-        }
+        }//ToFourPDAClientApp
 
+
+        // ToForumMode
+        private void ToForumMode()
+        {
+            HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, FourPDAForumUri);
+            //requestMessage.Headers.Add("User-Agent", UserAgentPersonal); 
+            WebViewControl.NavigateWithHttpRequestMessage(requestMessage);
+        }//ToForumMode
+
+
+        // UpdateWebViewZoom
         private void UpdateWebViewZoom()
         {
-            ScriptInjector.InvokeScriptOnWebView(WebViewControl,
-            ScriptInjector.ChangeTextSizeForEachElement(ZoomFactor));
+            ScriptInjector.InvokeScriptOnWebView
+            (
+                WebViewControl,
+                ScriptInjector.ChangeTextSizeForEachElement(ZoomFactor)
+            );
             
             StoreZoomFactor();
-        }
+        }//UpdateWebViewZoom
 
+
+        // Back_Click
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             //if (Chat.IsChecked.Value)
@@ -271,18 +349,19 @@ namespace FourPDAClientApp
 
             //ChangeViewMode(FourPDAClientApp.WebViewMode.Contacts);
 
-            // Log it
-            Debug.WriteLine("Toolbar BACK button pressed: " + e.ToString());
+            //Debug.WriteLine("Toolbar BACK button pressed: " + e.ToString());
 
-            if (WebViewControl.CanGoBack)//( Frame.CanGoBack )
+            if (WebViewControl.CanGoBack)
             {
                 //Frame.GoBack();
                 WebViewControl.GoBack();
 
                 //Debug.WriteLine("BaseUri: " + WebViewControl.BaseUri.ToString());
             }
-        }
+        }//Back_Click
 
+
+        // Forward_Click
         private void Forward_Click(object sender, RoutedEventArgs e)
         {
             //if (Contacts.IsChecked.Value)
@@ -296,24 +375,25 @@ namespace FourPDAClientApp
             if (WebViewControl.CanGoForward)
             {
                 WebViewControl.GoForward();
-
                 //Debug.WriteLine("BaseUri: " + WebViewControl.BaseUri.ToString());
             }
-        }
+        }//Forward_Click
 
-        private void CheckAnyChecked()
-        {
+
+        // CheckAnyChecked
+        //private void CheckAnyChecked()
+        //{
             //if (!Contacts.IsChecked.Value && !Chat.IsChecked.Value)
             //{
             //    ChangeViewMode(FourPDAClientApp.WebViewMode.Compact);
             //}
-        }
+        //}//CheckAnyChecked
 
-        private void ForcePageOnScreen()
-        {
-            ScriptInjector.InvokeScriptOnWebView(WebViewControl, 
-                ScriptInjector.ChangeMinWidthForEachElement(0));
-        }
+        //private void ForcePageOnScreen()
+        //{
+        //    ScriptInjector.InvokeScriptOnWebView(WebViewControl, 
+        //        ScriptInjector.ChangeMinWidthForEachElement(0));
+        //}
 
         private void RemoveClutterFromPage()
         {
@@ -329,7 +409,7 @@ namespace FourPDAClientApp
             );
         }
 
-        private void ChangeUIThemeThroughWhatsApp(bool isDarkTheme)
+        private void ChangeUIThemeThroughApp(bool isDarkTheme)
         {
             ScriptInjector.InvokeScriptOnWebView(WebViewControl, 
                 ScriptInjector.ChangeBodyClassName(isDarkTheme ? "web dark" : "web"));
@@ -403,8 +483,10 @@ namespace FourPDAClientApp
 
             CurrentViewMode = webViewMode;
         }
-    }
+    }//MainPage class end
 
+
+    // ScriptInjector class
     public class ScriptInjector
     {
         public static string ChangeFontSizeByID(int percentage, string id)
@@ -481,8 +563,10 @@ namespace FourPDAClientApp
                 InvokeScriptOnWebView(webView, scripts[i]);
             }
         }
-    }
+    }//ScriptInjector class end
 
+
+    // FourPDAClientApp class
     public static class FourPDAClientApp
     {
         // HTML classes and id's which could be modified using javascript injection.
@@ -498,6 +582,7 @@ namespace FourPDAClientApp
         public static readonly string CONTACT_SEARCH_CHAT = "_2EoyP";
         public static readonly string SAVE_DATA_DARKMODE = "theme_dark";
         public static readonly string SAVE_DATA_ZOOMFACTOR = "text_zoomfactor";
+        public static readonly string SAVE_DATA_FORUMMODE = "forum_mode";
 
         public enum WebViewMode
         {
@@ -505,8 +590,10 @@ namespace FourPDAClientApp
             Chat,
             Contacts
         }
-    }
+    }//FourPDAClientApp class end
 
+
+    // StorageManager class
     public static class StorageManager
     {
         private static Windows.Storage.ApplicationDataContainer localSettings;
@@ -549,6 +636,6 @@ namespace FourPDAClientApp
         {
             Debug.WriteLine(@"Have you called ""StorageManager.Init()""?");
         }
-    }
+    }//StorageManager class end
 }
 
