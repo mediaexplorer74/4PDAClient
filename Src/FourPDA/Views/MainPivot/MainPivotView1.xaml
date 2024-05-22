@@ -1,0 +1,63 @@
+﻿ <ctrl:CultureAwarePage
+    x:Class="FourPDA.Views.MainPivot.MainPivotView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:c="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mainPivot="clr-namespace:ForPDA.AppServices.ViewModels.MainPivot;assembly=ForPDA.AppServices"
+    xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core"
+    xmlns:ctrl="clr-namespace:FourPDA.Controls"
+    xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+    xmlns:cnv="clr-namespace:FourPDA.Converters"
+    xmlns:mainPivot1="clr-namespace:FourPDA.Views.MainPivot"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.Opacity="0"
+    telerik:InteractionEffectManager.IsInteractionEnabled="True"
+    d:DataContext="{d:DesignInstance mainPivot:MainPivotViewModel}">
+
+    <FrameworkElement.Resources>
+        <cnv:MarginSelector x:Key="MarginSelector"
+                            Portrait="0 10 0 0"
+                            LandscapeLeft="72 0 24 0"
+                            LandscapeRight="0 0 72 0"/>
+        
+        
+    </FrameworkElement.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <c:Pivot Margin="{Binding Source={StaticResource OrientationMgr}, Path=Orientation, Converter={StaticResource MarginSelector}}">
+            <c:Pivot.Title>
+               <mainPivot1:HeaderControl />
+            </c:Pivot.Title>
+            
+            <c:PivotItem Header="новости">
+               <ContentControl  cal:View.Model="{Binding NewsViewModel}"/>
+            </c:PivotItem>
+            <c:PivotItem Header="форумы">
+                <ContentControl cal:View.Model="{Binding ForumsViewModel}"/>
+            </c:PivotItem>
+            <c:PivotItem Header="каталог"/>
+            <c:PivotItem Header="избранное"/>
+        </c:Pivot>
+    </Grid>
+    
+     <ctrl:CultureAwarePage.ApplicationBar>
+         <shell:ApplicationBar>
+             <shell:ApplicationBarIconButton Text="профиль" IconUri="/Icons/Profile.png"/>
+             <shell:ApplicationBarIconButton Text="поиск" IconUri="/Icons/Search.png"/>
+             <shell:ApplicationBarIconButton Text="обновить" IconUri="/Icons/Refresh.png"/>
+             
+             <shell:ApplicationBar.MenuItems>
+                 <shell:ApplicationBarMenuItem Text="настройки"/>
+             </shell:ApplicationBar.MenuItems>
+         </shell:ApplicationBar>
+     </ctrl:CultureAwarePage.ApplicationBar>
+     
+</ctrl:CultureAwarePage>

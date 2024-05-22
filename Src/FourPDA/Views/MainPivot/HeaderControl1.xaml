@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="FourPDA.Views.MainPivot.HeaderControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/Icons/4pda_logo.png" 
+                           Width="131"/>
+
+            <Grid Grid.Column="2" 
+                          VerticalAlignment="Top">
+                <Rectangle Width="48"
+                                   Height="48"
+                                   Fill="{StaticResource PhoneForegroundBrush}">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush ImageSource="/Icons/Messages.png"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Grid>
+
+        </Grid>
+</UserControl>

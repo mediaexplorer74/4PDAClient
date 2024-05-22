@@ -1,0 +1,35 @@
+﻿<Application
+    x:Class="FourPDA.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FourPDA">
+
+</Application>
+
+<!--
+<Application 
+    x:Class="FourPDA.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:wp7="clr-namespace:FourPDA" 
+	xmlns:cnv="clr-namespace:FourPDA.Converters"
+    xmlns:appServices="clr-namespace:ForPDA.AppServices;assembly=ForPDA.AppServices">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <cnv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <cnv:BooleanToVisibilityConverter x:Key="InverterBooleanToVisibilityConverter" Invert="True" />
+            <cnv:StringCaseConverter x:Key="StringCaseConverter"/>
+            
+            <appServices:OrientationManager x:Key="OrientationMgr"/>
+            
+            <wp7:Bootstrapper x:Key="Bootstrapper"/>
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>
+-->
