@@ -1,5 +1,5 @@
 # 4PDAClient v2.0.0 (FourPDA codename) - dev branch
-![New logo](Images/logo.png)
+![](Images/app_logo.png)
 
 ## About
 I have some plans to "recover" 4PDA-for-W10M. :)
