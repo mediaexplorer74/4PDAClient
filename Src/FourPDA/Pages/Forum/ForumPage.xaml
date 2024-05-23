@@ -1,0 +1,295 @@
+﻿<Page
+    x:Class="FourPDA.Views.Forum.ForumPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FourPDA.Views.Forum"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:forum="local:ForPDA.AppServices.ViewModels.Forum;assembly=ForPDA.AppServices"
+    xmlns:micro="local:Caliburn.Micro;assembly=Caliburn.Micro"
+    xmlns:behaviors="local:FourPDA.Interaction.Behaviors"
+    xmlns:i="local:FourPDA.Interaction"
+    xmlns:controls="local:FourPDA.Controls"
+    xmlns:dataModels="local:ForPDA.AppServices.DataModels;assembly=ForPDA.AppServices" 
+    d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=forum:ForumPageViewModel }"   
+    >
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Background="{StaticResource ForPDALightBrush}"
+                Height="72">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--tp:RadTransitionControl
+                    Content="{Binding ForumName, Converter={StaticResource StringCaseConverter}, ConverterParameter=l}"
+                    Name="Title">
+                    <tp:RadTransitionControl.Transition>
+                        <tp:RadTransition PlayMode="Simultaneously">
+                            <tp:RadTransition.ForwardOutAnimation>
+                                <telerik:RadMoveXAnimation EndX="-480" Duration="0:0:1">
+                                    <telerik:RadMoveXAnimation.Easing>
+                                        <PowerEase Power="4" EasingMode="EaseOut" />
+                                    </telerik:RadMoveXAnimation.Easing>
+                                </telerik:RadMoveXAnimation>
+                            </tp:RadTransition.ForwardOutAnimation>
+                            <tp:RadTransition.ForwardInAnimation>
+                                <telerik:RadMoveXAnimation StartX="480" EndX="0" Duration="0:0:0.5">
+                                    <telerik:RadMoveXAnimation.Easing>
+                                        <PowerEase Power="4" />
+                                    </telerik:RadMoveXAnimation.Easing>
+                                </telerik:RadMoveXAnimation>
+                            </tp:RadTransition.ForwardInAnimation>
+                        </tp:RadTransition>
+                    </tp:RadTransitionControl.Transition>
+                    
+                    <tp:RadTransitionControl.ContentTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding }"
+                                       VerticalAlignment="Center"
+                                       Margin="24 0 0 0"
+                                       Style="{StaticResource PhoneTextTitle2Style}" />
+                        </DataTemplate>
+                    </tp:RadTransitionControl.ContentTemplate>
+
+                </tp:RadTransitionControl-->
+
+                <!--controls:QmsControl Grid.Column="2"
+                                     Margin="0 9 0 0"
+                                     VerticalAlignment="Center"/-->
+
+            </Grid>
+        </Border>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0 32 0 0">
+            <!--behaviors:ListBoxBehavior.DisableSelection="True"-->
+                <ListBox ItemsSource="{Binding AllItems}"
+                                    Style="{StaticResource ListBoxStyle}"
+                                    >
+                <ListBox.ItemTemplateSelector>
+                    <i:ForumDataTemplateSelector>
+                        <i:ForumDataTemplateSelector.ForumTemplate>
+                            <DataTemplate>
+                                <!--telerik:InteractionEffectManager.ApplyInteractionExplicitly="True"-->
+                                    <Grid Margin="24 12 0 12"
+                                    micro:Message.Attach="[Event Tap] = [Action SelectForum($dataContext)]">
+
+                                    <TextBlock Text="{Binding Title}"
+                                               Margin="0 -9 0 0"
+                                               TextWrapping="Wrap"
+                                               FontWeight="Bold"
+                                               Style="{StaticResource PhoneTextTitle2Style}" />
+                                </Grid>
+                            </DataTemplate>
+                        </i:ForumDataTemplateSelector.ForumTemplate>
+                        
+                        <i:ForumDataTemplateSelector.TopicTemplate>
+                            <DataTemplate>
+
+                                <Grid Margin="24 12 0 12"
+                                          d:DataContext="{d:DesignInstance dataModels:TopicDataModel}">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Text="{Binding Name}"
+                                                   Margin="0 -9 0 0"
+                                                   TextWrapping="Wrap"
+                                                   FontFamily="Segoe WP Light"                                                   
+                                                   FontSize="28" />
+
+                                    <StackPanel Orientation="Horizontal"
+                                                Grid.Row="1">
+
+                                        <TextBlock Margin="0"
+                                                   Style="{StaticResource PhoneTextSmallStyle}">
+                                            <Run Text="{Binding LastMessageTime}"/>
+                                            <Run Text="-"/>
+                                            <Run Text="{Binding AuthorName}"/>
+                                        </TextBlock>
+                                    </StackPanel>
+
+                                </Grid>
+                                
+                                <!-- </Border> -->
+                            </DataTemplate>
+                        </i:ForumDataTemplateSelector.TopicTemplate>
+
+                    </i:ForumDataTemplateSelector>
+                </ListBox.ItemTemplateSelector>
+                    
+                <!--ListBox.ItemAddedAnimation>
+                    <telerik:RadFadeAnimation />
+                </ListBox.ItemAddedAnimation-->
+                    
+                <!--ListBox.ItemRemovedAnimation>
+                    <telerik:RadFadeAnimation EndOpacity="0" StartOpacity="1" />
+                </ListBox.ItemRemovedAnimation-->
+            </ListBox>
+
+        </Grid>
+    </Grid>
+</Page>
+    
+<!--
+    <phone:PhoneApplicationPage
+    x:Class="FourPDA.Views.Forum.ForumPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:forum="clr-namespace:ForPDA.AppServices.ViewModels.Forum;assembly=ForPDA.AppServices"
+    xmlns:tp="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core"
+    xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+    xmlns:primitives="clr-namespace:Telerik.Windows.Controls.Primitives;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:behaviors="clr-namespace:FourPDA.Interaction.Behaviors"
+    xmlns:i="clr-namespace:FourPDA.Interaction"
+    xmlns:controls="clr-namespace:FourPDA.Controls"
+    xmlns:dataModels="clr-namespace:ForPDA.AppServices.DataModels;assembly=ForPDA.AppServices"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False"
+    telerik:InteractionEffectManager.IsInteractionEnabled="True"
+    d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=forum:ForumPageViewModel }">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Background="{StaticResource ForPDALightBrush}"
+                Height="72">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <tp:RadTransitionControl
+                    Content="{Binding ForumName, Converter={StaticResource StringCaseConverter}, ConverterParameter=l}"
+                    Name="Title">
+                    <tp:RadTransitionControl.Transition>
+                        <tp:RadTransition PlayMode="Simultaneously">
+                            <tp:RadTransition.ForwardOutAnimation>
+                                <telerik:RadMoveXAnimation EndX="-480" Duration="0:0:1">
+                                    <telerik:RadMoveXAnimation.Easing>
+                                        <PowerEase Power="4" EasingMode="EaseOut" />
+                                    </telerik:RadMoveXAnimation.Easing>
+                                </telerik:RadMoveXAnimation>
+                            </tp:RadTransition.ForwardOutAnimation>
+                            <tp:RadTransition.ForwardInAnimation>
+                                <telerik:RadMoveXAnimation StartX="480" EndX="0" Duration="0:0:0.5">
+                                    <telerik:RadMoveXAnimation.Easing>
+                                        <PowerEase Power="4" />
+                                    </telerik:RadMoveXAnimation.Easing>
+                                </telerik:RadMoveXAnimation>
+                            </tp:RadTransition.ForwardInAnimation>
+                        </tp:RadTransition>
+                    </tp:RadTransitionControl.Transition>
+                    <tp:RadTransitionControl.ContentTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding }"
+                                       VerticalAlignment="Center"
+                                       Margin="24 0 0 0"
+                                       Style="{StaticResource PhoneTextTitle2Style}" />
+                        </DataTemplate>
+                    </tp:RadTransitionControl.ContentTemplate>
+
+                </tp:RadTransitionControl>
+
+                <controls:QmsControl Grid.Column="2"
+                                     Margin="0 9 0 0"
+                                     VerticalAlignment="Center"/>
+                
+            </Grid>
+        </Border>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0 32 0 0">
+            <tp:RadDataBoundListBox ItemsSource="{Binding AllItems}"
+                                    Style="{StaticResource ListBoxStyle}"
+                                    behaviors:ListBoxBehavior.DisableSelection="True">
+                <tp:RadDataBoundListBox.ItemTemplateSelector>
+                    <i:ForumDataTemplateSelector>
+                        <i:ForumDataTemplateSelector.ForumTemplate>
+                            <DataTemplate>
+                                <Grid Margin="24 12 0 12"
+                                      telerik:InteractionEffectManager.ApplyInteractionExplicitly="True"
+                                      micro:Message.Attach="[Event Tap] = [Action SelectForum($dataContext)]">
+
+                                    <TextBlock Text="{Binding Title}"
+                                               Margin="0 -9 0 0"
+                                               TextWrapping="Wrap"
+                                               FontWeight="Bold"
+                                               Style="{StaticResource PhoneTextTitle2Style}" />
+                                </Grid>
+                            </DataTemplate>
+                        </i:ForumDataTemplateSelector.ForumTemplate>
+                        <i:ForumDataTemplateSelector.TopicTemplate>
+                            <DataTemplate>
+                               
+<Grid Margin="24 12 0 12"
+                                          d:DataContext="{d:DesignInstance dataModels:TopicDataModel}">
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <TextBlock Text="{Binding Name}"
+                                                   Margin="0 -9 0 0"
+                                                   TextWrapping="Wrap"
+                                                   FontFamily="Segoe WP Light"                                                   
+                                                   FontSize="28" />
+
+    <StackPanel Orientation="Horizontal"
+                                                Grid.Row="1">
+
+        <TextBlock Margin="0"
+                                                   Style="{StaticResource PhoneTextSmallStyle}">
+                                            <Run Text="{Binding LastMessageTime}"/>
+                                            <Run Text="-"/>
+                                            <Run Text="{Binding AuthorName}"/>
+        </TextBlock>
+    </StackPanel>
+
+ </Grid>
+  < - - </Border> - - >
+  </DataTemplate>
+    </i:ForumDataTemplateSelector.TopicTemplate>
+
+    </i:ForumDataTemplateSelector>
+    </tp:RadDataBoundListBox.ItemTemplateSelector>
+    <tp:RadDataBoundListBox.ItemAddedAnimation>
+        <telerik:RadFadeAnimation />
+    </tp:RadDataBoundListBox.ItemAddedAnimation>
+    <tp:RadDataBoundListBox.ItemRemovedAnimation>
+        <telerik:RadFadeAnimation EndOpacity="0" StartOpacity="1" />
+    </tp:RadDataBoundListBox.ItemRemovedAnimation>
+    </tp:RadDataBoundListBox>
+
+
+    </Grid>
+</Grid>
+
+</phone:PhoneApplicationPage>
+-->

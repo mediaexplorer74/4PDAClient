@@ -1,12 +1,10 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: FourPDA.Interaction.VisualTreeAdapter
-// Assembly: FourPDA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: CDB98E47-00BC-4074-98E2-E8BD94FCE6F3
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\FourPDA.dll
+﻿// FourPDA.Interaction.VisualTreeAdapter
 
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Media;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
+
 
 #nullable disable
 namespace FourPDA.Interaction

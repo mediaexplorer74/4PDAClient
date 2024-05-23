@@ -1,8 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ForPDA.Communication.Model.ForumModel
-// Assembly: ForPDA.Communication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 7621B702-77AB-4A6D-A66D-A001F234DCA5
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\ForPDA.Communication.dll
+﻿// ForPDA.Communication.Model.ForumModel
 
 using System;
 using System.Collections;

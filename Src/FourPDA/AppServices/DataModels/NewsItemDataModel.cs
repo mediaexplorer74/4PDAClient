@@ -1,63 +1,70 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ForPDA.AppServices.DataModels.NewsItemDataModel
-// Assembly: ForPDA.AppServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: D325BF8E-CDA8-4E31-B95E-BD3BD3D2F348
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\ForPDA.AppServices.dll
+﻿// ForPDA.AppServices.DataModels.NewsItemDataModel
 
 using Caliburn.Micro;
 using System;
+using System.ComponentModel;
 
 #nullable disable
 namespace ForPDA.AppServices.DataModels
 {
   public class NewsItemDataModel : PropertyChangedBase
   {
+    private string Title_BackingField;
     public string Title
-    {
-      get => this.\u003CTitle\u003Ek__BackingField;
-      set
-      {
-        if (string.Equals(this.\u003CTitle\u003Ek__BackingField, value, StringComparison.Ordinal))
-          return;
-        this.\u003CTitle\u003Ek__BackingField = value;
-        this.NotifyOfPropertyChange(nameof (Title));
-      }
-    }
+        {
+            get
+            {
+                return this.Title_BackingField;
+            }
+            
+            set
+            {
+                if (string.Equals(this.Title_BackingField, value, StringComparison.Ordinal))
+                    return;
+                this.Title_BackingField = value;
+                this.NotifyOfPropertyChange(nameof(Title));
+            }
+        }
 
-    public string Body
+        private string Body_BackingField;
+        public string Body
     {
-      get => this.\u003CBody\u003Ek__BackingField;
+      get => this.Body_BackingField;
       set
       {
-        if (string.Equals(this.\u003CBody\u003Ek__BackingField, value, StringComparison.Ordinal))
+        if (string.Equals(this.Body_BackingField, value, StringComparison.Ordinal))
           return;
-        this.\u003CBody\u003Ek__BackingField = value;
+        this.Body_BackingField = value;
         this.NotifyOfPropertyChange(nameof (Body));
       }
     }
 
+    private string Timestamp_BackingField;
     public string Timestamp
     {
-      get => this.\u003CTimestamp\u003Ek__BackingField;
+      get => this.Timestamp_BackingField;
       set
       {
-        if (string.Equals(this.\u003CTimestamp\u003Ek__BackingField, value, StringComparison.Ordinal))
+        if (string.Equals(this.Timestamp_BackingField, value, StringComparison.Ordinal))
           return;
-        this.\u003CTimestamp\u003Ek__BackingField = value;
+        this.Timestamp_BackingField = value;
         this.NotifyOfPropertyChange(nameof (Timestamp));
       }
     }
 
+    private string Uri_BackingField;
     public string Uri
     {
-      get => this.\u003CUri\u003Ek__BackingField;
+      get => this.Uri_BackingField;
       set
       {
-        if (string.Equals(this.\u003CUri\u003Ek__BackingField, value, StringComparison.Ordinal))
+        if (string.Equals(this.Uri_BackingField, value, StringComparison.Ordinal))
           return;
-        this.\u003CUri\u003Ek__BackingField = value;
-        this.NotifyOfPropertyChange(nameof (Uri));
+        this.Uri_BackingField = value;
+        this.NotifyOfPropertyChange(nameof(Uri));
       }
     }
+
+    //public event PropertyChangedEventHandler PropertyChanged;
   }
 }

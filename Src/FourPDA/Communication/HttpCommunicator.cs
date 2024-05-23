@@ -1,10 +1,5 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ForPDA.Communication.HttpCommunicator
-// Assembly: ForPDA.Communication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 7621B702-77AB-4A6D-A66D-A001F234DCA5
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\ForPDA.Communication.dll
+﻿// ForPDA.Communication.HttpCommunicator
 
-using MSPToolkit.Encodings;
 using System;
 using System.IO;
 using System.Net;
@@ -27,7 +22,7 @@ namespace ForPDA.Communication
       this._handler.AllowAutoRedirect = true;
       if (this._handler.SupportsAutomaticDecompression)
         this._handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-      this._handler.CookieContainer.Add(new Uri("http://4pda.ru/"), new Cookie("ngx_mb", "1"));
+      this._handler.CookieContainer.Add(new Uri("http://4pda.to/"), new Cookie("ngx_mb", "1"));
     }
 
     public async Task<Stream> GetStreamAsync(string uri)
@@ -41,7 +36,7 @@ namespace ForPDA.Communication
     public async Task<string> GetStringAsync(string uri, Encoding encoding = null)
     {
       if (encoding == null)
-        encoding = (Encoding) new Windows1251Encoding();
+        encoding = Encoding.UTF8; // 1251 ?
       Stream responseStream = await this.GetStreamAsync(uri);
       StreamReader streamReader = new StreamReader(responseStream, encoding);
       string responseString;

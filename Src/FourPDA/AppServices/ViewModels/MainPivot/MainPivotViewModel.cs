@@ -1,12 +1,9 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ForPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel
-// Assembly: ForPDA.AppServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: D325BF8E-CDA8-4E31-B95E-BD3BD3D2F348
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\ForPDA.AppServices.dll
+﻿// ForPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel
 
 using Caliburn.Micro;
 using ForPDA.AppServices.DataModels;
 using System;
+using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -18,27 +15,32 @@ namespace ForPDA.AppServices.ViewModels.MainPivot
     private readonly IBusyIndicator _busyIndicator;
     private readonly INavigationService _navigationService;
 
+    private NewsViewModel NewsViewModel_BackingField;
     public NewsViewModel NewsViewModel
     {
-      get => this.\u003CNewsViewModel\u003Ek__BackingField;
+      get => this.NewsViewModel_BackingField;
       set
       {
-        if (this.\u003CNewsViewModel\u003Ek__BackingField == value)
+        if (this.NewsViewModel_BackingField == value)
           return;
-        this.\u003CNewsViewModel\u003Ek__BackingField = value;
-        this.NotifyOfPropertyChange(nameof (NewsViewModel));
+        this.NewsViewModel_BackingField = value;
+        //this.NotifyOfPropertyChange(nameof (NewsViewModel));
       }
     }
 
-    public ForumsViewModel ForumsViewModel
+    private  ForumsViewModel ForumsViewModel_BackingField;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public ForumsViewModel ForumsViewModel
     {
-      get => this.\u003CForumsViewModel\u003Ek__BackingField;
+      get => this.ForumsViewModel_BackingField;
       set
       {
-        if (this.\u003CForumsViewModel\u003Ek__BackingField == value)
+        if (this.ForumsViewModel_BackingField == value)
           return;
-        this.\u003CForumsViewModel\u003Ek__BackingField = value;
-        this.NotifyOfPropertyChange(nameof (ForumsViewModel));
+        this.ForumsViewModel_BackingField = value;
+        //this.NotifyOfPropertyChange(nameof (ForumsViewModel));
       }
     }
 
@@ -48,7 +50,10 @@ namespace ForPDA.AppServices.ViewModels.MainPivot
       NewsViewModel newsViewModel,
       ForumsViewModel forumsViewModel)
     {
-      this._busyIndicator = busyIndicator;
+            //RnD
+            this.LoadDataAsync();
+
+            this._busyIndicator = busyIndicator;
       this._navigationService = navigationService;
       this.NewsViewModel = newsViewModel;
       this.ForumsViewModel = forumsViewModel;
@@ -57,11 +62,17 @@ namespace ForPDA.AppServices.ViewModels.MainPivot
     public void OpenNewsDetails(NewsItemDataModel newsItem)
     {
       ParameterExpression parameterExpression;
+
+            //RnD
       // ISSUE: method reference
-      this._navigationService.UriFor<NewsDetailsPageViewModel>().WithParam<string>(Expression.Lambda<Func<NewsDetailsPageViewModel, string>>((Expression) Expression.Property((Expression) parameterExpression, (MethodInfo) MethodBase.GetMethodFromHandle((RuntimeMethodHandle) __methodref (NewsDetailsPageViewModel.get_NewsUri))), parameterExpression), newsItem.Uri).Navigate();
+      //this._navigationService.UriFor<NewsDetailsPageViewModel>().WithParam<string>(
+      //    Expression.Lambda<Func<NewsDetailsPageViewModel, string>>(
+      //        (Expression) Expression.Property((Expression) parameterExpression, 
+      //        (MethodInfo) MethodBase.GetMethodFromHandle((RuntimeMethodHandle)
+      //        __methodref (NewsDetailsPageViewModel.get_NewsUri))), parameterExpression), newsItem.Uri).Navigate();
     }
 
-    protected override void OnInitialize() => this.LoadDataAsync();
+    //protected override void OnInitialize() => this.LoadDataAsync();
 
     private async void LoadDataAsync()
     {

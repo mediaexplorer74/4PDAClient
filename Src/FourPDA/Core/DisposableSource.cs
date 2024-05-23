@@ -1,8 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ForPDA.Core.DisposableSource
-// Assembly: ForPDA.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 1F063FDB-43B6-4F39-AEFE-6C4BC0FF6CDF
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\ForPDA.Core.dll
+﻿// ForPDA.Core.DisposableSource
 
 using System;
 

@@ -1,4 +1,4 @@
-# 4PDAClient v2 (FourPDA codename) - dev branch
+# 4PDAClient v2.0.0 (FourPDA codename) - dev branch
 ![New logo](Images/logo.png)
 
 ## About
@@ -14,7 +14,7 @@ Very early bird; draft UWP application to "parse" 4PDA web site on some winphone
 ## Tech/dev details
 - Platforms: UWP only
 - Targets: x64; ARM
-- OSes: Windows 10 (Mobile) ; build: 10240 or above
+- OSes: Windows 10 (Mobile) ; build: 14393 or above
 
 ## Status
 - Draft. Prototype / Pre-Pre-Pre-Alpha version.

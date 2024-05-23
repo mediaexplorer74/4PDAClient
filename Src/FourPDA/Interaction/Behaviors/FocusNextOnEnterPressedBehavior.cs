@@ -1,48 +1,57 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: FourPDA.Interaction.Behaviors.FocusNextOnEnterPressedBehavior
-// Assembly: FourPDA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: CDB98E47-00BC-4074-98E2-E8BD94FCE6F3
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\FourPDA.dll
+﻿// FourPDA.Interaction.Behaviors.FocusNextOnEnterPressedBehavior
 
-using Microsoft.Phone.Controls;
+
+//using Microsoft.Phone.Controls;
 using System;
 using System.Linq;
 using System.Windows;
 using Windows.UI.Xaml.Controls;
 using System.Windows.Input;
+using Windows.UI.Xaml;
 
 #nullable disable
 namespace FourPDA.Interaction.Behaviors
 {
-  public class FocusNextOnEnterPressedBehavior : SafeBehavior<Control>
+  public class FocusNextOnEnterPressedBehavior //: SafeBehavior<Control>
   {
     public static readonly DependencyProperty NextControlNameProperty = DependencyProperty.Register(nameof (NextControlName), typeof (string), typeof (FocusNextOnEnterPressedBehavior), (PropertyMetadata) null);
 
     public string NextControlName
     {
-      get => (string) this.GetValue(FocusNextOnEnterPressedBehavior.NextControlNameProperty);
-      set => this.SetValue(FocusNextOnEnterPressedBehavior.NextControlNameProperty, (object) value);
+        get
+        {
+                return default;//(string)this.GetValue(FocusNextOnEnterPressedBehavior.NextControlNameProperty);
+        }
+
+        set
+        {
+                value = default;//this.SetValue(FocusNextOnEnterPressedBehavior.NextControlNameProperty, (object)value);
+        }
     }
 
-    public FocusNextOnEnterPressedBehavior() => this.ListenToPageBackEvent = true;
-
-    protected override void OnSetup()
+    public FocusNextOnEnterPressedBehavior()
     {
-      base.OnSetup();
-      ((UIElement) this.AssociatedObject).KeyUp += new KeyEventHandler(this.OnKeyUp);
+        //this.ListenToPageBackEvent = true;
     }
 
-    protected override void OnCleanup()
+    protected /*override*/ void OnSetup()
     {
-      base.OnCleanup();
-      ((UIElement) this.AssociatedObject).KeyUp -= new KeyEventHandler(this.OnKeyUp);
+      //base.OnSetup();
+      //((UIElement) this.AssociatedObject).KeyUp += new KeyEventHandler(this.OnKeyUp);
     }
 
-    private void OnKeyUp(object sender, KeyEventArgs e)
+    protected /*override*/ void OnCleanup()
     {
+       //base.OnCleanup();
+       //((UIElement) this.AssociatedObject).KeyUp -= new KeyEventHandler(this.OnKeyUp);
+    }
+
+    private void OnKeyUp(object sender, EventArgs e)
+    {
+      /*
       if (e.Key != 3)
         return;
-      PhoneApplicationPage phoneApplicationPage = ((DependencyObject) this.AssociatedObject).Ancestors<PhoneApplicationPage>().First<PhoneApplicationPage>();
+      Page phoneApplicationPage = ((DependencyObject) this.AssociatedObject).Ancestors<PhoneApplicationPage>().First<PhoneApplicationPage>();
       if (phoneApplicationPage == null)
         return;
       if (string.IsNullOrEmpty(this.NextControlName))
@@ -55,6 +64,7 @@ namespace FourPDA.Interaction.Behaviors
           throw new InvalidOperationException(string.Format("Control '{0}' couldn't be found", (object) this.NextControlName));
         name.Focus();
       }
+      */
     }
   }
 }

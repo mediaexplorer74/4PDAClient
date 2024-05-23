@@ -1,8 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: FourPDA.Interaction.WeakEventListener`3
-// Assembly: FourPDA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: CDB98E47-00BC-4074-98E2-E8BD94FCE6F3
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\FourPDA.dll
+﻿// FourPDA.Interaction.WeakEventListener`3
 
 using System;
 
@@ -31,8 +27,9 @@ namespace FourPDA.Interaction
       get => this._onEventAction;
       set
       {
-        if (value != null && !value.Method.IsStatic)
-          throw new ArgumentException("OnEventAction method must be static otherwise the event WeakEventListner class does not prevent memory leaks.");
+        if (value != null/* && !value.Method.IsStatic*/)
+          throw new ArgumentException(
+              "OnEventAction method must be static otherwise the event WeakEventListner class does not prevent memory leaks.");
         this._onEventAction = value;
       }
     }
@@ -42,8 +39,9 @@ namespace FourPDA.Interaction
       get => this._onDetachAction;
       set
       {
-        if (value != null && !value.Method.IsStatic)
-          throw new ArgumentException("OnDetachAction method must be static otherwise the event WeakEventListner cannot guarantee to unregister the handler.");
+        if (value != null/* && !value.Method.IsStatic*/)
+          throw new ArgumentException(
+              "OnDetachAction method must be static otherwise the event WeakEventListner cannot guarantee to unregister the handler.");
         this._onDetachAction = value;
       }
     }

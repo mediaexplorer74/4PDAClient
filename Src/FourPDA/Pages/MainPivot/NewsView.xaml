@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="FourPDA.Views.MainPivot.NewsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FourPDA.Views.MainPivot"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:micro="local:Caliburn.Micro;assembly=Caliburn.Micro"
+    xmlns:behaviors="local:FourPDA.Interaction.Behaviors"
+    Foreground="{StaticResource AppBarItemForegroundThemeBrush}"
+    d:DesignHeight="480" d:DesignWidth="480"
+    >
+
+    <Grid >
+        <!--behaviors:ListBoxBehavior.DisableSelection="True"-->
+            <ListBox ItemsSource="{Binding NewsItems}"
+                                            Margin="24 0 0 0" 
+                                            Style="{StaticResource ListBoxStyle}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <!-- telerik:InteractionEffectManager.ApplyInteractionExplicitly="True" -->
+                    <!--  micro:Message.Attach="[Event Tap] = [Action OpenNewsDetails($dataContext)]"  -->
+                        <StackPanel VerticalAlignment="Top"
+                                     Margin="0 0 24 18"
+                                     >
+                        <TextBlock TextDecorations="Underline" 
+                                   FontSize="24" 
+                                   TextWrapping="Wrap" 
+                                   HorizontalAlignment="Left" 
+                                   Foreground="{StaticResource PhoneAccentBrush}" 
+                                   Text="{Binding Title}" />
+                        <TextBlock TextWrapping="Wrap" 
+                                   Text="{Binding Body}" />
+                        <TextBlock Foreground="{StaticResource PhoneSubtleBrush}" 
+                                   Text="{Binding Timestamp}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <!--ListBox.ItemAddedAnimation>
+                <telerik:RadFadeAnimation/>
+            </ListBox.ItemAddedAnimation-->
+        </ListBox>
+    </Grid>
+</Page>
+    
+    <!--
+    <UserControl x:Class="FourPDA.Views.MainPivot.NewsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tp="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+    xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core"
+    xmlns:behaviors="clr-namespace:FourPDA.Interaction.Behaviors"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <Grid >
+        <tp:RadDataBoundListBox ItemsSource="{Binding NewsItems}"
+                                               Margin="24 0 0 0" 
+                                               behaviors:ListBoxBehavior.DisableSelection="True"
+                                               Style="{StaticResource ListBoxStyle}">
+            <tp:RadDataBoundListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel VerticalAlignment="Top"
+                                        telerik:InteractionEffectManager.ApplyInteractionExplicitly="True"
+                                        Margin="0 0 24 18"
+                                        micro:Message.Attach="[Event Tap] = [Action OpenNewsDetails($dataContext)]">
+                        <TextBlock TextDecorations="Underline" FontSize="24" TextWrapping="Wrap" HorizontalAlignment="Left" Foreground="{StaticResource PhoneAccentBrush}" Text="{Binding Title}" />
+                        <TextBlock TextWrapping="Wrap" Text="{Binding Body}" />
+                        <TextBlock Foreground="{StaticResource PhoneSubtleBrush}"  Text="{Binding Timestamp}" />
+                    </StackPanel>
+                </DataTemplate>
+            </tp:RadDataBoundListBox.ItemTemplate>
+            <tp:RadDataBoundListBox.ItemAddedAnimation>
+                <telerik:RadFadeAnimation/>
+            </tp:RadDataBoundListBox.ItemAddedAnimation>
+            
+        </tp:RadDataBoundListBox>
+    </Grid>
+</UserControl>
+    -->

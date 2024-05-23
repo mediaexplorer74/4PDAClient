@@ -1,12 +1,9 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ForPDA.AppServices.ViewModels.NewsDetailsPageViewModel
-// Assembly: ForPDA.AppServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: D325BF8E-CDA8-4E31-B95E-BD3BD3D2F348
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\ForPDA.AppServices.dll
+﻿// ForPDA.AppServices.ViewModels.NewsDetailsPageViewModel
 
 using Caliburn.Micro;
 using ForPDA.Communication;
 using System;
+using System.ComponentModel;
 
 #nullable disable
 namespace ForPDA.AppServices.ViewModels
@@ -23,33 +20,36 @@ namespace ForPDA.AppServices.ViewModels
       this._busyIndicator = busyIndicator;
     }
 
+    private string NewsUri_BackingField;
     public string NewsUri
     {
-      get => this.\u003CNewsUri\u003Ek__BackingField;
+      get => this.NewsUri_BackingField;
       set
       {
-        if (string.Equals(this.\u003CNewsUri\u003Ek__BackingField, value, StringComparison.Ordinal))
+        if (string.Equals(this.NewsUri_BackingField, value, StringComparison.Ordinal))
           return;
-        this.\u003CNewsUri\u003Ek__BackingField = value;
+        this.NewsUri_BackingField = value;
         this.NotifyOfPropertyChange(nameof (NewsUri));
       }
     }
 
+    private bool IsLoaded_BackingField;
+
     public bool IsLoaded
     {
-      get => this.\u003CIsLoaded\u003Ek__BackingField;
+      get => this.IsLoaded_BackingField;
       set
       {
-        if (this.\u003CIsLoaded\u003Ek__BackingField == value)
+        if (this.IsLoaded_BackingField == value)
           return;
-        this.\u003CIsLoaded\u003Ek__BackingField = value;
+        this.IsLoaded_BackingField = value;
         this.NotifyOfPropertyChange(nameof (IsLoaded));
       }
     }
 
     protected override void OnViewLoaded(object view)
     {
-      base.OnViewLoaded(view);
+      //base.OnViewLoaded(view);
       this._view = (IBrowserView) view;
       this.LoadPageAsync();
     }
@@ -63,5 +63,7 @@ namespace ForPDA.AppServices.ViewModels
         this.IsLoaded = true;
       }
     }
+
+    //public event PropertyChangedEventHandler PropertyChanged;
   }
 }

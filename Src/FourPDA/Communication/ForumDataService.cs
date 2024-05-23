@@ -1,25 +1,23 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ForPDA.Communication.ForumDataService
-// Assembly: ForPDA.Communication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 7621B702-77AB-4A6D-A66D-A001F234DCA5
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\ForPDA.Communication.dll
+﻿// ForPDA.Communication.ForumDataService
 
 using ForPDA.Communication.Model;
-using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using HtmlAgilityPack;
+//using System.Web;
+
 
 #nullable disable
 namespace ForPDA.Communication
 {
   public class ForumDataService
   {
-    private string FORUM_BASE_URI = "http://4pda.ru/forum/lofiversion/index.php";
-    private string SUBFORUM_URI_FMT = "http://4pda.ru/forum/index.php?showforum={0}";
+    private string FORUM_BASE_URI = "http://4pda.to/forum/lofiversion/index.php";
+    private string SUBFORUM_URI_FMT = "http://4pda.to/forum/index.php?showforum={0}";
     private readonly HttpCommunicator _httpCommunicator;
     private ForumModel _rootForum;
 
@@ -59,11 +57,12 @@ namespace ForPDA.Communication
         {
           HtmlNode current = enumerator.Current;
           HtmlNode nextSibling = current.NextSibling;
-          topics.Add(new ForumTopicModel(HttpUtility.HtmlDecode(current.SelectSingleNode("a[1]").InnerHtml))
-          {
-            AuthorName = HttpUtility.HtmlDecode(nextSibling.SelectSingleNode("a[last()]").InnerText),
-            LastMessageTime = HttpUtility.HtmlDecode(((string) nextSibling.LastChild.InnerText).Trim())
-          });
+        //TODO
+        topics.Add(new ForumTopicModel(/*HttpUtility.HtmlDecode(current.SelectSingleNode("a[1]").InnerHtml)*/default)
+        {
+            AuthorName = default,//HttpUtility.HtmlDecode(nextSibling.SelectSingleNode("a[last()]").InnerText),
+            LastMessageTime = default//HttpUtility.HtmlDecode(((string) nextSibling.LastChild.InnerText).Trim())
+        });
         }
       }
       finally

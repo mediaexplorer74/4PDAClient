@@ -1,38 +1,36 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ForPDA.AppServices.OrientationManager
-// Assembly: ForPDA.AppServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: D325BF8E-CDA8-4E31-B95E-BD3BD3D2F348
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\ForPDA.AppServices.dll
+﻿// ForPDA.AppServices.OrientationManager
 
-using Microsoft.Phone.Controls;
+//using Microsoft.Phone.Controls;
 using System;
 using System.ComponentModel;
+using Windows.UI.Xaml.Controls;
 
 #nullable disable
 namespace ForPDA.AppServices
 {
   public class OrientationManager : INotifyPropertyChanged
   {
-    private PhoneApplicationFrame _frame;
+    private Frame _frame;
 
-    public PhoneApplicationFrame Frame
+    public Frame Frame
     {
       get
       {
         if (this._frame == null)
         {
           this._frame = ScreenHelper.Frame;
-          this._frame.OrientationChanged += new EventHandler<OrientationChangedEventArgs>(this.FrameOnOrientationChanged);
+          //this._frame.OrientationChanged += 
+          //              new EventHandler<OrientationChangedEventArgs>(this.FrameOnOrientationChanged);
         }
         return this._frame;
       }
     }
 
-    public PageOrientation Orientation => this.Frame.Orientation;
+   // public PageOrientation Orientation => this.Frame.Orientation;
 
     private void FrameOnOrientationChanged(
       object sender,
-      OrientationChangedEventArgs orientationChangedEventArgs)
+      EventArgs orientationChangedEventArgs)
     {
       this.OnPropertyChanged("Orientation");
     }

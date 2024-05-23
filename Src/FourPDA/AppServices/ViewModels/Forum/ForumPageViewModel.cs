@@ -1,14 +1,11 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ForPDA.AppServices.ViewModels.Forum.ForumPageViewModel
-// Assembly: ForPDA.AppServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: D325BF8E-CDA8-4E31-B95E-BD3BD3D2F348
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\ForPDA.AppServices.dll
+﻿// ForPDA.AppServices.ViewModels.Forum.ForumPageViewModel
 
 using Caliburn.Micro;
 using ForPDA.AppServices.Controllers;
 using ForPDA.AppServices.DataModels;
 using ForPDA.Communication;
 using ForPDA.Communication.Model;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,10 +23,12 @@ namespace ForPDA.AppServices.ViewModels.Forum
     private ForumModel _currentForum;
 
     public ForumPageViewModel()
-    {
-      if (!DesignerProperties.IsInDesignTool)
-        return;
+    {           
+      //RnD
+      this.LoadDataAsync(this.ForumId);
+
       this.ForumName = "Windows Phone";
+            
       BindableCollection<object> bindableCollection = new BindableCollection<object>();
       bindableCollection.Add((object) new ForumDataModel()
       {
@@ -66,38 +65,41 @@ namespace ForPDA.AppServices.ViewModels.Forum
       this._navigationService = navigationService;
     }
 
+    private string ForumId_BackingField;
     public string ForumId
     {
-      get => this.\u003CForumId\u003Ek__BackingField;
+      get => this.ForumId_BackingField;
       set
       {
-        if (string.Equals(this.\u003CForumId\u003Ek__BackingField, value, StringComparison.Ordinal))
+        if (string.Equals(this.ForumId_BackingField, value, StringComparison.Ordinal))
           return;
-        this.\u003CForumId\u003Ek__BackingField = value;
+        this.ForumId_BackingField = value;
         this.NotifyOfPropertyChange(nameof (ForumId));
       }
     }
 
+    private string ForumName_BackingField;
     public string ForumName
     {
-      get => this.\u003CForumName\u003Ek__BackingField;
+      get => this.ForumName_BackingField;
       set
       {
-        if (string.Equals(this.\u003CForumName\u003Ek__BackingField, value, StringComparison.Ordinal))
+        if (string.Equals(this.ForumName_BackingField, value, StringComparison.Ordinal))
           return;
-        this.\u003CForumName\u003Ek__BackingField = value;
+        this.ForumName_BackingField = value;
         this.NotifyOfPropertyChange(nameof (ForumName));
       }
     }
 
+    private BindableCollection<object> AllItems_BackingField; 
     public BindableCollection<object> AllItems
     {
-      get => this.\u003CAllItems\u003Ek__BackingField;
+      get => this.AllItems_BackingField;
       set
       {
-        if (this.\u003CAllItems\u003Ek__BackingField == value)
+        if (this.AllItems_BackingField == value)
           return;
-        this.\u003CAllItems\u003Ek__BackingField = value;
+        this.AllItems_BackingField = value;
         this.NotifyOfPropertyChange(nameof (AllItems));
       }
     }
@@ -124,8 +126,15 @@ namespace ForPDA.AppServices.ViewModels.Forum
         this._currentForum = root.GetChild(forumId);
         this.ForumName = this._currentForum.Name;
         List<ForumTopicModel> topics = await this._forumDataService.LoadTopicsAsync(forumId);
-        this.AllItems = new BindableCollection<object>(((IEnumerable<ForumModel>) this._currentForum.Children).Select<ForumModel, ForumDataModel>((Func<ForumModel, ForumDataModel>) (x => this._forumController.CreateDataModel(x, this.ForumName))).Cast<object>().Concat<object>(((IEnumerable<ForumTopicModel>) topics).Select<ForumTopicModel, TopicDataModel>((Func<ForumTopicModel, TopicDataModel>) (t => this._forumController.CreateDataModel(t))).Cast<object>()));
+        this.AllItems = new BindableCollection<object>(((IEnumerable<ForumModel>) 
+            this._currentForum.Children).Select<ForumModel, ForumDataModel>(
+            (Func<ForumModel, ForumDataModel>) (
+            x => this._forumController.CreateDataModel(x, this.ForumName)))
+            .Cast<object>().Concat<object>(((IEnumerable<ForumTopicModel>) topics)
+            .Select<ForumTopicModel, TopicDataModel>((Func<ForumTopicModel, TopicDataModel>)
+            (t => this._forumController.CreateDataModel(t))).Cast<object>()));
       }
+       
     }
   }
 }

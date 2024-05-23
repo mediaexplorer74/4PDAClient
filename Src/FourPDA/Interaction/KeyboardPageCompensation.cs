@@ -1,31 +1,28 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: FourPDA.Interaction.KeyboardPageCompensation
-// Assembly: FourPDA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: CDB98E47-00BC-4074-98E2-E8BD94FCE6F3
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\FourPDA.dll
+﻿// FourPDA.Interaction.KeyboardPageCompensation
 
-using Microsoft.Phone.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using Windows.UI.Xaml.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using Telerik.Windows.Controls;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
 
 #nullable disable
 namespace FourPDA.Interaction
 {
-  public class KeyboardPageCompensation : DependencyObject, IDisposable
+  public class KeyboardPageCompensation : DependencyObject//, IDisposable
   {
     private const double LANDSCAPE_SHIFT = 259.0;
     private const double KEYBOARD_BAR_HEIGHT = 69.0;
     private const double PORTRAIT_SHIFT = 339.0;
+
+        /*
     private const double APP_BAR_HEIGHT = 72.0;
-    public static readonly DependencyProperty TranslateYProperty = DependencyProperty.Register("TranslateY", typeof (double), typeof (KeyboardPageCompensation), new PropertyMetadata((object) 0.0, new System.Windows.PropertyChangedCallback(KeyboardPageCompensation.PropertyChangedCallback)));
+    public static readonly DependencyProperty TranslateYProperty = DependencyProperty.Register(
+        "TranslateY", typeof (double), typeof (KeyboardPageCompensation), new PropertyMetadata((object) 0.0, 
+            new System.Windows.PropertyChangedCallback(KeyboardPageCompensation.PropertyChangedCallback)));
     private readonly string[] _keyboardsWithBar = new string[5]
     {
       "Text",
@@ -36,7 +33,7 @@ namespace FourPDA.Interaction
     };
     private FrameworkElement _focusedElement;
     private bool _keyboardIsOpen;
-    private readonly PhoneApplicationFrame _frame;
+    private readonly Frame _frame;
     private readonly ScrollViewer _scrollViewer;
     private TranslateTransform _translateTransform;
     private double _currentKeyboardHeight;
@@ -45,9 +42,9 @@ namespace FourPDA.Interaction
     private double _preFocusHeight;
     private bool _hasOpaqueAppbar;
 
-    public KeyboardPageCompensation(PhoneApplicationFrame frame, ScrollViewer scrollViewer)
+    public KeyboardPageCompensation(Frame frame, ScrollViewer scrollViewer)
     {
-      PhoneApplicationPage content = ((ContentControl) frame).Content as PhoneApplicationPage;
+      Page content = ((ContentControl) frame).Content as Page;
       this._hasOpaqueAppbar = content.ApplicationBar != null && content.ApplicationBar.Opacity < 1.0;
       this._frame = frame;
       this._scrollViewer = scrollViewer;
@@ -211,7 +208,8 @@ namespace FourPDA.Interaction
       {
         if (focusedElement.InputScope != null)
         {
-          if (((IEnumerable<string>) this._keyboardsWithBar).Contains<string>(((InputScopeName) focusedElement.InputScope.Names[0]).NameValue.ToString()))
+          if (((IEnumerable<string>) this._keyboardsWithBar).Contains<string>(
+              ((InputScopeName) focusedElement.InputScope.Names[0]).NameValue.ToString()))
             return 69.0;
         }
       }
@@ -258,5 +256,7 @@ namespace FourPDA.Interaction
       this.ClearValue(KeyboardPageCompensation.TranslateYProperty);
       this.ResetScrollViewerHeight();
     }
+     */   
   }
+        
 }

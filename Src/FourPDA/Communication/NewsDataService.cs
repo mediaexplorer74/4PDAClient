@@ -1,8 +1,4 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: ForPDA.Communication.NewsDataService
-// Assembly: ForPDA.Communication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 7621B702-77AB-4A6D-A66D-A001F234DCA5
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\ForPDA.Communication.dll
+﻿// ForPDA.Communication.NewsDataService
 
 using ForPDA.Communication.Html;
 using System;
@@ -19,18 +15,18 @@ namespace ForPDA.Communication
 {
   public class NewsDataService
   {
-    private const string RSS_URL = "http://4pda.ru/feed";
-    private const string SITE_URL = "http://4pda.ru/";
+    private const string RSS_URL = "http://4pda.to/feed";
+    private const string SITE_URL = "http://4pda.to/";
     private readonly HttpClient _http = new HttpClient();
 
     public async Task<SyndicationFeed> LoadFeedsAsync()
     {
-      HttpResponseMessage response = await this._http.GetAsync("http://4pda.ru/feed");
+      HttpResponseMessage response = await this._http.GetAsync("http://4pda.to/feed");
       Stream stream = await response.Content.ReadAsStreamAsync();
       SyndicationFeed syndicationFeed;
       try
       {
-        StreamReader streamReader = new StreamReader(stream, (Encoding) new Windows1251Encoding());
+        StreamReader streamReader = new StreamReader(stream, Encoding.UTF8); // 1251 ?
         try
         {
           XmlReader reader = XmlReader.Create((TextReader) streamReader);
@@ -63,7 +59,7 @@ namespace ForPDA.Communication
       string str;
       try
       {
-        StreamReader streamReader = new StreamReader(stream, (Encoding) new Windows1251Encoding());
+        StreamReader streamReader = new StreamReader(stream, Encoding.UTF8); // 1251
         try
         {
           str = new NewsHtmlProcessor(streamReader.ReadToEnd()).WrapDetails(useDarkCss);

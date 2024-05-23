@@ -1,22 +1,24 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: FourPDA.Interaction.Behaviors.SafeBehavior`1
+﻿// FourPDA.Interaction.Behaviors.SafeBehavior`1
 // Assembly: FourPDA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: CDB98E47-00BC-4074-98E2-E8BD94FCE6F3
 // Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\FourPDA.dll
 
-using Microsoft.Phone.Controls;
+//using Microsoft.Xaml.Interactivity;
 using System;
 using System.Windows;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using System.Windows.Interactivity;
-using System.Windows.Navigation;
+using Windows.UI.Xaml.Navigation;
+//using System.Windows.Interactivity;
+//using System.Windows.Navigation;
 
 #nullable disable
 namespace FourPDA.Interaction.Behaviors
 {
+    /*
   public abstract class SafeBehavior<T> : Behavior<T> where T : FrameworkElement
   {
-    protected PhoneApplicationFrame ParentPage;
+    protected Frame ParentPage;
     private Uri pageSource;
 
     protected SafeBehavior() => this.IsCleanedUp = true;
@@ -42,9 +44,9 @@ namespace FourPDA.Interaction.Behaviors
     {
       if (this.ParentPage == null && this.ListenToPageBackEvent)
       {
-        this.ParentPage = Application.Current.RootVisual as PhoneApplicationFrame;
-        this.pageSource = ((Frame) this.ParentPage).CurrentSource;
-        ((Frame) this.ParentPage).Navigated += new NavigatedEventHandler(new WeakEventListener<SafeBehavior<T>, PhoneApplicationFrame, NavigationEventArgs>(this, this.ParentPage)
+                this.ParentPage = default;//Application.Current as Frame;
+                this.pageSource = default;//((Frame) this.ParentPage).CurrentSource;
+        ((Frame) this.ParentPage).Navigated += new NavigatedEventHandler(new WeakEventListener<SafeBehavior<T>, Frame, NavigationEventArgs>(this, this.ParentPage)
         {
           OnEventAction = (Action<SafeBehavior<T>, object, NavigationEventArgs>) ((behavior, o, arg3) => behavior.ParentPageNavigated(o, arg3))
         }.OnEvent);
@@ -69,7 +71,7 @@ namespace FourPDA.Interaction.Behaviors
 
     protected bool IsNavigatingBackToBehaviorPage(NavigationEventArgs e)
     {
-      return e.NavigationMode == 1 && e.Uri.Equals((object) this.pageSource);
+      return e.NavigationMode == NavigationMode.Back && e.Uri.Equals((object) this.pageSource);
     }
 
     protected bool IsCleanedUp { get; private set; }
@@ -95,5 +97,6 @@ namespace FourPDA.Interaction.Behaviors
     protected virtual void OnCleanup()
     {
     }
-  }
+   
+  }*/
 }

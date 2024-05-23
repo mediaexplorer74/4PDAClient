@@ -1,12 +1,8 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: FourPDA.Converters.MoneyConverter
-// Assembly: FourPDA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: CDB98E47-00BC-4074-98E2-E8BD94FCE6F3
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\FourPDA.dll
+﻿// FourPDA.Converters.MoneyConverter
 
 using System;
 using System.Globalization;
-using System.Windows.Data;
+using Windows.UI.Xaml.Data;
 
 #nullable disable
 namespace FourPDA.Converters
@@ -19,10 +15,6 @@ namespace FourPDA.Converters
       NumberDecimalDigits = 0
     };
 
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-      return MoneyConverter.GetMoneyString(value);
-    }
 
     public static object GetMoneyString(object value)
     {
@@ -41,15 +33,16 @@ namespace FourPDA.Converters
     public static string GetMoneyString(int intVal)
     {
       return string.Format((IFormatProvider) MoneyConverter.numberFormatInfo, "{0:N}", (object) intVal);
+    }    
+
+    object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
+    {
+        return MoneyConverter.GetMoneyString(value);
     }
 
-    public object ConvertBack(
-      object value,
-      Type targetType,
-      object parameter,
-      CultureInfo culture)
+    object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string language)
     {
-      throw new NotImplementedException();
+        throw new NotImplementedException();
     }
   }
 }

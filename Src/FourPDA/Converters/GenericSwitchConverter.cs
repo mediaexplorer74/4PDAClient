@@ -1,21 +1,20 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: FourPDA.Converters.GenericSwitchConverter
-// Assembly: FourPDA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: CDB98E47-00BC-4074-98E2-E8BD94FCE6F3
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\FourPDA.dll
+﻿// FourPDA.Converters.GenericSwitchConverter
+
 
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Data;
-using System.Windows.Markup;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Markup;
+
 
 #nullable disable
 namespace FourPDA.Converters
 {
-  [ContentProperty("Cases")]
-  public class GenericSwitchConverter : DependencyObject, IValueConverter
+  [ContentProperty] // ("Cases")
+    public class GenericSwitchConverter : DependencyObject, IValueConverter
   {
     public GenericSwitchConverter() => this.Cases = new List<GenericCase>();
 
@@ -23,24 +22,22 @@ namespace FourPDA.Converters
 
     public List<GenericCase> Cases { get; set; }
 
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-      string str = value.ToString();
-      foreach (GenericCase genericCase in this.Cases)
-      {
-        if (genericCase.Case.Equals(str, (StringComparison) 3))
-          return genericCase.Value;
-      }
-      return this.Other;
-    }
 
-    public object ConvertBack(
-      object value,
-      Type targetType,
-      object parameter,
-      CultureInfo culture)
-    {
-      throw new NotImplementedException();
+
+        object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
+        {
+            string str = value.ToString();
+            foreach (GenericCase genericCase in this.Cases)
+            {
+                if (genericCase.Case.Equals(str, (StringComparison)3))
+                    return genericCase.Value;
+            }
+            return this.Other;
+        }
+
+        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
     }
-  }
 }

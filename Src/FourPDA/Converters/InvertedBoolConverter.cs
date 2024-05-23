@@ -1,30 +1,23 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: FourPDA.Converters.InvertedBoolConverter
-// Assembly: FourPDA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: CDB98E47-00BC-4074-98E2-E8BD94FCE6F3
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\FourPDA.dll
+﻿// FourPDA.Converters.InvertedBoolConverter
 
 using System;
 using System.Globalization;
-using System.Windows.Data;
+using Windows.UI.Xaml.Data;
 
 #nullable disable
 namespace FourPDA.Converters
 {
   public class InvertedBoolConverter : IValueConverter
-  {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+  {  
+
+    object IValueConverter.Convert(object value, Type targetType, object parameter, string language)
     {
-      return (object) !System.Convert.ToBoolean(value);
+        return (object)!System.Convert.ToBoolean(value);
     }
 
-    public object ConvertBack(
-      object value,
-      Type targetType,
-      object parameter,
-      CultureInfo culture)
+    object IValueConverter.ConvertBack(object value, Type targetType, object parameter, string language)
     {
-      throw new NotImplementedException();
+        throw new NotImplementedException();
     }
   }
 }
