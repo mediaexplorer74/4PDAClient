@@ -13,7 +13,8 @@
     xmlns:i="local:FourPDA.Interaction"
     xmlns:controls="local:FourPDA.Controls"
     xmlns:dataModels="local:ForPDA.AppServices.DataModels;assembly=ForPDA.AppServices" 
-    d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=forum:ForumPageViewModel }"   
+    xmlns:forum1="using:ForPDA.AppServices.ViewModels.Forum"
+    d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=forum1:ForumPageViewModel}"   
     >
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -76,12 +77,11 @@
                 <ListBox ItemsSource="{Binding AllItems}"
                                     Style="{StaticResource ListBoxStyle}"
                                     >
-                <ListBox.ItemTemplateSelector>
+                <!--ListBox.ItemTemplateSelector>
                     <i:ForumDataTemplateSelector>
                         <i:ForumDataTemplateSelector.ForumTemplate>
                             <DataTemplate>
-                                <!--telerik:InteractionEffectManager.ApplyInteractionExplicitly="True"-->
-                                    <Grid Margin="24 12 0 12"
+                                 <Grid Margin="24 12 0 12"
                                     micro:Message.Attach="[Event Tap] = [Action SelectForum($dataContext)]">
 
                                     <TextBlock Text="{Binding Title}"
@@ -123,12 +123,12 @@
 
                                 </Grid>
                                 
-                                <!-- </Border> -->
+                              
                             </DataTemplate>
                         </i:ForumDataTemplateSelector.TopicTemplate>
 
                     </i:ForumDataTemplateSelector>
-                </ListBox.ItemTemplateSelector>
+                </ListBox.ItemTemplateSelector-->
                     
                 <!--ListBox.ItemAddedAnimation>
                     <telerik:RadFadeAnimation />

@@ -24,15 +24,13 @@ namespace ForPDA.AppServices.ViewModels.MainPivot
         if (this.NewsViewModel_BackingField == value)
           return;
         this.NewsViewModel_BackingField = value;
-        //this.NotifyOfPropertyChange(nameof (NewsViewModel));
+        this.NotifyOfPropertyChange(nameof (NewsViewModel));
       }
     }
 
-    private  ForumsViewModel ForumsViewModel_BackingField;
+    private  ForumsViewModel ForumsViewModel_BackingField;        
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public ForumsViewModel ForumsViewModel
+    public ForumsViewModel ForumsViewModel
     {
       get => this.ForumsViewModel_BackingField;
       set
@@ -40,7 +38,7 @@ namespace ForPDA.AppServices.ViewModels.MainPivot
         if (this.ForumsViewModel_BackingField == value)
           return;
         this.ForumsViewModel_BackingField = value;
-        //this.NotifyOfPropertyChange(nameof (ForumsViewModel));
+        this.NotifyOfPropertyChange(nameof (ForumsViewModel));
       }
     }
 
@@ -50,10 +48,10 @@ namespace ForPDA.AppServices.ViewModels.MainPivot
       NewsViewModel newsViewModel,
       ForumsViewModel forumsViewModel)
     {
-            //RnD
-            this.LoadDataAsync();
+    //RnD
+    //this.LoadDataAsync();
 
-            this._busyIndicator = busyIndicator;
+    this._busyIndicator = busyIndicator;
       this._navigationService = navigationService;
       this.NewsViewModel = newsViewModel;
       this.ForumsViewModel = forumsViewModel;
@@ -61,7 +59,7 @@ namespace ForPDA.AppServices.ViewModels.MainPivot
 
     public void OpenNewsDetails(NewsItemDataModel newsItem)
     {
-      ParameterExpression parameterExpression;
+      ParameterExpression parameterExpression = default;
 
             //RnD
       // ISSUE: method reference
@@ -72,7 +70,10 @@ namespace ForPDA.AppServices.ViewModels.MainPivot
       //        __methodref (NewsDetailsPageViewModel.get_NewsUri))), parameterExpression), newsItem.Uri).Navigate();
     }
 
-    //protected override void OnInitialize() => this.LoadDataAsync();
+    protected override void OnInitialize()
+    {
+        this.LoadDataAsync();
+    }
 
     private async void LoadDataAsync()
     {
@@ -83,6 +84,10 @@ namespace ForPDA.AppServices.ViewModels.MainPivot
       }
     }
 
-    public void RefreshData() => this.LoadDataAsync();
-  }
+    public void RefreshData()
+    {
+        this.LoadDataAsync();
+    }
+
+  }//class end
 }

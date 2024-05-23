@@ -22,6 +22,7 @@ using System.Threading.Tasks;
 using Windows.System;
 using Windows.UI.Popups;
 using ExceptionHelper;
+using ForPDA.AppServices.ViewModels.MainPivot;
 
 namespace FourPDA
 {
@@ -39,6 +40,45 @@ namespace FourPDA
             ContentFrame.Navigate(HomePageType);
 
         }
+
+
+        // Refresh click handler
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            //ToAboutMe();
+            ForPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel vm = (ForPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel)DataContext;
+            vm.RefreshData();
+        }//AboutApp_Click
+
+        //private void PageLoaded(object sender, EventArgs e)
+        //{
+        //    AppBar.Setup<MainPivotViewModel>((Page)this).Third((Action<IApplicationBarIconButton, MainPivotViewModel>)
+        //        ((btn, vm) => vm.RefreshData()));
+        //}
+
+
+
+        private void ForumModeToggle_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void UiThemeToggle_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void AboutApp_Click(object sender, RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+
 
         private void MainNav_OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {

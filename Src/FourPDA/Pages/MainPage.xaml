@@ -5,9 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:FourPDA"
       RequestedTheme="Dark"
+      xmlns:ctrl="clr-namespace:FourPDA.Controls"
+      xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+      xmlns:cnv="clr-namespace:FourPDA.Converters"
+      xmlns:mainPivot1="clr-namespace:FourPDA.Views.MainPivot"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-      mc:Ignorable="d">
+      mc:Ignorable="d"
+      >
 
     <Page.Resources>
         <SolidColorBrush 
@@ -17,6 +22,7 @@
     <Grid Background="#FF2D2D30">
 
         <controls:NavigationView 
+                                 PaneDisplayMode="LeftMinimal"
                                  IsPaneOpen="False"
                                  x:Name="MainNav"
                                  IsBackEnabled="False"
@@ -70,4 +76,73 @@
         </controls:NavigationView>
 
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <!--AppBarToggleButton
+                    x:Name="Back"
+                    x:Uid="Back"
+                    Click="Back_Click"
+                    Icon="Back"
+                    Label="Back"/>
+
+                <AppBarToggleButton
+                    x:Name="Forward"
+                    x:Uid="Forward"
+                    Click="Forward_Click"
+                    Icon="Forward"
+                    Label="Forward"/>
+
+                <AppBarButton
+                    x:Name="ZoomIn"
+                    x:Uid="ZoomIn"
+                    Click="ZoomIn_Click"
+                    Icon="ZoomIn"
+                    Label="Zoom in"/-->
+                <AppBarButton
+                    x:Name="Refresh"
+                    x:Uid="Refresh"
+                    Click="Refresh_Click"
+                    Icon="Refresh"
+                    Label="Refresh"/>
+
+                <!--<AppBarToggleButton
+                    x:Name="Settings"
+                    x:Uid="Settings"
+                    Click="Settings_Click"
+                    Icon="Setting"
+                    Label="settings"/>-->
+
+            </CommandBar.PrimaryCommands>
+
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton
+                    x:Name="AboutMe"
+                    x:Uid="AboutMe"
+                    Click="AboutApp_Click"
+                    Icon="Contact"
+                    Label="About"/>
+                <AppBarButton
+                    x:Name="Home"
+                    x:Uid="Home"
+                    Click="Home_Click"
+                    Icon="Home"
+                    Label="Home"/>
+                <AppBarToggleButton
+                    x:Name="UiThemeToggle"
+                    x:Uid="UiThemeToggle"
+                    Click="UiThemeToggle_Click"
+                    Icon="Clock"
+                    Label="Dark theme"/>
+                <AppBarToggleButton
+                    x:Name="ForumModeToggle"
+                    x:Uid="ForumModeToggle"
+                    Click="ForumModeToggle_Click"
+                    Icon="Document"
+                    Label="Forum mode"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

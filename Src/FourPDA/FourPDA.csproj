@@ -131,6 +131,7 @@
     <Compile Include="AppServices\IBusyIndicator.cs" />
     <Compile Include="AppServices\OrientationManager.cs" />
     <Compile Include="AppServices\ScreenHelper.cs" />
+    <Compile Include="AppServices\ViewModels\Forum\MainPageViewModel.cs" />
     <Compile Include="AppServices\ViewModels\Forum\ForumPageViewModel.cs" />
     <Compile Include="AppServices\ViewModels\MainPivot\ForumsViewModel.cs" />
     <Compile Include="AppServices\ViewModels\MainPivot\MainPivotViewModel.cs" />
@@ -215,19 +216,19 @@
       <DependentUpon>StoreFetch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Pages\Forum\ForumPage.xaml.cs">
+    <Compile Include="Views\Forum\ForumPage.xaml.cs">
       <DependentUpon>ForumPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MainPivot\ForumsView.xaml.cs">
+    <Compile Include="Views\MainPivot\ForumsView.xaml.cs">
       <DependentUpon>ForumsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MainPivot\MainPivotView.xaml.cs">
+    <Compile Include="Views\MainPivot\MainPivotView.xaml.cs">
       <DependentUpon>MainPivotView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MainPivot\NewsView.xaml.cs">
+    <Compile Include="Views\MainPivot\NewsView.xaml.cs">
       <DependentUpon>NewsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NewsDetailsPage.xaml.cs">
+    <Compile Include="Views\NewsDetailsPage.xaml.cs">
       <DependentUpon>NewsDetailsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -352,30 +353,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Forum\ForumPage.xaml">
+    <Page Include="Views\Forum\ForumPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MainPivot\ForumsView.xaml">
+    <Page Include="Views\MainPivot\ForumsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MainPivot\MainPivotView.xaml">
+    <Page Include="Views\MainPivot\MainPivotView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MainPivot\NewsView.xaml">
+    <Page Include="Views\MainPivot\NewsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\NewsDetailsPage.xaml">
+    <Page Include="Views\NewsDetailsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Caliburn.Micro">
-      <Version>3.2.0</Version>
+      <Version>1.5.2</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
       <Version>1.11.61</Version>

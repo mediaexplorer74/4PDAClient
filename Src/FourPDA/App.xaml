@@ -1,16 +1,28 @@
-﻿<Application
+﻿<micro:CaliburnApplication
     x:Class="FourPDA.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:FourPDA">
-    
-    
-    <Application.Resources>
+    xmlns:micro="using:Caliburn.Micro"
+    xmlns:cnv="using:FourPDA.Converters"
+    xmlns:appServices="local:ForPDA.AppServices;assembly=ForPDA.AppServices">
+
+    <micro:CaliburnApplication.Resources>
        <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
-    </Application.Resources>
+        <!--ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
+            <cnv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <cnv:BooleanToVisibilityConverter x:Key="InverterBooleanToVisibilityConverter" Invert="True" />
+            <cnv:StringCaseConverter x:Key="StringCaseConverter"/>
 
-</Application>
+            < ! - - appServices:OrientationManager x:Key="OrientationMgr"/- - >
+
+        </ResourceDictionary-->
+    </micro:CaliburnApplication.Resources>
+
+</micro:CaliburnApplication>
 
 <!--
 <Application 
