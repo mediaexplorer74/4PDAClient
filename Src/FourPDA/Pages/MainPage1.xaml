@@ -1,4 +1,4 @@
-﻿<Page x:Class="FourPDA.MainPage"
+﻿<Page x:Class="FourPDA.MainPage1"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:controls="using:Microsoft.UI.Xaml.Controls"
@@ -35,7 +35,15 @@
                     Tag="HomePage"
                     Icon="Home"/>
 
+                <controls:NavigationViewItem 
+                    Content="Forum" 
+                    Tag="ForumPage"
+                    Icon="NewWindow"/>
 
+                <controls:NavigationViewItem 
+                    Content="News" 
+                    Tag="NewsPage"
+                    Icon="NewWindow"/>  
 
                 <controls:NavigationViewItem
                     Content="Simple Archiver" 
@@ -80,26 +88,7 @@
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.PrimaryCommands>
-                <!--AppBarToggleButton
-                    x:Name="Back"
-                    x:Uid="Back"
-                    Click="Back_Click"
-                    Icon="Back"
-                    Label="Back"/>
-
-                <AppBarToggleButton
-                    x:Name="Forward"
-                    x:Uid="Forward"
-                    Click="Forward_Click"
-                    Icon="Forward"
-                    Label="Forward"/>
-
-                <AppBarButton
-                    x:Name="ZoomIn"
-                    x:Uid="ZoomIn"
-                    Click="ZoomIn_Click"
-                    Icon="ZoomIn"
-                    Label="Zoom in"/-->
+             
                 <AppBarButton
                     x:Name="Refresh"
                     x:Uid="Refresh"
@@ -107,12 +96,7 @@
                     Icon="Refresh"
                     Label="Refresh"/>
 
-                <!--<AppBarToggleButton
-                    x:Name="Settings"
-                    x:Uid="Settings"
-                    Click="Settings_Click"
-                    Icon="Setting"
-                    Label="settings"/>-->
+               
 
             </CommandBar.PrimaryCommands>
 

@@ -1,9 +1,9 @@
-﻿// ForPDA.Core.DisposableSource
+﻿// FourPDA.Core.DisposableSource
 
 using System;
 
 #nullable disable
-namespace ForPDA.Core
+namespace FourPDA.Core
 {
   public class DisposableSource : IDisposable
   {

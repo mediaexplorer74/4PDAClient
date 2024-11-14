@@ -1,11 +1,11 @@
-﻿// ForPDA.AppServices.IBrowserView
+﻿// FourPDA.AppServices.IBrowserView
 
 using System;
 using Windows.UI.Xaml.Navigation;
 //using System.Windows.Navigation;
 
 #nullable disable
-namespace ForPDA.AppServices
+namespace FourPDA.AppServices
 {
   public interface IBrowserView
   {

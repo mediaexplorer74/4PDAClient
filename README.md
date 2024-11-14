@@ -1,5 +1,5 @@
 # 4PDAClient v2.0.0 (FourPDA codename) - dev branch
-![](Images/app_logo.png)
+![New logo](Images/logo.png)
 
 ## About
 I have some plans to "recover" 4PDA-for-W10M. :)
@@ -19,10 +19,9 @@ Very early bird; draft UWP application to "parse" 4PDA web site on some winphone
 - OSes: Windows 10 (Mobile) ; build: 14393 or above
 
 ## Status
-- Draft. Prototype / Pre-Pre-Pre-Alpha version.
-- "Web parsing" not realized yet ... so, no push notifications, etc.
 - ForPDA decomp. completed but over 100500 bugs there!
-- I learning MVVM deals at now (I plan to provide some migration from CaliburnMicro to normal MVVM...)
+- Draft. Prototype / Pre-Pre-Pre-Alpha version. Still exploring Caliburn.Micro "magic"...
+- News / Forum "web parsing" not realized yet.
 
 
 ## Licensing

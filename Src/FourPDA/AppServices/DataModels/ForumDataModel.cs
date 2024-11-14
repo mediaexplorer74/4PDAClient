@@ -1,7 +1,7 @@
-﻿// ForPDA.AppServices.DataModels.ForumDataModel
+﻿// FourPDA.AppServices.DataModels.ForumDataModel
 
 #nullable disable
-namespace ForPDA.AppServices.DataModels
+namespace FourPDA.AppServices.DataModels
 {
   public class ForumDataModel
   {

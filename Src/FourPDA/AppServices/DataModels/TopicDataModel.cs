@@ -1,8 +1,8 @@
-﻿// ForPDA.AppServices.DataModels.TopicDataModel
+﻿// FourPDA.AppServices.DataModels.TopicDataModel
 
 
 #nullable disable
-namespace ForPDA.AppServices.DataModels
+namespace FourPDA.AppServices.DataModels
 {
   public class TopicDataModel
   {

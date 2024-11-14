@@ -1,7 +1,8 @@
-﻿// ForPDA.Communication.NewsDataService
+﻿// FourPDA.Communication.NewsDataService
 
-using ForPDA.Communication.Html;
+using FourPDA.Communication.Html;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Text;
@@ -11,7 +12,7 @@ using Windows.Web.Syndication;//using System.ServiceModel.Syndication;
 //using MSPToolkit.Encodings;
 
 #nullable disable
-namespace ForPDA.Communication
+namespace FourPDA.Communication
 {
   public class NewsDataService
   {
@@ -21,19 +22,47 @@ namespace ForPDA.Communication
 
     public async Task<SyndicationFeed> LoadFeedsAsync()
     {
-      HttpResponseMessage response = await this._http.GetAsync("http://4pda.to/feed");
-      Stream stream = await response.Content.ReadAsStreamAsync();
-      SyndicationFeed syndicationFeed;
+        HttpResponseMessage response = default;
+
+        try
+        {
+            response = await this._http.GetAsync(RSS_URL);
+        }
+        catch (Exception ex) 
+        {
+            Debug.WriteLine("[ex] http get_async ex: " + ex.Message);
+        }
+      
+        Stream stream = default;
+        try
+        {
+            stream = await response.Content.ReadAsStreamAsync();
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine("[ex] ReadAsStreamAsync ex: " + ex.Message);
+        }
+      
+       //XmlReader reader = XmlReader.Create(RSS_URL);
+        //var feed = await Task.Run(() => SyndicationFeed.Load(reader));
+
+        // Windows.Web.Syndication
+      SyndicationFeed syndicationFeed = default;
       try
       {
-        StreamReader streamReader = new StreamReader(stream, Encoding.UTF8); // 1251 ?
+        StreamReader streamReader = new StreamReader(
+            stream, 
+            /*Encoding.UTF8*/
+            Encoding.ASCII); // 1251 ?
         try
         {
           XmlReader reader = XmlReader.Create((TextReader) streamReader);
           try
           {
-            //RnD
-            syndicationFeed = default;//SyndicationFeed.Load(reader);
+            string rs = reader.ReadContentAsString();           
+           
+            syndicationFeed = new SyndicationFeed();
+            syndicationFeed.Load(rs);
           }
           finally
           {

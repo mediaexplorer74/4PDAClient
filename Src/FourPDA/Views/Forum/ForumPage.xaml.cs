@@ -1,4 +1,4 @@
-﻿using ForPDA.AppServices.ViewModels.Forum;
+﻿using FourPDA.AppServices.ViewModels.Forum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace FourPDA.Views.Forum
+namespace FourPDA//.Views.Forum
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -58,9 +58,9 @@ namespace FourPDA.Views.Forum
 // Type: FourPDA.Views.Forum.ForumPage
 // Assembly: FourPDA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 // MVID: CDB98E47-00BC-4074-98E2-E8BD94FCE6F3
-// Assembly location: C:\Users\Admin\Desktop\RE\ForPDA\FourPDA.dll
+// Assembly location: C:\Users\Admin\Desktop\RE\FourPDA\FourPDA.dll
 
-using ForPDA.AppServices.ViewModels.Forum;
+using FourPDA.AppServices.ViewModels.Forum;
 using Microsoft.Phone.Controls;
 using System;
 using System.ComponentModel;

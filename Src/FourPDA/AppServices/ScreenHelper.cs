@@ -1,4 +1,4 @@
-﻿// ForPDA.AppServices.ScreenHelper
+﻿// FourPDA.AppServices.ScreenHelper
 
 
 //using Microsoft.Phone.Controls;
@@ -7,7 +7,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 #nullable disable
-namespace ForPDA.AppServices
+namespace FourPDA.AppServices
 {
   public static class ScreenHelper
   {

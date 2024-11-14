@@ -1,9 +1,9 @@
-﻿// ForPDA.AppServices.IBusyIndicator
+﻿// FourPDA.AppServices.IBusyIndicator
 
 using System;
 
 #nullable disable
-namespace ForPDA.AppServices
+namespace FourPDA.AppServices
 {
   public interface IBusyIndicator
   {

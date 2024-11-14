@@ -26,7 +26,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using static FourPDA.MainPage;
+//using static FourPDA.MainPage1;
 using Windows.System;
 //using Octokit;
 using System.Threading;
@@ -79,7 +79,8 @@ namespace FourPDA
             ProgressBarDownload.Visibility = Visibility.Collapsed;
             DLUpdate.Visibility = Visibility.Collapsed;
             HomePageTxt.Text = $"[Version: {CurrentBuildVersion}]\n"; 
-            HomePageTxt.Text += "This is in ongoing development, suggestions and feedback are welcome. Features and UI not final" + "\n\n";
+            HomePageTxt.Text += "This is in ongoing development, suggestions and feedback are welcome. " +
+                               "Features and UI not final" + "\n\n";
             HomePageTxt.Text += "A simple tool to help users:" + "\n" +
                              "• Read News" + "\n"
                            + "• Communicate Forum" + "\n"

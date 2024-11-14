@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:micro="using:Caliburn.Micro"
     xmlns:cnv="using:FourPDA.Converters"
-    xmlns:appServices="local:ForPDA.AppServices;assembly=ForPDA.AppServices">
+    xmlns:appServices="local:FourPDA.AppServices;assembly=FourPDA.AppServices">
 
     <micro:CaliburnApplication.Resources>
        <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
@@ -31,7 +31,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:wp7="clr-namespace:FourPDA" 
 	xmlns:cnv="clr-namespace:FourPDA.Converters"
-    xmlns:appServices="clr-namespace:ForPDA.AppServices;assembly=ForPDA.AppServices">
+    xmlns:appServices="clr-namespace:FourPDA.AppServices;assembly=FourPDA.AppServices">
 
     <Application.Resources>
         <ResourceDictionary>

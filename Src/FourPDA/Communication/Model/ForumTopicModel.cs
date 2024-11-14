@@ -1,7 +1,7 @@
-﻿// ForPDA.Communication.Model.ForumTopicModel
+﻿// FourPDA.Communication.Model.ForumTopicModel
 
 #nullable disable
-namespace ForPDA.Communication.Model
+namespace FourPDA.Communication.Model
 {
   public class ForumTopicModel
   {

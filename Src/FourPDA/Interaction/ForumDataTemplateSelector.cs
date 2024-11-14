@@ -1,6 +1,6 @@
 ﻿// FourPDA.Interaction.ForumDataTemplateSelector
 
-using ForPDA.AppServices.DataModels;
+using FourPDA.AppServices.DataModels;
 using System;
 using System.Windows;
 using Windows.UI.Xaml;

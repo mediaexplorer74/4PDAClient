@@ -1,12 +1,12 @@
-﻿// ForPDA.AppServices.ViewModels.NewsDetailsPageViewModel
+﻿// FourPDA.AppServices.ViewModels.NewsDetailsPageViewModel
 
 using Caliburn.Micro;
-using ForPDA.Communication;
+using FourPDA.Communication;
 using System;
 using System.ComponentModel;
 
 #nullable disable
-namespace ForPDA.AppServices.ViewModels
+namespace FourPDA.AppServices.ViewModels
 {
   public class NewsDetailsPageViewModel : Screen
   {

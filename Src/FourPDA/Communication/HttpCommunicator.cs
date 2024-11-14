@@ -1,4 +1,4 @@
-﻿// ForPDA.Communication.HttpCommunicator
+﻿// FourPDA.Communication.HttpCommunicator
 
 using System;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 #nullable disable
-namespace ForPDA.Communication
+namespace FourPDA.Communication
 {
   public class HttpCommunicator
   {

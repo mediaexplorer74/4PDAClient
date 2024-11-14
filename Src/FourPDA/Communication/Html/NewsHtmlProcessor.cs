@@ -1,7 +1,7 @@
-﻿// ForPDA.Communication.Html.NewsHtmlProcessor
+﻿// FourPDA.Communication.Html.NewsHtmlProcessor
 
 #nullable disable
-namespace ForPDA.Communication.Html
+namespace FourPDA.Communication.Html
 {
   public class NewsHtmlProcessor : BaseHtmlWrapper
   {

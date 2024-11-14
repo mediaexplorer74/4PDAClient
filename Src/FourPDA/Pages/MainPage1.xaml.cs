@@ -22,21 +22,29 @@ using System.Threading.Tasks;
 using Windows.System;
 using Windows.UI.Popups;
 using ExceptionHelper;
-using ForPDA.AppServices.ViewModels.MainPivot;
+using FourPDA.AppServices.ViewModels.MainPivot;
 
 namespace FourPDA
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage1 : Page
     {
-        public MainPage()
+        FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel vm = default;
+        public MainPage1()
         {
             this.InitializeComponent();
 
+            // ---------------------------------------------------------
+            // Experimental
+            //vm = (FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel)DataContext;
+            //vm.RefreshData();
+            // ---------------------------------------------------------
+
             var HomePage = $"FourPDA.HomePage";
             var HomePageType = Type.GetType(HomePage);
+
             ContentFrame.Navigate(HomePageType);
 
         }
@@ -46,9 +54,10 @@ namespace FourPDA
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
             //ToAboutMe();
-            ForPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel vm = (ForPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel)DataContext;
+            //FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel vm 
+            vm = (FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel)DataContext;
             vm.RefreshData();
-        }//AboutApp_Click
+        }//Refresh_Click
 
         //private void PageLoaded(object sender, EventArgs e)
         //{
@@ -95,8 +104,10 @@ namespace FourPDA
         public void NavigateToPage(object pageTag)
         {
             NavigationCacheMode = NavigationCacheMode.Enabled;
-            var pageName = $"FourPDA.{pageTag}";
-            var pageType = Type.GetType(pageName);
+
+            string pageName = $"FourPDA.{pageTag}";
+
+            Type pageType = Type.GetType(pageName);
 
             ContentFrame.Navigate(pageType);
         }

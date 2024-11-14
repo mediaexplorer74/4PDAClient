@@ -1,11 +1,11 @@
-﻿// ForPDA.AppServices.ViewModels.MainPivot.ForumsViewModel
+﻿// FourPDA.AppServices.ViewModels.MainPivot.ForumsViewModel
 
 using Caliburn.Micro;
-using ForPDA.AppServices.Controllers;
-using ForPDA.AppServices.DataModels;
-using ForPDA.AppServices.ViewModels.Forum;
-using ForPDA.Communication;
-using ForPDA.Communication.Model;
+using FourPDA.AppServices.Controllers;
+using FourPDA.AppServices.DataModels;
+using FourPDA.AppServices.ViewModels.Forum;
+using FourPDA.Communication;
+using FourPDA.Communication.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 
 #nullable disable
-namespace ForPDA.AppServices.ViewModels.MainPivot
+namespace FourPDA.AppServices.ViewModels.MainPivot
 {
   public class ForumsViewModel : Screen
   {

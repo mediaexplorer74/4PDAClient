@@ -1,19 +1,39 @@
-﻿// ForPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel
+﻿// FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel
 
 using Caliburn.Micro;
-using ForPDA.AppServices.DataModels;
+using FourPDA.AppServices.DataModels;
 using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
 
 #nullable disable
-namespace ForPDA.AppServices.ViewModels.MainPivot
+namespace FourPDA.AppServices.ViewModels.MainPivot
 {
   public class MainPivotViewModel : Screen
   {
     private readonly IBusyIndicator _busyIndicator;
-    private readonly INavigationService _navigationService;
+    private readonly Caliburn.Micro.INavigationService _navigationService;
+
+
+    public MainPivotViewModel
+    (
+          IBusyIndicator busyIndicator,
+          Caliburn.Micro.INavigationService navigationService,
+          NewsViewModel newsViewModel,
+          ForumsViewModel forumsViewModel
+    )
+    {
+
+        //RnD
+        this.LoadDataAsync();
+
+        this._busyIndicator = busyIndicator;
+        this._navigationService = navigationService;
+        this.NewsViewModel = newsViewModel;
+        this.ForumsViewModel = forumsViewModel;
+    }
+
 
     private NewsViewModel NewsViewModel_BackingField;
     public NewsViewModel NewsViewModel
@@ -42,38 +62,31 @@ namespace ForPDA.AppServices.ViewModels.MainPivot
       }
     }
 
-    public MainPivotViewModel(
-      IBusyIndicator busyIndicator,
-      INavigationService navigationService,
-      NewsViewModel newsViewModel,
-      ForumsViewModel forumsViewModel)
-    {
-    //RnD
-    //this.LoadDataAsync();
 
-    this._busyIndicator = busyIndicator;
-      this._navigationService = navigationService;
-      this.NewsViewModel = newsViewModel;
-      this.ForumsViewModel = forumsViewModel;
-    }
-
-    public void OpenNewsDetails(NewsItemDataModel newsItem)
-    {
-      ParameterExpression parameterExpression = default;
-
-            //RnD
-      // ISSUE: method reference
-      //this._navigationService.UriFor<NewsDetailsPageViewModel>().WithParam<string>(
-      //    Expression.Lambda<Func<NewsDetailsPageViewModel, string>>(
-      //        (Expression) Expression.Property((Expression) parameterExpression, 
-      //        (MethodInfo) MethodBase.GetMethodFromHandle((RuntimeMethodHandle)
-      //        __methodref (NewsDetailsPageViewModel.get_NewsUri))), parameterExpression), newsItem.Uri).Navigate();
-    }
+    public void GoBack() => this.LoadDataAsync();
 
     protected override void OnInitialize()
     {
         this.LoadDataAsync();
     }
+
+    
+
+    public void OpenNewsDetails(NewsItemDataModel newsItem)
+    {
+      ParameterExpression parameterExpression = default;
+
+      /*this._navigationService.UriFor<NewsDetailsPageViewModel>().WithParam<string>(
+          Expression.Lambda<Func<NewsDetailsPageViewModel, string>>(
+              (Expression) Expression.Property((Expression) parameterExpression, 
+              (MethodInfo) MethodBase.GetMethodFromHandle((RuntimeMethodHandle)
+              __methodref (NewsDetailsPageViewModel.get_NewsUri))), parameterExpression), 
+          newsItem.Uri).Navigate();*/
+      (Caliburn.Micro.NavigationExtensions.UriFor<NewsDetailsPageViewModel>
+         ( this._navigationService )).Navigate();
+    }
+
+  
 
     private async void LoadDataAsync()
     {

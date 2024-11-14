@@ -1,14 +1,14 @@
 ﻿<Page
-    x:Class="FourPDA.Views.MainPivot.NewsView"
+    x:Class="FourPDA.Views.MainPivot.NewsView1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FourPDA.Views.MainPivot"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+    xmlns:behaviors="local:FourPDA.Interaction.Behaviors"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    xmlns:micro="local:Caliburn.Micro;assembly=Caliburn.Micro"
-    xmlns:behaviors="local:FourPDA.Interaction.Behaviors"
     Foreground="{StaticResource AppBarItemForegroundThemeBrush}"
     d:DesignHeight="480" d:DesignWidth="480"
     >

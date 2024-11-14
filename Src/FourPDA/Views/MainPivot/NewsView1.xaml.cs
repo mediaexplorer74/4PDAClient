@@ -21,9 +21,9 @@ namespace FourPDA.Views.MainPivot
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class NewsView : Page
+    public sealed partial class NewsView1 : Page
     {
-        public NewsView()
+        public NewsView1()
         {
             this.InitializeComponent();
         }

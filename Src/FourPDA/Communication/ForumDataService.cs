@@ -1,6 +1,6 @@
-﻿// ForPDA.Communication.ForumDataService
+﻿// FourPDA.Communication.ForumDataService
 
-using ForPDA.Communication.Model;
+using FourPDA.Communication.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ using HtmlAgilityPack;
 
 
 #nullable disable
-namespace ForPDA.Communication
+namespace FourPDA.Communication
 {
   public class ForumDataService
   {

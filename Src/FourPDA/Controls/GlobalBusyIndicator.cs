@@ -1,8 +1,8 @@
 ﻿// FourPDA.Controls.GlobalBusyIndicator
 
 
-using ForPDA.AppServices;
-using ForPDA.Core;
+using FourPDA.AppServices;
+using FourPDA.Core;
 //using Microsoft.Phone.Controls;
 //using Microsoft.Phone.Shell;
 using System;

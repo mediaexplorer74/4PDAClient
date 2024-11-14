@@ -1,11 +1,11 @@
-﻿// ForPDA.AppServices.DataModels.NewsItemDataModel
+﻿// FourPDA.AppServices.DataModels.NewsItemDataModel
 
 using Caliburn.Micro;
 using System;
 using System.ComponentModel;
 
 #nullable disable
-namespace ForPDA.AppServices.DataModels
+namespace FourPDA.AppServices.DataModels
 {
   public class NewsItemDataModel : PropertyChangedBase
   {

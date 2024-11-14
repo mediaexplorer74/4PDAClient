@@ -1,4 +1,4 @@
-﻿// ForPDA.AppServices.OrientationManager
+﻿// FourPDA.AppServices.OrientationManager
 
 //using Microsoft.Phone.Controls;
 using System;
@@ -6,7 +6,7 @@ using System.ComponentModel;
 using Windows.UI.Xaml.Controls;
 
 #nullable disable
-namespace ForPDA.AppServices
+namespace FourPDA.AppServices
 {
   public class OrientationManager : INotifyPropertyChanged
   {

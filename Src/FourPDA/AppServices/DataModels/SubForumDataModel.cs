@@ -1,10 +1,10 @@
-﻿// ForPDA.AppServices.DataModels.SubForumDataModel
+﻿// FourPDA.AppServices.DataModels.SubForumDataModel
 
 //using System.Windows.Media;
 using Windows.UI;
 
 #nullable disable
-namespace ForPDA.AppServices.DataModels
+namespace FourPDA.AppServices.DataModels
 {
   public class SubForumDataModel : ForumDataModel
   {

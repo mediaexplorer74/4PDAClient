@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="FourPDA.Views.MainPivot.ForumsView"
+    x:Class="FourPDA.Views.MainPivot.ForumsView1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FourPDA.Views.MainPivot"
@@ -21,7 +21,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:tp="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
              xmlns:behaviors="clr-namespace:FourPDA.Interaction.Behaviors"
-             xmlns:mainPivot="clr-namespace:ForPDA.AppServices.ViewModels.MainPivot;assembly=ForPDA.AppServices"
+             xmlns:mainPivot="clr-namespace:FourPDA.AppServices.ViewModels.MainPivot;assembly=FourPDA.AppServices"
              xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core"
              xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
              mc:Ignorable="d"

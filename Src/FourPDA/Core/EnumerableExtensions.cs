@@ -1,11 +1,11 @@
-﻿// ForPDA.Core.EnumerableExtensions
+﻿// FourPDA.Core.EnumerableExtensions
 
 using Caliburn.Micro;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 #nullable disable
-namespace ForPDA.Core
+namespace FourPDA.Core
 {
   public static class EnumerableExtensions
   {

@@ -1,10 +1,10 @@
-﻿// ForPDA.AppServices.ViewModels.Forum.ForumPageViewModel
+﻿// FourPDA.AppServices.ViewModels.Forum.ForumPageViewModel
 
 using Caliburn.Micro;
-using ForPDA.AppServices.Controllers;
-using ForPDA.AppServices.DataModels;
-using ForPDA.Communication;
-using ForPDA.Communication.Model;
+using FourPDA.AppServices.Controllers;
+using FourPDA.AppServices.DataModels;
+using FourPDA.Communication;
+using FourPDA.Communication.Model;
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.ComponentModel;
 using System.Linq;
 
 #nullable disable
-namespace ForPDA.AppServices.ViewModels.Forum
+namespace FourPDA.AppServices.ViewModels.Forum
 {
   public class ForumPageViewModel : Screen
   {

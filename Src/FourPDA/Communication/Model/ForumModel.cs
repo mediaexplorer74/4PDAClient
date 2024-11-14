@@ -1,4 +1,4 @@
-﻿// ForPDA.Communication.Model.ForumModel
+﻿// FourPDA.Communication.Model.ForumModel
 
 using System;
 using System.Collections;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 
 #nullable disable
-namespace ForPDA.Communication.Model
+namespace FourPDA.Communication.Model
 {
   public class ForumModel
   {

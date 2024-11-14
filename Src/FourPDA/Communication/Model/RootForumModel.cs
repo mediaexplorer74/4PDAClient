@@ -1,7 +1,7 @@
-﻿// Type: ForPDA.Communication.Model.RootForumModel
+﻿// Type: FourPDA.Communication.Model.RootForumModel
 
 #nullable disable
-namespace ForPDA.Communication.Model
+namespace FourPDA.Communication.Model
 {
   internal class RootForumModel : ForumModel
   {

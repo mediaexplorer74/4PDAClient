@@ -1,13 +1,13 @@
-﻿// ForPDA.AppServices.Controllers.ForumController
+﻿// FourPDA.AppServices.Controllers.ForumController
 
-using ForPDA.AppServices.DataModels;
-using ForPDA.Communication.Model;
+using FourPDA.AppServices.DataModels;
+using FourPDA.Communication.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
 #nullable disable
-namespace ForPDA.AppServices.Controllers
+namespace FourPDA.AppServices.Controllers
 {
   public class ForumController
   {
