@@ -22,7 +22,11 @@ namespace FourPDA.Communication.Model
 
     public ForumModel GetChild(string forumId)
     {
-      return this.Id == forumId ? this : Enumerable.FirstOrDefault<ForumModel>(Enumerable.Select<ForumModel, ForumModel>((IEnumerable<ForumModel>) this.Children, (Func<ForumModel, ForumModel>) (c => c.GetChild(forumId))), (Func<ForumModel, bool>) (f => f != null));
+      return this.Id == forumId 
+                ? this
+                : Enumerable.FirstOrDefault<ForumModel>(Enumerable.Select<ForumModel, ForumModel>(
+                    (IEnumerable<ForumModel>) this.Children, (Func<ForumModel, ForumModel>) 
+                    (c => c.GetChild(forumId))), (Func<ForumModel, bool>) (f => f != null));
     }
 
     public IEnumerable<ForumModel> AllChildren
@@ -130,7 +134,9 @@ namespace FourPDA.Communication.Model
       objArray6[4] = (object) str7;
       objArray1[5] = (object) (bool) this.HasRootParent;
       object[] objArray7 = objArray1;
-      return string.Format((IFormatProvider) invariantCulture, "{{T: \"ForumModel\", AllChildren: {0}, Children: {1}, Name: \"{2}\", Id: \"{3}\", ParentId: \"{4}\", HasRootParent: {5}}}", objArray7);
+      return string.Format((IFormatProvider) invariantCulture,
+          "{{T: \"ForumModel\", AllChildren: {0}, Children: {1}, Name: \"{2}\", Id: \"{3}\", ParentId: \"{4}\", HasRootParent: {5}}}",
+          objArray7);
     }
   }
 }

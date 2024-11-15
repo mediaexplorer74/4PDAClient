@@ -1,5 +1,5 @@
-﻿<Page
-    x:Class="FourPDA.Views.MainPivot.ForumsView1"
+﻿<UserControl
+    x:Class="FourPDA.Views.MainPivot.ForumsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FourPDA.Views.MainPivot"
@@ -11,7 +11,7 @@
     <Grid>
 
     </Grid>
-</Page>
+</UserControl>
     
 <!--
     <UserControl x:Class="FourPDA.Views.MainPivot.ForumsView"

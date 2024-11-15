@@ -12,8 +12,10 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
-using NavigationViewItemInvokedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs;
+
+// Only for Win SDK builds >= 14393
+//using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
+//using NavigationViewItemInvokedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs;
 
 
 namespace FourPDA.Views
@@ -21,11 +23,13 @@ namespace FourPDA.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPageView : Page
+    public sealed partial class MainPageView : UserControl//Page
     {
         FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel vm = default;
         public MainPageView()
         {
+            Frame rootFrame = Window.Current.Content as Frame;
+
             this.InitializeComponent();
             //((FrameworkElement) this).Loaded += new EventHandler(this.PageLoaded);
 
@@ -38,8 +42,21 @@ namespace FourPDA.Views
             var HomePage = $"FourPDA.HomePage";
             var HomePageType = Type.GetType(HomePage);
 
-            ContentFrame.Navigate(HomePageType);
+            //ContentFrame...
+            //rootFrame.Navigate(HomePageType);
         }//
+
+
+
+        // News click handler
+        private void News_Click(object sender, RoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            //FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel vm 
+            //vm = (FourPDA.AppServices.ViewModels.MainPivot.NewsViewModel)DataContext;
+            //vm.RefreshData();
+            rootFrame.Navigate(typeof(NewsPage));
+        }//News_Click
 
 
         // Refresh click handler
@@ -47,9 +64,11 @@ namespace FourPDA.Views
         {
             //ToAboutMe();
             //FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel vm 
-            vm = (FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel)DataContext;
-            vm.RefreshData();
+            //vm = (FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel)DataContext;
+            //vm.RefreshData();
         }//Refresh_Click
+
+
 
 
         //private void PageLoaded(object sender, EventArgs e)
@@ -94,13 +113,16 @@ namespace FourPDA.Views
 
         public void NavigateToPage(object pageTag)
         {
-            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            //NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
             string pageName = $"FourPDA.{pageTag}";
 
             Type pageType = Type.GetType(pageName);
 
-            ContentFrame.Navigate(pageType);
+            //ContentFrame.Navigate(pageType);
+            rootFrame.Navigate(pageType);
         }
 
 

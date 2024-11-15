@@ -1,12 +1,12 @@
-﻿<Page x:Class="FourPDA.MainPage1"
+﻿<Page x:Class="FourPDA.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:controls="using:Microsoft.UI.Xaml.Controls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:FourPDA"
       RequestedTheme="Dark"
+      xmlns:mpv="using:FourPDA.Views"
       xmlns:ctrl="clr-namespace:FourPDA.Controls"
-      xmlns:cal="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+      xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
       xmlns:cnv="clr-namespace:FourPDA.Converters"
       xmlns:mainPivot1="clr-namespace:FourPDA.Views.MainPivot"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -21,7 +21,11 @@
 
     <Grid Background="#FF2D2D30">
 
-        <controls:NavigationView 
+        <!-- MainPageView UserControl -->
+        <mpv:MainPageView />
+
+
+        <!--controls:NavigationView 
                                  PaneDisplayMode="LeftMinimal"
                                  IsPaneOpen="False"
                                  x:Name="MainNav"
@@ -81,51 +85,83 @@
             <Frame x:Name="ContentFrame" >
             </Frame>
 
-        </controls:NavigationView>
+        </controls:NavigationView-->
 
     </Grid>
 
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.PrimaryCommands>
-             
-                <AppBarButton
-                    x:Name="Refresh"
-                    x:Uid="Refresh"
-                    Click="Refresh_Click"
-                    Icon="Refresh"
-                    Label="Refresh"/>
+                <AppBarToggleButton
+             x:Name="Back"
+             x:Uid="Back"
+             Click="Back_Click"
+             Icon="Back"
+             Label="Back"/>
 
-               
+                <AppBarToggleButton
+             x:Name="Forward"
+             x:Uid="Forward"
+             Click="Forward_Click"
+             Icon="Forward"
+             Label="Forward"/>
+
+             <AppBarButton
+             x:Name="Forum"
+             x:Uid="Forum"
+             Click="Forum_Click"
+             Icon="NewWindow"
+             Label="Forum"/>
+
+             <AppBarButton
+              x:Name="News"
+              x:Uid="News"
+              Click="News_Click"
+              Icon="NewWindow"
+              Label="News"/>
+
+             <AppBarButton
+             x:Name="Refresh"
+             x:Uid="Refresh"
+             Click="Refresh_Click"
+             Icon="Refresh"
+             Label="Refresh"/>
+
+                <AppBarToggleButton
+             x:Name="Settings"
+             x:Uid="Settings"
+             Click="Settings_Click"
+             Icon="Setting"
+             Label="settings"/>
 
             </CommandBar.PrimaryCommands>
 
 
             <CommandBar.SecondaryCommands>
                 <AppBarButton
-                    x:Name="AboutMe"
-                    x:Uid="AboutMe"
-                    Click="AboutApp_Click"
-                    Icon="Contact"
-                    Label="About"/>
+             x:Name="AboutMe"
+             x:Uid="AboutMe"
+             Click="AboutApp_Click"
+             Icon="Contact"
+             Label="About"/>
                 <AppBarButton
-                    x:Name="Home"
-                    x:Uid="Home"
-                    Click="Home_Click"
-                    Icon="Home"
-                    Label="Home"/>
+             x:Name="Home"
+             x:Uid="Home"
+             Click="Home_Click"
+             Icon="Home"
+             Label="Home"/>
                 <AppBarToggleButton
-                    x:Name="UiThemeToggle"
-                    x:Uid="UiThemeToggle"
-                    Click="UiThemeToggle_Click"
-                    Icon="Clock"
-                    Label="Dark theme"/>
+             x:Name="UiThemeToggle"
+             x:Uid="UiThemeToggle"
+             Click="UiThemeToggle_Click"
+             Icon="Clock"
+             Label="Dark theme"/>
                 <AppBarToggleButton
-                    x:Name="ForumModeToggle"
-                    x:Uid="ForumModeToggle"
-                    Click="ForumModeToggle_Click"
-                    Icon="Document"
-                    Label="Forum mode"/>
+             x:Name="ForumModeToggle"
+             x:Uid="ForumModeToggle"
+             Click="ForumModeToggle_Click"
+             Icon="Document"
+             Label="Forum mode"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

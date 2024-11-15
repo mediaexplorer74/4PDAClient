@@ -161,7 +161,12 @@
                             RelativePanel.Below="progress" 
                             RelativePanel.AlignLeftWithPanel="True"
                             RelativePanel.AlignRightWithPanel="True" >
-                        <TextBlock 
+
+                            <!--
+                            FocusVisualPrimaryBrush="{x:Null}"
+                            FocusVisualSecondaryBrush="{x:Null}" 
+                            -->
+                                <TextBlock 
                             x:Name="OutputBox" 
                             Grid.Column="0" 
                             RelativePanel.Below="progress" 
@@ -174,8 +179,7 @@
                             VerticalAlignment="Stretch"
                             Width="auto" 
                             ScrollViewer.VerticalScrollMode="Enabled" 
-                            FocusVisualPrimaryBrush="{x:Null}"
-                            FocusVisualSecondaryBrush="{x:Null}" 
+                            
                              />
                         </ScrollViewer>
                     </RelativePanel>

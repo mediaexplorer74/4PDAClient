@@ -1,6 +1,7 @@
 ﻿// FourPDA.Converters.MoneyConverter
 
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using Windows.UI.Xaml.Data;
 
@@ -26,6 +27,7 @@ namespace FourPDA.Converters
       }
       catch (FormatException ex)
       {
+        Debug.WriteLine("[ex] GetMoneyString bug: " + ex.Message);
         return value;
       }
     }

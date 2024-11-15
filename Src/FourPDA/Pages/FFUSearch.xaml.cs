@@ -513,7 +513,7 @@ namespace FourPDA
             }
             catch (System.Exception ex)
             {
-
+                Debug.WriteLine(ex.Message);
             }
         }
     }

@@ -4,9 +4,12 @@
       xmlns:local="using:FourPDA"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
-    xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"   
+    xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro" 
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls"
+    xmlns:tp="using:Telerik.UI.Xaml.Controls.Primitives"
     mc:Ignorable="d"
     Background="Cyan"
+    d:DesignHeight="480" d:DesignWidth="480"
     >
     <!--
      d:DesignHeight="480" d:DesignWidth="480"
@@ -24,12 +27,15 @@
             <tp:RadDataBoundListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel VerticalAlignment="Top"
-                                        telerik:InteractionEffectManager.ApplyInteractionExplicitly="True"
-                                        Margin="0 0 24 18"
-                                        micro:Message.Attach="[Event Tap] = [Action OpenNewsDetails($dataContext)]">
-                        <TextBlock TextDecorations="Underline" FontSize="24" TextWrapping="Wrap" HorizontalAlignment="Left" Foreground="{StaticResource PhoneAccentBrush}" Text="{Binding Title}" />
+                                telerik:InteractionEffectManager.ApplyInteractionExplicitly="True"
+                                Margin="0 0 24 18"
+                                micro:Message.Attach="[Event Tap] = [Action OpenNewsDetails($dataContext)]">
+                        <TextBlock TextDecorations="Underline" FontSize="24" 
+                           TextWrapping="Wrap" HorizontalAlignment="Left" 
+                            Foreground="{StaticResource PhoneAccentBrush}" Text="{Binding Title}" />
                         <TextBlock TextWrapping="Wrap" Text="{Binding Body}" />
-                        <TextBlock Foreground="{StaticResource PhoneSubtleBrush}"  Text="{Binding Timestamp}" />
+                        <TextBlock Foreground="{StaticResource PhoneSubtleBrush}"  
+                              Text="{Binding Timestamp}" />
                     </StackPanel>
                 </DataTemplate>
             </tp:RadDataBoundListBox.ItemTemplate>
@@ -43,28 +49,32 @@
             behaviors:ListBoxBehavior.DisableSelection="True"
             Style="{StaticResource ListBoxStyle}"
             -->
-            <ListBox ItemsSource="{Binding NewsItems}"
-                                       Margin="24 0 0 0" 
-                                       
-                                       >
-        <ListBox.ItemTemplate>
+        <ListBox ItemsSource="{Binding NewsItems}"
+                Margin="24 0 0 0" 
+         >
+            <ListBox.ItemTemplate>
         <DataTemplate>
-                    <!--telerik:InteractionEffectManager.ApplyInteractionExplicitly="True" -->
+                    <!--telerik:InteractionEffectManager.ApplyInteractionExplicitly="True"-->
+
                     <!--micro:Message.Attach="[Event Tap] = [Action OpenNewsDetails($dataContext)]"-->
                         <StackPanel VerticalAlignment="Top"
                                 Background="DarkCyan"
                                 Margin="0 0 24 18"
-                                >
-                        <TextBlock TextDecorations="Underline" FontSize="24"
+                                
+                         >
+                            <TextBlock TextDecorations="Underline" FontSize="24"
                                    TextWrapping="Wrap" HorizontalAlignment="Left" 
                                    Foreground="{StaticResource SystemControlForegroundAccentBrush}" 
                                    Text="{Binding Title}" />
-                        <TextBlock TextWrapping="Wrap" Text="{Binding Body}" />
-                        <TextBlock Foreground="{StaticResource CheckBoxPressedForegroundThemeBrush}" 
+                            
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Body}" />
+                            
+                            <TextBlock Foreground="{StaticResource CheckBoxPressedForegroundThemeBrush}" 
                                    Text="{Binding Timestamp}" />
-                    </StackPanel>
-                </DataTemplate>
+                        </StackPanel>
+                    </DataTemplate>
             </ListBox.ItemTemplate>
+                
             <!--ListBox.ItemAddedAnimation>
                 <telerik:RadFadeAnimation/>
             </ListBox.ItemAddedAnimation-->

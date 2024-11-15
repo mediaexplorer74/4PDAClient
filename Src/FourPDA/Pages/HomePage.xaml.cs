@@ -47,10 +47,6 @@ namespace FourPDA
     {
         /// <summary>
         /// MUST CHANGE THESE BEFORE EACH PUBLIC GITHUB RELEASE
-        /// 
-        /// MUST CHANGE THESE BEFORE EACH PUBLIC GITHUB RELEASE
-        /// 
-        /// MUST CHANGE THESE BEFORE EACH PUBLIC GITHUB RELEASE
         /// </summary>
         public static string CurrentBuildVersion = "2.0.0-alpha";//"1.13.20-prerelease";
         public static string PreviousBuildVersion = "1.0.35";
@@ -72,7 +68,8 @@ namespace FourPDA
         public HomePage()
         {
             this.InitializeComponent();
-            DLUpdate.IsEnabled = true;
+           
+            /*DLUpdate.IsEnabled = true;
             DLUpdate.Visibility = Visibility.Visible;
             InstallUpdateBtn.Visibility = Visibility.Collapsed;
 
@@ -89,7 +86,7 @@ namespace FourPDA
                            + "• Interact with UI easily";
 
             UpdateOut.Text += $"Whats New?\n" +
-                       $"- some UI experemintations";
+                       $"- some UI experemintations";*/
             ///
             /// Network Check and Check for Updates
             bool isNetworkConnected = NetworkInterface.GetIsNetworkAvailable();
@@ -99,8 +96,8 @@ namespace FourPDA
             }
             else
             {                
-                ProgressBarDownload.Visibility = Visibility.Collapsed;
-                DLUpdate.Visibility = Visibility.Collapsed;
+                //ProgressBarDownload.Visibility = Visibility.Collapsed;
+                //DLUpdate.Visibility = Visibility.Collapsed;
             }
             
         }
@@ -158,8 +155,6 @@ namespace FourPDA
 
             try
             {
-
-
                 FolderPicker folderPicker = new FolderPicker();
                 folderPicker.SuggestedStartLocation = PickerLocationId.Downloads;
                 folderPicker.ViewMode = PickerViewMode.Thumbnail;
@@ -169,15 +164,16 @@ namespace FourPDA
                 {
                     return;
                 }
-                file = await folder.CreateFileAsync($"{UploadedFileName}", CreationCollisionOption.GenerateUniqueName);
+                file = await folder.CreateFileAsync($"{UploadedFileName}", 
+                    CreationCollisionOption.GenerateUniqueName);
 
                 downloadOperation = backgroundDownloader.CreateDownload(new Uri(UpdateURL), file);
 
                 Progress<DownloadOperation> progress = new Progress<DownloadOperation>(progressChanged);
                 cancellationToken = new CancellationTokenSource();
                 await downloadOperation.StartAsync().AsTask(cancellationToken.Token, progress);
-                InstallUpdateBtn.Visibility = Visibility.Visible;
-                DLUpdate.Visibility = Visibility.Collapsed;
+                //InstallUpdateBtn.Visibility = Visibility.Visible;
+                //DLUpdate.Visibility = Visibility.Collapsed;
 
             }
             catch (Exception ex)
@@ -237,41 +233,41 @@ namespace FourPDA
         {
             int progress = (int)(100 * ((double)downloadOperation.Progress.BytesReceived / (double)downloadOperation.Progress.TotalBytesToReceive));
             //TextBlockProgress.Text = String.Format("{0} of {1} kb. downloaded - {2}% complete.", downloadOperation.Progress.BytesReceived / 1024, downloadOperation.Progress.TotalBytesToReceive / 1024, progress);
-            ProgressBarDownload.Value = progress;
+            //ProgressBarDownload.Value = progress;
             switch (downloadOperation.Progress.Status)
             {
                 case BackgroundTransferStatus.Running:
                     {
-                        UpdateOut.Text = $"Downloading from {UpdateURL}";
+                        //UpdateOut.Text = $"Downloading from {UpdateURL}";
                         //ButtonPauseResume.Content = "Pause";
                         break;
                     }
                 case BackgroundTransferStatus.PausedByApplication:
                     {
-                        UpdateOut.Text = "Download paused.";
+                        //UpdateOut.Text = "Download paused.";
                         //ButtonPauseResume.Content = "Resume";
                         break;
                     }
                 case BackgroundTransferStatus.PausedCostedNetwork:
                     {
-                        UpdateOut.Text = "Download paused because of metered connection.";
+                        //UpdateOut.Text = "Download paused because of metered connection.";
                         //ButtonPauseResume.Content = "Resume";
                         break;
                     }
                 case BackgroundTransferStatus.PausedNoNetwork:
                     {
-                        UpdateOut.Text = "No network detected. Please check your internet connection.";
+                        //UpdateOut.Text = "No network detected. Please check your internet connection.";
                         break;
                     }
                 case BackgroundTransferStatus.Error:
                     {
-                        UpdateOut.Text = "An error occured while downloading.";
+                        //UpdateOut.Text = "An error occured while downloading.";
                         break;
                     }
             }
             if (progress >= 100)
             {
-                UpdateOut.Text = $"Download complete. Update downloaded to {folder.Path}\\{UploadedFileName}";
+                //UpdateOut.Text = $"Download complete. Update downloaded to {folder.Path}\\{UploadedFileName}";
                // ButtonCancel.IsEnabled = false;
                 //ButtonPauseResume.IsEnabled = false;
                 //ButtonDownload.IsEnabled = true;

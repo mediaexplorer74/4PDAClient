@@ -21,40 +21,11 @@ namespace FourPDA.Views.MainPivot
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class NewsView1 : Page
+    public sealed partial class NewsView : UserControl 
     {
-        public NewsView1()
+        public NewsView()
         {
             this.InitializeComponent();
         }
     }
 }
-/*
- // Type: FourPDA.Views.MainPivot.NewsView
-// Assembly: FourPDA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-
-using System;
-using System.Diagnostics;
-using System.Windows;
-using Windows.UI.Xaml.Controls;
-
-#nullable disable
-namespace FourPDA.Views.MainPivot
-{
-  public class NewsView : UserControl
-  {
-    private bool _contentLoaded;
-
-    public NewsView() => this.InitializeComponent();
-
-    public void InitializeComponent()
-    {
-      if (this._contentLoaded)
-        return;
-      this._contentLoaded = true;
-      Application.LoadComponent((object) this, new Uri("/FourPDA;component/Views/MainPivot/NewsView.xaml", UriKind.Relative));
-    }
-  }
-}
-
- */

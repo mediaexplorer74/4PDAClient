@@ -7,7 +7,10 @@
     xmlns:appServices="local:FourPDA.AppServices;assembly=FourPDA.AppServices">
 
     <micro:CaliburnApplication.Resources>
-       <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/>
+
+        <!--Only for Win SDK builds >= 14393 -->
+        <!--XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/-->
+        
         <!--ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="styles.xaml"/>

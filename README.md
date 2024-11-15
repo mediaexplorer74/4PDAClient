@@ -16,7 +16,8 @@ Very early bird; draft UWP application to "parse" 4PDA web site on some winphone
 ## Tech/dev details
 - Platforms: UWP only
 - Targets: x64; ARM
-- OSes: Windows 10 (Mobile) ; build: 14393 or above
+- OSes: Windows 10 (Mobile); 
+- Min. Win. OS build: 10240 (Hello, project Astoria!)
 
 ## Status
 - ForPDA decomp. completed but over 100500 bugs there!

@@ -109,7 +109,7 @@ namespace FourPDA
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            DisplayRootView<MainPageView>();
+            DisplayRootView<MainPage>();//DisplayRootView<MainPageView>();
         }
 
         protected override object GetInstance(Type service, string key)
