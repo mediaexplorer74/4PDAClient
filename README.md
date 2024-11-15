@@ -1,12 +1,12 @@
-# 4PDAClient v1.0.0.35 (v1.0-alpha)
+# 4PDAClient v1.0.0.36 (v1.0-alpha)
 My attempt to recover discontinued [4PDAClient app](https://www.microsoft.com/ru-ru/p/4pdaclient/9nblggh0ggvj).
 
 ## About
 Simple UWP application to display 4PDA web site on "winphone" with Windows 10 Mobile.
 
 ## Screenshots
-![Desktop](Images/sshot01.png)
-![Mobile](Images/sshot02.png)
+![Desktop](Images/shot01.png)
+![Mobile](Images/shot02.png)
 
 ## Tech/dev details
 - Platforms: UWP only
