@@ -8,6 +8,7 @@ using HtmlAgilityPack;
 using System.Text;
 using System.Diagnostics;
 using Windows.Security.Cryptography.Core;
+using System.Xml.Linq;
 
 namespace NewsParserApp
 {
@@ -50,7 +51,7 @@ namespace NewsParserApp
                 htmlDocument.LoadHtml(responseString);
 
                 HtmlNodeCollection newsNodes =
-                htmlDocument.DocumentNode.SelectNodes("//div[@class='more-box']/a");
+                htmlDocument.DocumentNode.SelectNodes("//div[@class='v-panel']/a");
 
                 /*
                
@@ -63,8 +64,9 @@ namespace NewsParserApp
                 htmlDocument.LoadHtml(responseString);
 
                 HtmlNodeCollection newsNodes =
-                htmlDocument.DocumentNode.SelectNodes("//div[@class='more-box']/a");//("//title[@class='title']/a");
-                // htmlDocument.DocumentNode.SelectNodes("//h2[@class='entry-title']/a");
+                htmlDocument.DocumentNode.SelectNodes("//div[@class='more-box']/a");
+                //htmlDocument.DocumentNode.SelectNodes("//title[@class='title']/a");
+                //htmlDocument.DocumentNode.SelectNodes("//h2[@class='entry-title']/a");
                 */
 
                 newsItems.Clear();
@@ -73,8 +75,22 @@ namespace NewsParserApp
                 {
                     foreach (var node in newsNodes)
                     {
-                        string title = node.InnerText + ": " +  node.OuterHtml.ToString();
+                        
+                        
+                        string text = node.GetAttributeValue("title", string.Empty);//node.InnerText + ": " +  node.OuterHtml.ToString();
+
+                        string stringPartToCut = "Комментарии к ";
+                        // индекс последнего символа
+                        int startIndex = stringPartToCut.Length - 1;
+
+                        string title = text;
+                        
+                        if (startIndex > 0)
+                          title = text.Substring(startIndex);
+
                         string link = node.GetAttributeValue("href", string.Empty);
+
+
                         newsItems.Add(new NewsItem { Title = title, Link = link });
                     }
                     NewsListView.ItemsSource = newsItems;
