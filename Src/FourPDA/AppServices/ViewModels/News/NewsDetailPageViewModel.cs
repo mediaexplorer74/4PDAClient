@@ -1,20 +1,21 @@
 ﻿// FourPDA.AppServices.ViewModels.NewsDetailsPageViewModel
 
 using Caliburn.Micro;
+using FourPDA.AppServices;
 using FourPDA.Communication;
 using System;
 using System.ComponentModel;
 
 #nullable disable
-namespace FourPDA.AppServices.ViewModels
+namespace FourPDA.ViewModels
 {
-  public class NewsDetailsPageViewModel : Screen
+  public class NewsDetailPageViewModel : Screen
   {
     private readonly NewsDataService _newsDataService;
     private readonly IBusyIndicator _busyIndicator;
     private IBrowserView _view;
 
-    public NewsDetailsPageViewModel(NewsDataService newsDataService, IBusyIndicator busyIndicator)
+    public NewsDetailPageViewModel(NewsDataService newsDataService, IBusyIndicator busyIndicator)
     {
       this._newsDataService = newsDataService;
       this._busyIndicator = busyIndicator;
@@ -58,7 +59,8 @@ namespace FourPDA.AppServices.ViewModels
     {
       using (this._busyIndicator.StartJob())
       {
-        string html = await this._newsDataService.LoadNewsHtmlPage(this.NewsUri, ScreenHelper.IsDarkTheme);
+        string html = await this._newsDataService.LoadNewsHtmlPage(
+            this.NewsUri, ScreenHelper.IsDarkTheme);
         this._view.LoadContent(html);
         this.IsLoaded = true;
       }

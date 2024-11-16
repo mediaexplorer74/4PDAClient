@@ -65,6 +65,6 @@ namespace FourPDA.AppServices.DataModels
       }
     }
 
-    //public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler PropertyChanged;
   }
 }

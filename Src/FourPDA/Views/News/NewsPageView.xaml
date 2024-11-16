@@ -1,16 +1,20 @@
-﻿<Page x:Class="FourPDA.NewsPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:local="using:FourPDA"
+﻿<Page x:Class="FourPDA.Views.NewsPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FourPDA.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
-    xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro" 
     xmlns:telerik="using:Telerik.UI.Xaml.Controls"
     xmlns:tp="using:Telerik.UI.Xaml.Controls.Primitives"
+    xmlns:micro="using:Caliburn.Micro"
     mc:Ignorable="d"
-    Background="Cyan"
-    d:DesignHeight="480" d:DesignWidth="480"
     >
+    <!--
+    d:DesignHeight="480" 
+    d:DesignWidth="480"
+    Background="Cyan"
+    DataContext="{Binding NewsPageViewModel, RelativeSource={RelativeSource Self}}"
+    -->
     <!--
      d:DesignHeight="480" d:DesignWidth="480"
      xmlns:telerik="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core"
@@ -18,9 +22,43 @@
      xmlns:behaviors="clr-namespace:FourPDA.WP7.Interaction.Behaviors"
     -->
 
-        <Grid>        
-            
-        <!--tp:RadDataBoundListBox ItemsSource="{Binding NewsItems}"
+        <Grid>
+                       <!--Style="{StaticResource ListBoxStyle}"-->
+            <!--tp:RadCycleHubTile-->
+            <ListView ItemsSource="{Binding NewsItems}"
+                      Margin="24 0 0 0" 
+                      IsItemClickEnabled="True"
+                      SelectionMode="None"
+                      micro:Message.Attach="[Event ItemClick] = [Action OpenNewsDetails($dataContext)]"
+                             >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <!--micro:Message.Attach="[Event Tap] = [Action OpenNewsDetails($dataContext)]"
+                    Text="{Binding Title}" 
+                    -->
+               <StackPanel VerticalAlignment="Top"
+                    Margin="0 0 24 18" >
+                        
+                          <TextBlock 
+                            TextDecorations="Underline" FontSize="24" 
+                            TextWrapping="Wrap"  HorizontalAlignment="Left" 
+                            Foreground="{StaticResource SystemColorControlAccentBrush}" 
+                            Text="{Binding Title}"  
+                            />
+                          <TextBlock TextWrapping="Wrap" Text="{Binding Body}" />
+                        <TextBlock Foreground="{StaticResource AppBarBorderThemeBrush}"  
+                  Text="{Binding Timestamp}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <!--tp:RadCycleHubTile.ItemAddedAnimation>
+                <telerik:RadFadeAnimation/>
+            </tp:RadCycleHubTile.ItemAddedAnimation-->
+
+
+
+            <!--tp:RadDataBoundListBox ItemsSource="{Binding NewsItems}"
                                                Margin="24 0 0 0" 
                                                behaviors:ListBoxBehavior.DisableSelection="True"
                                                Style="{StaticResource ListBoxStyle}">
@@ -49,14 +87,17 @@
             behaviors:ListBoxBehavior.DisableSelection="True"
             Style="{StaticResource ListBoxStyle}"
             -->
-        <ListBox ItemsSource="{Binding NewsItems}"
+        <!--ListBox ItemsSource="{Binding NewsItems}"
                 Margin="24 0 0 0" 
          >
             <ListBox.ItemTemplate>
         <DataTemplate>
-                    <!--telerik:InteractionEffectManager.ApplyInteractionExplicitly="True"-->
+                   // telerik:InteractionEffectManager.ApplyInteractionExplicitly="True"
+                    <telerik:RadContentControl
+                        micro:Message.Attach="[Event Tap] = [Action OpenNewsDetails($dataContext)]"
+                        >
 
-                    <!--micro:Message.Attach="[Event Tap] = [Action OpenNewsDetails($dataContext)]"-->
+                        // micro:Message.Attach="[Event Tap] = [Action OpenNewsDetails($dataContext)]"
                         <StackPanel VerticalAlignment="Top"
                                 Background="DarkCyan"
                                 Margin="0 0 24 18"
@@ -72,15 +113,16 @@
                             <TextBlock Foreground="{StaticResource CheckBoxPressedForegroundThemeBrush}" 
                                    Text="{Binding Timestamp}" />
                         </StackPanel>
+                        </telerik:RadContentControl>
                     </DataTemplate>
             </ListBox.ItemTemplate>
                 
-            <!--ListBox.ItemAddedAnimation>
+            <ListBox.ItemAddedAnimation>
                 <telerik:RadFadeAnimation/>
-            </ListBox.ItemAddedAnimation-->
+            </ListBox.ItemAddedAnimation>
 
-        </ListBox>
-
+        </ListBox-->
+        </ListView>
     </Grid>
 </Page>
     

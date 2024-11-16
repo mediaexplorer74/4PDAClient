@@ -1,23 +1,27 @@
 ﻿<Page
-    x:Class="FourPDA.ForumPage"
+    x:Class="FourPDA.Views.ForumPageView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:FourPDA"
+    xmlns:local="using:FourPDA.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    xmlns:forum="local:ForPDA.AppServices.ViewModels.Forum;assembly=ForPDA.AppServices"
+    xmlns:forum="local:ForPDA.ViewModels"
+   
     xmlns:micro="local:Caliburn.Micro;assembly=Caliburn.Micro"
     xmlns:behaviors="local:FourPDA.Interaction.Behaviors"
     xmlns:i="local:FourPDA.Interaction"
     xmlns:controls="local:FourPDA.Controls"
     xmlns:dataModels="local:ForPDA.AppServices.DataModels;assembly=ForPDA.AppServices" 
-    xmlns:forum1="using:ForPDA.AppServices.ViewModels.Forum"
-    d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=forum1:ForumPageViewModel}"   
+    
     >
+    <!--
+     xmlns:forum1="using:ForPDA.ViewModels"
+    d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=forum1:ForumPageViewModel}"   
+    -->
 
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />

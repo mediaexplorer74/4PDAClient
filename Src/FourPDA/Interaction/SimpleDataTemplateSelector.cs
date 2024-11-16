@@ -11,8 +11,8 @@ namespace FourPDA.Interaction
   {
     public SimpleDataTemplateSelector()
     {
-      ((Control) this).HorizontalContentAlignment = (HorizontalAlignment) 3;
-      ((FrameworkElement) this).HorizontalAlignment = (HorizontalAlignment) 3;
+      this.HorizontalContentAlignment = HorizontalAlignment.Stretch;
+      this.HorizontalAlignment = HorizontalAlignment.Stretch;
     }
 
     public virtual DataTemplate SelectTemplate(object item, DependencyObject container)

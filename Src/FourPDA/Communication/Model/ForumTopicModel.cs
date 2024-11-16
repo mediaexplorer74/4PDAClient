@@ -5,7 +5,10 @@ namespace FourPDA.Communication.Model
 {
   public class ForumTopicModel
   {
-    public ForumTopicModel(string name) => this.Name = name;
+    public ForumTopicModel(string name)
+    {
+        this.Name = name;
+    }
 
     public string Name { get; set; }
 

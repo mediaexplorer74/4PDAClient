@@ -48,6 +48,8 @@ namespace FourPDA
 
             // Registers an service to be created on each request.
             container.PerRequest<MainPageViewModel>();
+            container.PerRequest<NewsPageViewModel>();
+
         }
 
         /*        
@@ -109,7 +111,7 @@ namespace FourPDA
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            DisplayRootView<MainPage>();//DisplayRootView<MainPageView>();
+            DisplayRootView<MainPageView>();
         }
 
         protected override object GetInstance(Type service, string key)

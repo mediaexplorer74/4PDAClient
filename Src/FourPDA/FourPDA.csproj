@@ -123,32 +123,43 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppServices\Controllers\ForumController.cs" />
-    <Compile Include="AppServices\DataModels\ForumDataModel.cs" />
-    <Compile Include="AppServices\DataModels\NewsItemDataModel.cs" />
-    <Compile Include="AppServices\DataModels\SubForumDataModel.cs" />
-    <Compile Include="AppServices\DataModels\TopicDataModel.cs" />
+    <Compile Include="AppServices\Controllers\NewsController.cs" />
+    <Compile Include="AppServices\DataModels\Forum\ForumDataModel.cs" />
+    <Compile Include="AppServices\DataModels\Forum\SubForumDataModel.cs" />
+    <Compile Include="AppServices\DataModels\Forum\TopicDataModel.cs" />
+    <Compile Include="AppServices\DataModels\News\NewsDataModel.cs" />
+    <Compile Include="AppServices\DataModels\News\NewsItemDataModel.cs" />
     <Compile Include="AppServices\IBrowserView.cs" />
     <Compile Include="AppServices\IBusyIndicator.cs" />
     <Compile Include="AppServices\OrientationManager.cs" />
     <Compile Include="AppServices\ScreenHelper.cs" />
     <Compile Include="AppServices\ViewModels\MainPivot\MainPageViewModel.cs" />
     <Compile Include="AppServices\ViewModels\Forum\ForumPageViewModel.cs" />
-    <Compile Include="AppServices\ViewModels\Forum\ForumsViewModel.cs" />
-    <Compile Include="AppServices\ViewModels\MainPivot\MainPivotViewModel.cs" />
-    <Compile Include="AppServices\ViewModels\News\NewsViewModel.cs" />
-    <Compile Include="AppServices\ViewModels\News\NewsDetailsPageViewModel.cs" />
+    <Compile Include="AppServices\ViewModels\News\NewsPageViewModel.cs" />
+    <Compile Include="AppServices\ViewModels\News\NewsDetailPageViewModel.cs" />
     <Compile Include="Communication\ForumDataService.cs" />
     <Compile Include="Communication\Html\BaseHtmlWrapper.cs" />
     <Compile Include="Communication\Html\NewsHtmlProcessor.cs" />
     <Compile Include="Communication\HttpCommunicator.cs" />
+    <Compile Include="Communication\Model\NewsModel.cs" />
+    <Compile Include="Communication\Model\NewsTopicModel.cs" />
     <Compile Include="Communication\Model\ForumModel.cs" />
     <Compile Include="Communication\Model\ForumTopicModel.cs" />
     <Compile Include="Communication\Model\RootForumModel.cs" />
     <Compile Include="Communication\NewsDataService.cs" />
     <Compile Include="Controls\CultureAwarePage.cs" />
+    <Compile Include="Controls\ForumControl.xaml.cs">
+      <DependentUpon>ForumControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\GlobalBusyIndicator.cs" />
     <Compile Include="Controls\HeaderControl.xaml.cs">
       <DependentUpon>HeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainControl.xaml.cs">
+      <DependentUpon>MainControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NewsControl.xaml.cs">
+      <DependentUpon>NewsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ProgressIndicator.cs" />
     <Compile Include="Controls\QmsControl.xaml.cs">
@@ -190,9 +201,6 @@
     <Compile Include="Interaction\TreeExtensions.cs" />
     <Compile Include="Interaction\VisualTreeAdapter.cs" />
     <Compile Include="Interaction\WeakEventListener`3.cs" />
-    <Compile Include="Pages\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Acknowledgements.xaml.cs">
       <DependentUpon>Acknowledgements.xaml</DependentUpon>
     </Compile>
@@ -215,23 +223,17 @@
       <DependentUpon>StoreFetch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\News\NewsPage.xaml.cs">
-      <DependentUpon>NewsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Forum\ForumPage.xaml.cs">
-      <DependentUpon>ForumPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Forum\ForumsView.xaml.cs">
-      <DependentUpon>ForumsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainPivot\MainPageView.xaml.cs">
       <DependentUpon>MainPageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\News\NewsView.xaml.cs">
-      <DependentUpon>NewsView.xaml</DependentUpon>
+    <Compile Include="Views\News\NewsPageView.xaml.cs">
+      <DependentUpon>NewsPageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\News\NewsDetailsPage.xaml.cs">
-      <DependentUpon>NewsDetailsPage.xaml</DependentUpon>
+    <Compile Include="Views\Forum\ForumPageView.xaml.cs">
+      <DependentUpon>ForumPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\News\NewsDetailPageView.xaml.cs">
+      <DependentUpon>NewsDetailPageView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -313,17 +315,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\ForumControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\HeaderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\MainControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\NewsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\QmsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Acknowledgements.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -357,27 +367,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\News\NewsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Forum\ForumPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Forum\ForumsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\MainPivot\MainPageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\News\NewsPageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Forum\ForumPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\News\NewsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\News\NewsDetailsPage.xaml">
+    <Page Include="Views\News\NewsDetailPageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

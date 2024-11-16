@@ -18,65 +18,75 @@ namespace FourPDA.Communication
   {
     private const string RSS_URL = "http://4pda.to/feed";
     private const string SITE_URL = "http://4pda.to/";
-    private readonly HttpClient _http = new HttpClient();
+    private readonly HttpClient httpClient = new HttpClient();
 
     public async Task<SyndicationFeed> LoadFeedsAsync()
     {
-        HttpResponseMessage response = default;
+        //HttpResponseMessage response = default;
+        string responseString = "";
 
         try
         {
-            response = await this._http.GetAsync(RSS_URL);
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            
+            //response = await this.httpClient.GetAsync(RSS_URL);
+            
+            responseString = await httpClient.GetStringAsync(RSS_URL);
         }
         catch (Exception ex) 
         {
-            Debug.WriteLine("[ex] http get_async ex: " + ex.Message);
+            Debug.WriteLine("[ex] httpClient.GetStringAsync(RSS_URL) ex: " + ex.Message);
         }
       
+        /*    
         Stream stream = default;
         try
         {
-            stream = await response.Content.ReadAsStreamAsync();
+                HttpContent rc = response.Content;
+                stream = await rc.ReadAsStreamAsync();
         }
         catch (Exception ex)
         {
             Debug.WriteLine("[ex] ReadAsStreamAsync ex: " + ex.Message);
         }
+            
       
        //XmlReader reader = XmlReader.Create(RSS_URL);
         //var feed = await Task.Run(() => SyndicationFeed.Load(reader));
+        */
 
         // Windows.Web.Syndication
       SyndicationFeed syndicationFeed = default;
       try
       {
-        StreamReader streamReader = new StreamReader(
-            stream, 
-            /*Encoding.UTF8*/
-            Encoding.ASCII); // 1251 ?
+        //StreamReader streamReader = new StreamReader(
+        //    stream, 
+        //    /*Encoding.UTF8*/
+        //    Encoding.ASCII); // 1251 ?
         try
         {
-          XmlReader reader = XmlReader.Create((TextReader) streamReader);
+          //XmlReader reader = XmlReader.Create((TextReader) streamReader);
           try
           {
-            string rs = reader.ReadContentAsString();           
-           
+            //string rs = reader.ReadContentAsString();           
+
+
             syndicationFeed = new SyndicationFeed();
-            syndicationFeed.Load(rs);
+            syndicationFeed.Load(/*rs*/responseString);
           }
           finally
           {
-            ((IDisposable) reader)?.Dispose();
+            //((IDisposable) reader)?.Dispose();
           }
         }
         finally
         {
-          streamReader?.Dispose();
+          //streamReader?.Dispose();
         }
       }
       finally
       {
-        ((IDisposable) stream)?.Dispose();
+        //((IDisposable) stream)?.Dispose();
       }
       return syndicationFeed;
     }

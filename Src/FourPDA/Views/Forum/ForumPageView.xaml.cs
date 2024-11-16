@@ -1,4 +1,4 @@
-﻿using FourPDA.AppServices.ViewModels.Forum;
+﻿using FourPDA.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,21 +15,20 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace FourPDA//.Views.Forum
+namespace FourPDA.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ForumPage : Page
+    public sealed partial class ForumPageView : Page
     {
-        public ForumPage()
+        public ForumPageView()
         {
             this.InitializeComponent();
         }
 
-        public ForumPageViewModel ViewModel
+        public ForumPageViewModel ForumPageViewModel
         {
             get => (ForumPageViewModel)((FrameworkElement)this).DataContext;
         }
@@ -37,11 +36,11 @@ namespace FourPDA//.Views.Forum
         protected /*override*/ void OnBackKeyPress(EventArgs e)
         {
             //base.OnBackKeyPress(e);
-            if (!this.ViewModel.CanReturnBack)
+            if (!this.ForumPageViewModel.CanReturnBack)
                 return;
             //this.Title.IsBackTransition = true;
             //this.Title.NewContentTransitionEnded += new EventHandler<EventArgs>(this.Title_NewContentTransitionEnded);
-            this.ViewModel.GoBack();
+            this.ForumPageViewModel.GoBack();
             //e.Cancel = true;
         }
 

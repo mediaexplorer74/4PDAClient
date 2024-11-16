@@ -4,13 +4,14 @@ using Caliburn.Micro;
 using FourPDA.AppServices;
 using FourPDA.AppServices.Controllers;
 using FourPDA.AppServices.DataModels;
-using FourPDA.AppServices.ViewModels;
-using FourPDA.AppServices.ViewModels.MainPivot;
+using FourPDA.ViewModels;
+
 using FourPDA.Communication;
 using FourPDA.Communication.Model;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -23,6 +24,10 @@ namespace FourPDA.ViewModels
   public class MainPageViewModel : Screen // PropertyChangedBase ?
   {
     private readonly IBusyIndicator _busyIndicator;
+
+    private readonly NewsController _newsController;
+    private readonly NewsDataService _newsDataService;
+
     private readonly ForumController _forumController;
     private readonly ForumDataService _forumDataService;
     
@@ -30,69 +35,78 @@ namespace FourPDA.ViewModels
 
     private ForumModel _currentForum;
 
-        private string ForumId_BackingField;
-        public string ForumId
-        {
-            get => this.ForumId_BackingField;
-            set
-            {
-                if (string.Equals(this.ForumId_BackingField, value, StringComparison.Ordinal))
-                    return;
-                this.ForumId_BackingField = value;
-                this.NotifyOfPropertyChange(nameof(ForumId));
-            }
-        }
-
-        private string ForumName_BackingField;
-        public string ForumName
-        {
-            get => this.ForumName_BackingField;
-            set
-            {
-                if (string.Equals(this.ForumName_BackingField, value, StringComparison.Ordinal))
-                    return;
-                this.ForumName_BackingField = value;
-                this.NotifyOfPropertyChange(nameof(ForumName));
-            }
-        }
-
-        private BindableCollection<object> AllItems_BackingField;
-        public BindableCollection<object> AllItems
-        {
-            get => this.AllItems_BackingField;
-            set
-            {
-                if (this.AllItems_BackingField == value)
-                    return;
-                this.AllItems_BackingField = value;
-                this.NotifyOfPropertyChange(nameof(AllItems));
-            }
-        }
-
-        private NewsViewModel NewsViewModel_BackingField = new NewsViewModel(new NewsDataService());
-        public NewsViewModel NewsViewModel
+    private string ForumId_BackingField;
+    public string ForumId
     {
-        get => this.NewsViewModel_BackingField;
+        get => this.ForumId_BackingField;
         set
         {
-            if (this.NewsViewModel_BackingField == value)
+            if (string.Equals(this.ForumId_BackingField, value, StringComparison.Ordinal))
                 return;
-            this.NewsViewModel_BackingField = value;
-            this.NotifyOfPropertyChange(nameof(NewsViewModel));
+            this.ForumId_BackingField = value;
+            this.NotifyOfPropertyChange(nameof(ForumId));
         }
     }
 
-    private ForumsViewModel ForumsViewModel_BackingField = new ForumsViewModel(new ForumController(), 
-        new ForumDataService(default), default, default);
-    public ForumsViewModel ForumsViewModel
+    private string ForumName_BackingField;
+    public string ForumName
     {
-        get => this.ForumsViewModel_BackingField;
+        get => this.ForumName_BackingField;
         set
         {
-            if (this.ForumsViewModel_BackingField == value)
+            if (string.Equals(this.ForumName_BackingField, value, StringComparison.Ordinal))
                 return;
-            this.ForumsViewModel_BackingField = value;
-            this.NotifyOfPropertyChange(nameof(ForumsViewModel));
+            this.ForumName_BackingField = value;
+            this.NotifyOfPropertyChange(nameof(ForumName));
+        }
+    }
+
+    private BindableCollection<object> AllItems_BackingField = new BindableCollection<object>();
+    public BindableCollection<object> AllItems
+    {
+        get => this.AllItems_BackingField;
+        set
+        {
+            if (this.AllItems_BackingField == value)
+                return;
+            this.AllItems_BackingField = value;
+            this.NotifyOfPropertyChange(nameof(AllItems));
+        }
+    }
+
+    private NewsPageViewModel newspageviewmodel; 
+    // = new NewsPageViewModel();
+
+    public NewsPageViewModel NewsPageViewModel
+    {
+        get => this.newspageviewmodel;
+        set
+        {
+            if (this.newspageviewmodel == value)
+                return;
+            this.newspageviewmodel = value;
+
+            //  A  tech that implements the infrastructure for property change notification
+            //  and automatically performs UI thread marshalling
+            this.NotifyOfPropertyChange(nameof(NewsPageViewModel));
+        }
+    }
+
+    private ForumPageViewModel ForumPageViewModel_BackingField 
+            = new ForumPageViewModel(new ForumController(), 
+        new ForumDataService(default), default, default);
+    public ForumPageViewModel ForumPageViewModel
+    {
+        get => this.ForumPageViewModel_BackingField;
+        set
+        {
+            if (this.ForumPageViewModel_BackingField == value)
+                return;
+            this.ForumPageViewModel_BackingField = value;
+
+            //  A  tech that implements the infrastructure for property change notification
+            //  and automatically performs UI thread marshalling
+            this.NotifyOfPropertyChange(nameof(ForumPageViewModel));
         }
     }
 
@@ -101,12 +115,16 @@ namespace FourPDA.ViewModels
      //---------------------------
         public MainPageViewModel
         (
+             NewsController newsController,
+             NewsDataService newsDataService,
              ForumController forumController,
              ForumDataService forumDataService,
              IBusyIndicator busyIndicator,
              Caliburn.Micro.INavigationService navigationService
         )
         {
+            this._newsController = newsController;
+            this._newsDataService = newsDataService;
             this._forumController = forumController;
             this._forumDataService = forumDataService;
             this._busyIndicator = busyIndicator;
@@ -115,11 +133,17 @@ namespace FourPDA.ViewModels
 
         // --------------------------
 
-   
 
-    public bool CanReturnBack => !this._currentForum.HasRootParent;
 
-    public void SelectForum(ForumDataModel forum)
+        public bool CanReturnBack
+        {
+            get
+            {
+                return !this._currentForum.HasRootParent;
+            }
+        }
+
+        public void SelectForum(ForumDataModel forum)
     {
        this.LoadDataAsync();//(forum.Id); 
     }
@@ -147,9 +171,9 @@ namespace FourPDA.ViewModels
             //NewsDetailsPageViewModel newsDetailsPageViewModel = new NewsDetailsPageViewModel(
             //    (NewsDataService)this._navigationService, this._busyIndicator);
 
-            (Caliburn.Micro.NavigationExtensions.UriFor<NewsDetailsPageViewModel>
+            (Caliburn.Micro.NavigationExtensions.UriFor<NewsDetailPageViewModel>
             (this._navigationService)).Navigate();
-        }
+     }
 
 
     protected override void OnInitialize()
@@ -195,8 +219,10 @@ namespace FourPDA.ViewModels
             //using (this._busyIndicator.StartJob())
             try
             {
-                await this.NewsViewModel.LoadDataAsync();
-                await this.ForumsViewModel.LoadDataAsync();
+                //await this.NewsPageViewModel.LoadDataAsync();
+
+                //TEMP
+                //await this.ForumPageViewModel.LoadDataAsync(default);
             }
             catch (Exception ex)
             {

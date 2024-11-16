@@ -14,12 +14,12 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 
-namespace FourPDA.Views.MainPivot
+namespace FourPDA.Controls
 {
     // internal Grid LayoutRoot;
-    public sealed partial class ForumsView : UserControl
+    public sealed partial class ForumControl : UserControl
     {
-        public ForumsView()
+        public ForumControl()
         {
             this.InitializeComponent();
         }

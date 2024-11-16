@@ -1,6 +1,7 @@
 ﻿// FourPDA.AppServices.ViewModels.Forum.ForumPageViewModel
 
 using Caliburn.Micro;
+using FourPDA.AppServices;
 using FourPDA.AppServices.Controllers;
 using FourPDA.AppServices.DataModels;
 using FourPDA.Communication;
@@ -10,9 +11,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 #nullable disable
-namespace FourPDA.AppServices.ViewModels.Forum
+namespace FourPDA.ViewModels
 {
   public class ForumPageViewModel : Screen
   {
@@ -116,7 +118,7 @@ namespace FourPDA.AppServices.ViewModels.Forum
       this.LoadDataAsync(this.ForumId);
     }
 
-    private async void LoadDataAsync(string forumId)
+    /*private*/public async Task LoadDataAsync(string forumId)
     {
       using (this._busyIndicator.StartJob())
       {
