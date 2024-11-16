@@ -82,8 +82,9 @@
 
         </controls:NavigationView-->
 
- 
-            <Pivot Margin="{Binding Source={StaticResource OrientationMgr}, Path=Orientation, Converter={StaticResource MarginSelector}}">
+
+        <!--  Margin="{Binding Source={StaticResource OrientationMgr}, Path=Orientation, Converter={StaticResource MarginSelector}}"  -->
+            <Pivot>
                 <Pivot.Title>
                     <mainPivot1:HeaderControl />
                 </Pivot.Title>

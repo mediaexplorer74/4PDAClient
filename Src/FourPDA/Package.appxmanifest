@@ -4,14 +4,15 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  IgnorableNamespaces="uap mp">
+  xmlns:uap18="http://schemas.microsoft.com/appx/manifest/uap/windows10/18"
+  IgnorableNamespaces="uap mp uap18">
 
   <Identity
-    Name="ME.FourPDA.V2"
+    Name="ME.FourPDADevV2"
     Publisher="CN=Admin"
     Version="2.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="eb8a2080-8b9d-4c9d-bb43-a91c3807111d" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="f025b918-50ac-4fc6-a33b-707f0b76635c" PhonePublisherId="0000a33b-a33b-5500-4000-000000000350"/>
 
   <Properties>
     <DisplayName>FourPDA v2.0-alpha</DisplayName>
@@ -30,9 +31,9 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="FourPDA.App">
+      EntryPoint="FourPDA.App" uap18:TrustLevel="appContainer" uap18:RuntimeBehavior="windowsApp">
       <uap:VisualElements
-        DisplayName="FourPDA v2"
+        DisplayName="FourPDA 2.0-alpha"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="FourPDA v2.0 uwp app"
@@ -49,5 +50,6 @@
 
   <Capabilities>
     <Capability Name="internetClient" />
+    <uap:Capability Name="removableStorage"/>
   </Capabilities>
 </Package>

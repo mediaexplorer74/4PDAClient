@@ -11,18 +11,17 @@
         <!--Only for Win SDK builds >= 14393 -->
         <!--XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls"/-->
         
-        <!--ResourceDictionary>
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="styles.xaml"/>
+                <ResourceDictionary Source="Styles/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <cnv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <cnv:BooleanToVisibilityConverter x:Key="InverterBooleanToVisibilityConverter" Invert="True" />
             <cnv:StringCaseConverter x:Key="StringCaseConverter"/>
 
-            < ! - - appServices:OrientationManager x:Key="OrientationMgr"/- - >
-
-        </ResourceDictionary-->
+            <!--appServices:OrientationManager x:Key="OrientationMgr"/-->
+        </ResourceDictionary>
     </micro:CaliburnApplication.Resources>
 
 </micro:CaliburnApplication>

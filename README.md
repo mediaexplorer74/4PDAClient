@@ -11,7 +11,8 @@ My attempt to remake fully discontinued & obsolete [ForPDA](https://4pda.to/foru
 Very early bird; draft UWP application to "parse" 4PDA web site on some winphone with Windows 10 Mobile os...
 
 ## Screenshots
-![](Images/screenshot01.png)
+![MainPivot](Images/shot01.png)
+![News](Images/shot01.png)
 
 ## Tech/dev details
 - Platforms: UWP only
@@ -32,4 +33,4 @@ MIT License
 AS IS. No support. RnD only / DIY
 
 ## .
-[m][e] 2024
+[m][e] November 2024
