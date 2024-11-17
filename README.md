@@ -11,8 +11,9 @@ My attempt to remake fully discontinued & obsolete [ForPDA](https://4pda.to/foru
 Very early bird; draft UWP application to "parse" 4PDA web site on some winphone with Windows 10 Mobile os...
 
 ## Screenshots
-![MainPivot](Images/shot01.png)
-![News](Images/shot02.png)
+![MainPivot proto](Images/shot01.png)
+![News proto](Images/shot02.png)
+![News Item Detail proto](Images/shot03.png)
 
 ## Tech/dev details
 - Platforms: UWP only
@@ -23,7 +24,7 @@ Very early bird; draft UWP application to "parse" 4PDA web site on some winphone
 ## Status
 - ForPDA decomp. completed but over 100500 bugs there!
 - Draft. Prototype / Pre-Pre-Pre-Alpha version. Still exploring Caliburn.Micro "magic"...
-- News / Forum "web parsing" not realized yet.
+- News / Forum "web parsing" not realized yet (3 fake news used for simplify expore/debug process))
 
 
 ## Licensing

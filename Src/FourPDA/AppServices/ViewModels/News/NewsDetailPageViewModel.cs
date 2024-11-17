@@ -2,6 +2,7 @@
 
 using Caliburn.Micro;
 using FourPDA.AppServices;
+using FourPDA.AppServices.DataModels;
 using FourPDA.Communication;
 using System;
 using System.ComponentModel;
@@ -11,61 +12,112 @@ namespace FourPDA.ViewModels
 {
   public class NewsDetailPageViewModel : Screen
   {
+    private readonly Caliburn.Micro.INavigationService _navigationService;
+
     private readonly NewsDataService _newsDataService;
+
     private readonly IBusyIndicator _busyIndicator;
+    
     private IBrowserView _view;
 
-    public NewsDetailPageViewModel(NewsDataService newsDataService, IBusyIndicator busyIndicator)
+    //RnD
+    public NewsItemDataModel Parameter { get; set; }
+
+
+    //Temp
+    private string title;
+    public string Title
     {
-      this._newsDataService = newsDataService;
-      this._busyIndicator = busyIndicator;
+        get { return title; }
+        set
+        {
+            title = value;
+            NotifyOfPropertyChange(() => Title);
+        }
     }
 
-    private string NewsUri_BackingField;
+
+    private string newsuri;
     public string NewsUri
     {
-      get => this.NewsUri_BackingField;
+      get => this.newsuri;
       set
       {
-        if (string.Equals(this.NewsUri_BackingField, value, StringComparison.Ordinal))
+        if (string.Equals(this.newsuri, value, StringComparison.Ordinal))
           return;
-        this.NewsUri_BackingField = value;
+        this.newsuri = value;
         this.NotifyOfPropertyChange(nameof (NewsUri));
       }
     }
 
-    private bool IsLoaded_BackingField;
+
+    private bool isloaded;
 
     public bool IsLoaded
     {
-      get => this.IsLoaded_BackingField;
+      get => this.isloaded;
       set
       {
-        if (this.IsLoaded_BackingField == value)
+        if (this.isloaded == value)
           return;
-        this.IsLoaded_BackingField = value;
+        this.isloaded = value;
         this.NotifyOfPropertyChange(nameof (IsLoaded));
       }
     }
 
+
+    // construct data services & nav. service
+    public NewsDetailPageViewModel
+    (
+        NewsDataService newsDataService,
+        IBusyIndicator busyIndicator,
+        Caliburn.Micro.INavigationService navigationService
+    )
+    {
+        this._newsDataService = newsDataService;
+
+        this._busyIndicator = busyIndicator;
+
+        this._navigationService = navigationService;
+    }
+
+
+/*
     protected override void OnViewLoaded(object view)
     {
-      //base.OnViewLoaded(view);
-      this._view = (IBrowserView) view;
+      base.OnViewLoaded(view);
+
+      //this._view = (IBrowserView) view;
+      
       this.LoadPageAsync();
     }
+*/
+
+
 
     private async void LoadPageAsync()
     {
-      using (this._busyIndicator.StartJob())
+      //using (this._busyIndicator.StartJob())
       {
-        string html = await this._newsDataService.LoadNewsHtmlPage(
-            this.NewsUri, ScreenHelper.IsDarkTheme);
-        this._view.LoadContent(html);
+        //string html = await this._newsDataService.LoadNewsHtmlPage(
+        //    this.NewsUri, ScreenHelper.IsDarkTheme);
+        //this._view.LoadContent(html);
         this.IsLoaded = true;
       }
     }
 
-    //public event PropertyChangedEventHandler PropertyChanged;
+    // public event PropertyChangedEventHandler PropertyChanged;
+
+    protected override void OnActivate()
+    {
+        //this.LoadDataAsync(); // ?
+        //NewsItems = new ObservableCollection<NewsItemDataModel>
+        //{
+        //    new NewsItemDataModel {Title = "The Avengers", Body = "Joss Whedon"},
+        //    new NewsItemDataModel {Title = "Transformers", Body = "Michael Bay"},
+        //    new NewsItemDataModel {Title = "X-Men Days of the future past", Body = "Bryan Synger"}
+        //};
+        Title = Parameter.Title;
+     }
   }
 }

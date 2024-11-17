@@ -18,9 +18,7 @@ using Caliburn.Micro;
 
 namespace FourPDA.Controls
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    // * NewsView old codename (FourPDA.WP7) *
     public sealed partial class NewsControl : UserControl 
     {
         public NewsControl()
@@ -29,3 +27,4 @@ namespace FourPDA.Controls
         }
     }
 }
+

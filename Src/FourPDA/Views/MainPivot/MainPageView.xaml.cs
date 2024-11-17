@@ -56,14 +56,6 @@ namespace FourPDA.Views
         }
 
 
-        // Refresh click handler
-        private void Refresh_Click(object sender, RoutedEventArgs e)
-        {
-            //ToAboutMe();
-            //FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel vm 
-            //vm = (FourPDA.ViewModels.MainPageViewModel)DataContext;
-            //vm.RefreshData();
-        }//Refresh_Click
 
         //private void PageLoaded(object sender, EventArgs e)
         //{
@@ -72,6 +64,52 @@ namespace FourPDA.Views
         //        ((btn, vm) => vm.RefreshData()));
         //}
 
+        /*
+        // this is only for win sdk build >= 14393
+        public void NavigateToPage(object pageTag)
+        {
+            //NavigationCacheMode = NavigationCacheMode.Enabled;
+
+            string pageName = $"FourPDA.{pageTag}";
+
+            Type pageType = Type.GetType(pageName);
+
+            //ContentFrame.Navigate(pageType);
+            //Frame.Navigate(pageType);
+        }
+
+        private void MainNav_OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            try
+            {
+                //NavigateToPage(args.InvokedItemContainer.Tag);
+            }
+            catch (System.Exception ex)
+            {
+                Exceptions.ThrownExceptionError(ex);
+            }
+        }*/
+
+
+        // nav bar handling start -----------------------------------
+
+        private void News_Click(object sender, RoutedEventArgs e)
+        {
+            //RnD
+            // vm = (FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel)DataContext;
+            // vm.RefreshData();
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(NewsPageView));
+        }
+
+        // Refresh click handler
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            //ToAboutMe();
+            //FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel vm 
+            //vm = (FourPDA.ViewModels.MainPageViewModel)DataContext;
+            //vm.RefreshData();
+        }//Refresh_Click
 
         private void ForumModeToggle_Click(object sender, RoutedEventArgs e)
         {
@@ -83,10 +121,7 @@ namespace FourPDA.Views
             //
         }
 
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-            //
-        }
+
 
         private void AboutApp_Click(object sender, RoutedEventArgs e)
         {
@@ -105,16 +140,7 @@ namespace FourPDA.Views
         }
 
 
-        private void News_Click(object sender, RoutedEventArgs e)
-        {
-            //RnD
-            // vm = (FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel)DataContext;
-            // vm.RefreshData();
-            Frame rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(NewsPageView));
-        }
-
-
+      
         private void Forum_Click(object sender, RoutedEventArgs e)
         {
             //
@@ -126,29 +152,8 @@ namespace FourPDA.Views
             //
         }
 
-        private void MainNav_OnItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-        {
-            try
-            {
-                //NavigateToPage(args.InvokedItemContainer.Tag);
-            }
-            catch (System.Exception ex)
-            {
-                Exceptions.ThrownExceptionError(ex);
-            }
-        }
 
-        public void NavigateToPage(object pageTag)
-        {
-            //NavigationCacheMode = NavigationCacheMode.Enabled;
-
-            string pageName = $"FourPDA.{pageTag}";
-
-            Type pageType = Type.GetType(pageName);
-
-            //ContentFrame.Navigate(pageType);
-            //Frame.Navigate(pageType);
-        }
+        // nav bar handling end -------------------------------------
 
     }
 

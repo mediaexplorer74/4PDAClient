@@ -1,8 +1,11 @@
 ﻿// FourPDA.AppServices.ViewModels.MainPivot.NewsViewModel
 
 using Caliburn.Micro;
+using FourPDA.AppServices;
+using FourPDA.AppServices.Controllers;
 using FourPDA.AppServices.DataModels;
 using FourPDA.Communication;
+using FourPDA.Communication.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,46 +13,71 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Web.Syndication; //using System.ServiceModel.Syndication;
+using Windows.Web.Syndication; 
 
 #nullable disable
 namespace FourPDA.ViewModels
 {
-    public class NewsPageViewModel : Screen //Conductor<Screen>.Collection.OneActive // Screen ?
+    public class NewsPageViewModel : Screen //Conductor<Screen>.Collection.OneActive  ?
     {
                
-        private readonly INavigationService _navigationService;
+        private readonly Caliburn.Micro.INavigationService _navigationService;
 
+        private readonly IBusyIndicator _busyIndicator;
+
+        private readonly NewsController _newsController;
+        private readonly NewsDataService _newsDataService;
+
+        private NewsModel _currentNew;
+
+        private ObservableCollection<NewsItemDataModel> newsitems;
+        public ObservableCollection<NewsItemDataModel> NewsItems
+        {
+            get => this.newsitems;
+            set
+            {
+                //if (this.newsitems == value)
+                //    return;
+                this.newsitems = value;
+                this.NotifyOfPropertyChange(nameof(NewsItems));
+            }
+        }
+
+
+        //---------------------------
+        // construct controllers & data services
+        public NewsPageViewModel
+        (
+                NewsController newsController,
+                NewsDataService newsDataService,
+                IBusyIndicator busyIndicator,
+                Caliburn.Micro.INavigationService navigationService
+        )
+        {
+            this._newsController = newsController;
+            this._newsDataService = newsDataService;
+
+            this._busyIndicator = busyIndicator;
+
+            this._navigationService = navigationService;
+        }
+        //---------------------------
 
         public NewsPageViewModel(INavigationService navigationService)
         {
             this._navigationService = navigationService;
         }
 
-        private ObservableCollection<NewsItemDataModel> newsitems;
-
-        public ObservableCollection<NewsItemDataModel> NewsItems
+        public void OpenNewsDetails(NewsItemDataModel newsItem)
         {
-            get => this.newsitems;
-            set
-            {
-                if (this.newsitems == value)
-                    return;
-                this.newsitems = value;
-                this.NotifyOfPropertyChange(nameof(NewsItems));
-            }
-        }
-
-        public void OpenNewsDetails(NewsDataModel newsItem)
-        {
-            (Caliburn.Micro.NavigationExtensions.UriFor<NewsDetailPageViewModel>
-            (this._navigationService)).Navigate();
-            //_navigationService.NavigateToViewModel<NewsDetailPageViewModel>(newsItem);
+            //(Caliburn.Micro.NavigationExtensions.UriFor<NewsDetailPageViewModel>
+            //(this._navigationService)).Navigate();
+            _navigationService.NavigateToViewModel<NewsDetailPageViewModel>(newsItem);
         }
 
         public async Task LoadDataAsync()
         {
-            SyndicationFeed feeds = default;//await this._newsDataService.LoadFeedsAsync();
+            SyndicationFeed feeds = await this._newsDataService.LoadFeedsAsync();
 
             this.NewsItems = (ObservableCollection<NewsItemDataModel>)feeds.Items;/*(IEnumerable<NewsItemDataModel>)Enumerable.ToList<NewsItemDataModel>(
                 Enumerable.Select<SyndicationItem, NewsItemDataModel>(feeds.Items,
@@ -68,11 +96,17 @@ namespace FourPDA.ViewModels
         }
 
         //RnD
-        protected override void OnInitialize()
+        protected override void OnActivate() //OnInitialize()
         {
             base.OnInitialize();
-            
+
             //this.LoadDataAsync(); // ?
+            NewsItems = new ObservableCollection<NewsItemDataModel>
+            {
+                new NewsItemDataModel {Title = "The Avengers", Body = "Joss Whedon"},
+                new NewsItemDataModel {Title = "Transformers", Body = "Michael Bay"},
+                new NewsItemDataModel {Title = "X-Men Days of the future past", Body = "Bryan Synger"}
+            };
         }
 
         public void GoBack() 
@@ -85,21 +119,12 @@ namespace FourPDA.ViewModels
         {
             get
             {
-                return false;//!this._currentForum.HasRootParent;
+                return !this._currentNew.HasRootParent;
             }
         }
 
         //public event PropertyChangedEventHandler PropertyChanged;
 
-        protected override void OnActivate()
-        {
-            //this.LoadDataAsync(); // ?
-            NewsItems = new ObservableCollection<NewsItemDataModel>
-            {
-                new NewsItemDataModel {Title = "The Avengers", Body = "Joss Whedon"},
-                new NewsItemDataModel {Title = "Transformers", Body = "Michael Bay"},
-                new NewsItemDataModel {Title = "X-Men Days of the future past", Body = "Bryan Synger"}
-            };
-        }
+      
     }
 }

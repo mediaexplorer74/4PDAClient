@@ -14,32 +14,43 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FourPDA.AppServices;
 using FourPDA.Controls;
+using FourPDA.Common;
 using System.Diagnostics;
 using System.Windows;
 
 
 namespace FourPDA.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class NewsDetailsPage : Page
+    
+    public sealed partial class NewsDetailPageView : Page
     {
-        public NewsDetailsPage()
+        private NavigationHelper navigationHelper;
+
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
+
+
+        public NewsDetailPageView()
         {
             this.InitializeComponent();
+
+            //!
+            this.navigationHelper = new NavigationHelper(this);
+
         }
 
         public event Action<NavigationEventArgs> NavigationCompleted = param0 => { };
 
         public void LoadUri(string uri)
         {
-            this.Browser.Source = new Uri(uri);
+            //this.Browser.Source = new Uri(uri);
         }
 
         public void LoadContent(string htmlContent)
         {
-            this.Browser.NavigateToString(htmlContent);
+            //this.Browser.NavigateToString(htmlContent);
         }
 
         private void WebBrowser_OnNavigated(object sender, NavigationEventArgs e)

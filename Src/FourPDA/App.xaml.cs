@@ -49,6 +49,8 @@ namespace FourPDA
             // Registers an service to be created on each request.
             container.PerRequest<MainPageViewModel>();
             container.PerRequest<NewsPageViewModel>();
+            container.PerRequest<NewsDetailPageViewModel>();
+            container.PerRequest<ForumPageViewModel>();
 
         }
 

@@ -8,7 +8,7 @@
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FourPDA</RootNamespace>
-    <AssemblyName>FourPDA</AssemblyName>
+    <AssemblyName>FourPDA.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
@@ -19,7 +19,7 @@
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <PackageCertificateKeyFile>FourPDA_TemporaryKey.pfx</PackageCertificateKeyFile>
     <LangVersion>latest</LangVersion>
-    <PackageCertificateThumbprint>1B973D1C6EBF4FC3B3062E39A4E7B2DD9A7936FF</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>B707A90788C3F018A7607A74EC807AFFEF9F7E1E</PackageCertificateThumbprint>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -137,6 +137,10 @@
     <Compile Include="AppServices\ViewModels\Forum\ForumPageViewModel.cs" />
     <Compile Include="AppServices\ViewModels\News\NewsPageViewModel.cs" />
     <Compile Include="AppServices\ViewModels\News\NewsDetailPageViewModel.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\ObservableDictionary.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="Communication\ForumDataService.cs" />
     <Compile Include="Communication\Html\BaseHtmlWrapper.cs" />
     <Compile Include="Communication\Html\NewsHtmlProcessor.cs" />

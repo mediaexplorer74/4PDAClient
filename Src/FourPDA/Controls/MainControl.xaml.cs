@@ -24,7 +24,7 @@ namespace FourPDA.Controls
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainControl : UserControl//Page
+    public sealed partial class MainControl : UserControl
     {
         FourPDA.ViewModels.MainPageViewModel vm = default;
         public MainControl()
@@ -116,7 +116,7 @@ namespace FourPDA.Controls
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
-            //NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            //NavigationCacheMode = Windows.UI.Xaml.FourPDA.NavigationCacheMode.Enabled;
 
             string pageName = $"FourPDA.{pageTag}";
 

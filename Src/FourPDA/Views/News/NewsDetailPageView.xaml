@@ -1,28 +1,80 @@
 ﻿<Page
-    x:Class="FourPDA.Views.NewsDetailsPage"
+    x:Name="pageRoot"
+    x:Class="FourPDA.Views.NewsDetailPageView"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FourPDA.Views"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    xmlns:viewModels="local:FourPDA.AppServices.ViewModels"
+    xmlns:common="using:FourPDA.Common"
+    xmlns:viewModels="using:FourPDA.ViewModels"
     xmlns:controls="local:FourPDA.Controls" 
-    xmlns:converters="local:FourPDA.Converters"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    d:DataContext="{d:DesignInstance viewModels:NewsDetailsPageViewModel}"
-    >
+    xmlns:converters="using:FourPDA.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    mc:Ignorable="d"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid x:Name="LayoutRoot" Background="Transparent"
-      Margin="{Binding Source={StaticResource OrientationMgr}, Path=Orientation, Converter={StaticResource MarginSelector}}">
+    <Page.Resources>
+        <x:String x:Key="AppName">4PDA</x:String>
+        <converters:MarginSelector x:Key="MarginSelector"
+                               Portrait="0 32 0 0"
+                               LandscapeLeft="72 0 0 0"
+                               LandscapeRight="0 0 72 0"/>
+    </Page.Resources>
 
-        <!--Navigated="WebBrowser_OnNavigated"-->
-            <WebView x:Name="Browser"
-                      Visibility="{Binding IsLoaded, Converter={StaticResource BooleanToVisibilityConverter}}"
-                       />
+  
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
 
+    <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+        <!-- Back button and page title -->
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="backButton" Margin="39,59,39,0" 
+                       Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"
+                        Style="{StaticResource NavigationBackButtonNormalStyle}"
+                        VerticalAlignment="Top"
+                        AutomationProperties.Name="Back"
+                        AutomationProperties.AutomationId="BackButton"
+                        AutomationProperties.ItemType="Navigation Button"/>
+
+           <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" 
+                       Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                        IsHitTestVisible="false" TextWrapping="NoWrap" 
+                       VerticalAlignment="Bottom" Margin="0,0,30,40"/>
+
+          <!--WebView x:Name="Browser" 
+           Navigated="WebBrowser_OnNavigated"
+            Visibility="{Binding IsLoaded, Converter={StaticResource BooleanToVisibilityConverter}}"/-->
+
+        </Grid>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock x:Name="Title" 
+                       Style="{StaticResource TitleTextBlockStyle}" Margin="120, 0, 0, 0" />
+        </StackPanel>
     </Grid>
 </Page>
+
     
 <!--
     <controls:CultureAwarePage

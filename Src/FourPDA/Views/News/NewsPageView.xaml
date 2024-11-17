@@ -22,14 +22,16 @@
      xmlns:behaviors="clr-namespace:FourPDA.WP7.Interaction.Behaviors"
     -->
 
-        <Grid>
-                       <!--Style="{StaticResource ListBoxStyle}"-->
+   <Grid>
+         <!--Style="{StaticResource ListBoxStyle}"-->
             <!--tp:RadCycleHubTile-->
+
+        <!-- [Event ItemClick] = [Action OpenNewsDetails($dataContext)]  -->
             <ListView ItemsSource="{Binding NewsItems}"
                       Margin="24 0 0 0" 
                       IsItemClickEnabled="True"
                       SelectionMode="None"
-                      micro:Message.Attach="[Event ItemClick] = [Action OpenNewsDetails($dataContext)]"
+                      micro:Message.Attach="[Event ItemClick] = [Action OpenNewsDetails($clickeditem)]"
                              >
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -124,6 +126,83 @@
         </ListBox-->
         </ListView>
     </Grid>
+
+
+    <!-- Bottom app bar -->
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+              <AppBarButton
+                x:Name="Back"
+                x:Uid="Back"
+                Click="Back_Click"
+                Icon="Back"
+                Label="Back"/>
+
+                <AppBarButton
+                x:Name="Forward"
+                x:Uid="Forward"
+                Click="Forward_Click"
+                Icon="Forward"
+                Label="Forward"/>
+
+                <AppBarButton
+                  x:Name="Home"
+                  x:Uid="Home"
+                  Click="Home_Click"
+                  Icon="Home"
+                  Label="Home"/>
+                
+                <AppBarButton
+                x:Name="Forum"
+                x:Uid="Forum"
+                Click="Forum_Click"
+                Icon="NewWindow"
+                Label="Forum"/>
+
+               
+            </CommandBar.PrimaryCommands>
+
+
+            <CommandBar.SecondaryCommands>
+                <AppBarButton
+                     x:Name="Refresh"
+                     x:Uid="Refresh"
+                     Click="Refresh_Click"
+                     Icon="Refresh"
+                     Label="Refresh"/>
+
+                <AppBarButton
+                 x:Name="Settings"
+                 x:Uid="Settings"
+                 Click="Settings_Click"
+                 Icon="Setting"
+                 Label="Settings"/>
+         
+                <AppBarToggleButton
+                x:Name="UiThemeToggle"
+                x:Uid="UiThemeToggle"
+                Click="UiThemeToggle_Click"
+                Icon="Clock"
+                Label="Dark theme"/>
+                
+                <AppBarToggleButton
+                x:Name="ForumModeToggle"
+                x:Uid="ForumModeToggle"
+                Click="ForumModeToggle_Click"
+                Icon="Document"
+                Label="Forum mode"/>
+
+                <AppBarButton
+                 x:Name="AboutMe"
+                 x:Uid="AboutMe"
+                 Click="AboutApp_Click"
+                 Icon="Contact"
+                 Label="About"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
 </Page>
     
 <!--Page

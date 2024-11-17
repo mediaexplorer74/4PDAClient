@@ -1,4 +1,5 @@
-﻿using FourPDA.AppServices;
+﻿using ExceptionHelper;
+using FourPDA.AppServices;
 using FourPDA.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -63,23 +64,71 @@ namespace FourPDA.Views
             //this.Title.IsBackTransition = false;
         }
 
+
+
+        // nav bar handling start -----------------------------------
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            //RnD
+            // vm = (FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel)DataContext;
+            // vm.RefreshData();
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(MainPageView));
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            //ToAboutMe();
+            //FourPDA.AppServices.ViewModels.MainPivot.MainPivotViewModel vm 
+            //vm = (FourPDA.ViewModels.MainPageViewModel)DataContext;
+            //vm.RefreshData();
+        }//Refresh_Click
+
+
+        private void ForumModeToggle_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+        private void UiThemeToggle_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+
+
+        private void AboutApp_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+        private void Forward_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+
+
+        private void Forum_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            //
+        }
+
+        // nav bar handling end -------------------------------------
     }
 }
 
-/*
- using System;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
 
-#nullable disable
-namespace FourPDA.WP7.Views.MainPivot
-{
-  public class NewsView : UserControl
-  {
-   
-    public NewsView() => this.InitializeComponent();
-   
-  }
-}
- */

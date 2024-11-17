@@ -23,6 +23,8 @@ namespace FourPDA.ViewModels
   // A base implementation of Caliburn.Micro.IScreen (Conductor, etc.)
   public class MainPageViewModel : Screen // PropertyChangedBase ?
   {
+    private readonly Caliburn.Micro.INavigationService _navigationService;
+
     private readonly IBusyIndicator _busyIndicator;
 
     private readonly NewsController _newsController;
@@ -31,52 +33,49 @@ namespace FourPDA.ViewModels
     private readonly ForumController _forumController;
     private readonly ForumDataService _forumDataService;
     
-    private readonly Caliburn.Micro.INavigationService _navigationService;
-
     private ForumModel _currentForum;
 
-    private string ForumId_BackingField;
+    private string forumid;
     public string ForumId
     {
-        get => this.ForumId_BackingField;
+        get => this.forumid;
         set
         {
-            if (string.Equals(this.ForumId_BackingField, value, StringComparison.Ordinal))
+            if (string.Equals(this.forumid, value, StringComparison.Ordinal))
                 return;
-            this.ForumId_BackingField = value;
+            this.forumid = value;
             this.NotifyOfPropertyChange(nameof(ForumId));
         }
     }
 
-    private string ForumName_BackingField;
+    private string forumname;
     public string ForumName
     {
-        get => this.ForumName_BackingField;
+        get => this.forumname;
         set
         {
-            if (string.Equals(this.ForumName_BackingField, value, StringComparison.Ordinal))
+            if (string.Equals(this.forumname, value, StringComparison.Ordinal))
                 return;
-            this.ForumName_BackingField = value;
+            this.forumname = value;
             this.NotifyOfPropertyChange(nameof(ForumName));
         }
     }
 
-    private BindableCollection<object> AllItems_BackingField = new BindableCollection<object>();
+    private BindableCollection<object> allitems = new BindableCollection<object>();
     public BindableCollection<object> AllItems
     {
-        get => this.AllItems_BackingField;
+        get => this.allitems;
         set
         {
-            if (this.AllItems_BackingField == value)
+            if (this.allitems == value)
                 return;
-            this.AllItems_BackingField = value;
+            this.allitems = value;
             this.NotifyOfPropertyChange(nameof(AllItems));
         }
     }
 
     private NewsPageViewModel newspageviewmodel; 
-    // = new NewsPageViewModel();
-
+   
     public NewsPageViewModel NewsPageViewModel
     {
         get => this.newspageviewmodel;
@@ -92,17 +91,17 @@ namespace FourPDA.ViewModels
         }
     }
 
-    private ForumPageViewModel ForumPageViewModel_BackingField 
+    private ForumPageViewModel forumpageviewmodel 
             = new ForumPageViewModel(new ForumController(), 
-        new ForumDataService(default), default, default);
+                new ForumDataService(default), default, default);
     public ForumPageViewModel ForumPageViewModel
     {
-        get => this.ForumPageViewModel_BackingField;
+        get => this.forumpageviewmodel;
         set
         {
-            if (this.ForumPageViewModel_BackingField == value)
+            if (this.forumpageviewmodel == value)
                 return;
-            this.ForumPageViewModel_BackingField = value;
+            this.forumpageviewmodel = value;
 
             //  A  tech that implements the infrastructure for property change notification
             //  and automatically performs UI thread marshalling
@@ -112,38 +111,39 @@ namespace FourPDA.ViewModels
 
      
 
-     //---------------------------
-        public MainPageViewModel
-        (
-             NewsController newsController,
-             NewsDataService newsDataService,
-             ForumController forumController,
-             ForumDataService forumDataService,
-             IBusyIndicator busyIndicator,
-             Caliburn.Micro.INavigationService navigationService
-        )
+    public bool CanReturnBack
+    {
+        get
         {
-            this._newsController = newsController;
-            this._newsDataService = newsDataService;
-            this._forumController = forumController;
-            this._forumDataService = forumDataService;
-            this._busyIndicator = busyIndicator;
-            this._navigationService = navigationService;
+            return !this._currentForum.HasRootParent;
         }
-
-        // --------------------------
-
+    }
 
 
-        public bool CanReturnBack
-        {
-            get
-            {
-                return !this._currentForum.HasRootParent;
-            }
-        }
+    // construct controllers & data services
+    public MainPageViewModel
+    (
+            NewsController newsController,
+            NewsDataService newsDataService,
+            ForumController forumController,
+            ForumDataService forumDataService,
+            IBusyIndicator busyIndicator,
+            Caliburn.Micro.INavigationService navigationService
+    )
+    {
+        this._newsController = newsController;
+        this._newsDataService = newsDataService;
+        
+        this._forumController = forumController;
+        this._forumDataService = forumDataService;
+        
+        this._busyIndicator = busyIndicator;
 
-        public void SelectForum(ForumDataModel forum)
+        this._navigationService = navigationService;
+    }
+
+
+    public void SelectForum(ForumDataModel forum)
     {
        this.LoadDataAsync();//(forum.Id); 
     }
@@ -157,22 +157,22 @@ namespace FourPDA.ViewModels
 
     public void OpenNewsDetails(NewsItemDataModel newsItem)
     {
-            //ParameterExpression parameterExpression;
+        //ParameterExpression parameterExpression;
 
-            /*
-             This code creates a new instance of NewsDetailsPageViewModel, 
-            sets the NewsUri property to newsItem.Uri, 
-            and then navigates to the NewsDetailsPageViewModel. 
-            Note that this assumes that NewsDetailsPageViewModel has a NewsUri property. 
-            If it doesn't, you'll need to modify the code accordingly.             
-             */
+        /*
+            This code creates a new instance of NewsDetailsPageViewModel, 
+        sets the NewsUri property to newsItem.Uri, 
+        and then navigates to the NewsDetailsPageViewModel. 
+        Note that this assumes that NewsDetailsPageViewModel has a NewsUri property. 
+        If it doesn't, you'll need to modify the code accordingly.             
+            */
          
-            //not needed ?
-            //NewsDetailsPageViewModel newsDetailsPageViewModel = new NewsDetailsPageViewModel(
-            //    (NewsDataService)this._navigationService, this._busyIndicator);
+        //not needed ?
+        NewsDetailPageViewModel newsDetailsPageViewModel = new NewsDetailPageViewModel(
+            (NewsDataService)this._newsDataService, this._busyIndicator, this._navigationService);
 
-            (Caliburn.Micro.NavigationExtensions.UriFor<NewsDetailPageViewModel>
-            (this._navigationService)).Navigate();
+        //(Caliburn.Micro.NavigationExtensions.UriFor<NewsDetailPageViewModel>
+        //                                     (this._navigationService)).Navigate();
      }
 
 
@@ -181,11 +181,11 @@ namespace FourPDA.ViewModels
       //base.OnInitialize(); //?
                            
       this.LoadDataAsync(); //this.LoadDataAsync(this.ForumId);
-        }
+     }
 
-        /*
-    private async void LoadDataAsync(string forumId)
-    {
+     /*
+     private async void LoadDataAsync(string forumId)
+     {
         //using (this._busyIndicator.StartJob())
         try
         {
@@ -208,65 +208,67 @@ namespace FourPDA.ViewModels
             Debug.WriteLine("[ex] MainPageViewModel - LoadDataAsync ex.: " + ex.Message);
         }
        
-    }//LoadDataAsync
-        */
+     }//LoadDataAsync
+     */
 
               
 
-        private async void LoadDataAsync()
+    private async void LoadDataAsync()
+    {
+        //TODO: busyIndicator
+        //using (this._busyIndicator.StartJob())
+        try
         {
-            //TODO: busyIndicator
-            //using (this._busyIndicator.StartJob())
-            try
-            {
-                //await this.NewsPageViewModel.LoadDataAsync();
+            //await this.NewsPageViewModel.LoadDataAsync();
 
-                //TEMP
-                //await this.ForumPageViewModel.LoadDataAsync(default);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("[ex] MainPageViewModel - LoadDataAsync ex: " + ex.Message);
-            }
+            //TEMP
+            //await this.ForumPageViewModel.LoadDataAsync(default);
         }
-
-        public void RefreshData() => this.LoadDataAsync();
-
-
-
-        //RnD
-        //MainPageViewModel
-        public MainPageViewModel()
+        catch (Exception ex)
         {
-            //TEST
-            /*
-            this.LoadDataAsync();//(this.ForumId);
-
-            this.ForumName = "Windows Phone";
-
-            BindableCollection<object> bindableCollection = new BindableCollection<object>();
-            bindableCollection.Add((object)new ForumDataModel()
-            {
-                Title = "SubForum"
-            });
-            bindableCollection.Add((object)new ForumDataModel()
-            {
-                Title = "SubForum2"
-            });
-            bindableCollection.Add((object)new TopicDataModel()
-            {
-                Name = "How to buy windowsphone"
-            });
-            bindableCollection.Add((object)new TopicDataModel()
-            {
-                Name = "How to buy windowsphone2"
-            });
-            bindableCollection.Add((object)new TopicDataModel()
-            {
-                Name = "How to buy windowsphone3"
-            });
-            this.AllItems = bindableCollection;
-            */
-        }//MainPageViewModel
+            Debug.WriteLine("[ex] MainPageViewModel - LoadDataAsync ex: " + ex.Message);
+        }
     }
+
+    public void RefreshData() => this.LoadDataAsync();
+
+
+
+    //RnD
+    //MainPageViewModel
+    /*
+    public MainPageViewModel()
+    {
+        //TEST
+           
+        this.LoadDataAsync();//(this.ForumId);
+
+        this.ForumName = "Windows Phone";
+
+        BindableCollection<object> bindableCollection = new BindableCollection<object>();
+        bindableCollection.Add((object)new ForumDataModel()
+        {
+            Title = "SubForum"
+        });
+        bindableCollection.Add((object)new ForumDataModel()
+        {
+            Title = "SubForum2"
+        });
+        bindableCollection.Add((object)new TopicDataModel()
+        {
+            Name = "How to buy windowsphone"
+        });
+        bindableCollection.Add((object)new TopicDataModel()
+        {
+            Name = "How to buy windowsphone2"
+        });
+        bindableCollection.Add((object)new TopicDataModel()
+        {
+            Name = "How to buy windowsphone3"
+        });
+        this.AllItems = bindableCollection;
+          
+    }//MainPageViewModel
+    */
+  }
 }

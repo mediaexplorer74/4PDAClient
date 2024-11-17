@@ -4,19 +4,20 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  xmlns:uap18="http://schemas.microsoft.com/appx/manifest/uap/windows10/18"
-  IgnorableNamespaces="uap mp uap18">
+  xmlns:iot="http://schemas.microsoft.com/appx/manifest/iot/windows10"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  IgnorableNamespaces="uap mp iot uap3">
 
   <Identity
-    Name="ME.FourPDADevV2"
+    Name="ME.For4PDAv2"
     Publisher="CN=Admin"
-    Version="2.0.0.0" />
+    Version="2.0.1.0" />
 
-  <mp:PhoneIdentity PhoneProductId="f025b918-50ac-4fc6-a33b-707f0b76635c" PhonePublisherId="0000a33b-a33b-5500-4000-000000000350"/>
+  <mp:PhoneIdentity PhoneProductId="d4cb2a08-94c5-4c09-8393-c620cf2f9a49" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>FourPDA v2.0-alpha</DisplayName>
-    <PublisherDisplayName>mediaexplorer</PublisherDisplayName>
+    <DisplayName>FourPDA v2.0.1-alpha</DisplayName>
+    <PublisherDisplayName>Admin</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -31,9 +32,9 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="FourPDA.App" uap18:TrustLevel="appContainer" uap18:RuntimeBehavior="windowsApp">
+      EntryPoint="FourPDA.App" >
       <uap:VisualElements
-        DisplayName="FourPDA 2.0-alpha"
+        DisplayName="FourPDA 2.0.1-alpha"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="FourPDA v2.0 uwp app"
@@ -50,6 +51,10 @@
 
   <Capabilities>
     <Capability Name="internetClient" />
+    <iot:Capability Name="lowLevelDevices"/>
     <uap:Capability Name="removableStorage"/>
+    <uap3:Capability Name="backgroundMediaPlayback"/>
+   <DeviceCapability Name="location"/>
+
   </Capabilities>
 </Package>
