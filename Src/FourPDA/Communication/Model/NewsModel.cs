@@ -46,6 +46,8 @@ namespace FourPDA.Communication.Model
 
         public string Name { get; private set; }
 
+        //public string Body { get; private set; }
+
         public string Id { get; private set; }
 
         public string ParentId { get; private set; }

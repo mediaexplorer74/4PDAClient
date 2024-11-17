@@ -32,7 +32,7 @@ namespace FourPDA.AppServices.Controllers
       {
         Id = model.Id,
         Title = NewsController.MakeTitle(model, parentTitle),
-        Body = model.Name, // temp
+        //Body = model.Body,
         HasChildren = Enumerable.Any<NewsModel>((IEnumerable<NewsModel>) model.Children)
       };
     }

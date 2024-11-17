@@ -115,12 +115,14 @@ namespace FourPDA.ViewModels
     protected override void OnInitialize()
     {
       base.OnInitialize();
-      this.LoadDataAsync(this.ForumId);
+
+      //future
+      //this.LoadDataAsync(this.ForumId);
     }
 
     /*private*/public async Task LoadDataAsync(string forumId)
     {
-      using (this._busyIndicator.StartJob())
+      //using (this._busyIndicator.StartJob())
       {
         if (this.AllItems != null)
           this.AllItems.Clear();

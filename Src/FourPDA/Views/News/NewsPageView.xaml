@@ -8,6 +8,7 @@
     xmlns:tp="using:Telerik.UI.Xaml.Controls.Primitives"
     xmlns:micro="using:Caliburn.Micro"
     mc:Ignorable="d"
+    d:DesignHeight="480" d:DesignWidth="480"
     >
     <!--
     d:DesignHeight="480" 
@@ -23,7 +24,8 @@
     -->
 
    <Grid>
-         <!--Style="{StaticResource ListBoxStyle}"-->
+
+        <!--Style="{StaticResource ListBoxStyle}"-->
             <!--tp:RadCycleHubTile-->
 
         <!-- [Event ItemClick] = [Action OpenNewsDetails($dataContext)]  -->
@@ -36,21 +38,25 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
 
-                    <!--micro:Message.Attach="[Event Tap] = [Action OpenNewsDetails($dataContext)]"
+               <!--micro:Message.Attach="[Event Tap] = [Action OpenNewsDetails($dataContext)]"
                     Text="{Binding Title}" 
                     -->
                <StackPanel VerticalAlignment="Top"
                     Margin="0 0 24 18" >
-                        
-                          <TextBlock 
+                        <!-- news item title -->
+                        <TextBlock 
                             TextDecorations="Underline" FontSize="24" 
                             TextWrapping="Wrap"  HorizontalAlignment="Left" 
                             Foreground="{StaticResource SystemColorControlAccentBrush}" 
                             Text="{Binding Title}"  
                             />
-                          <TextBlock TextWrapping="Wrap" Text="{Binding Body}" />
-                        <TextBlock Foreground="{StaticResource AppBarBorderThemeBrush}"  
-                  Text="{Binding Timestamp}" />
+
+                           <!-- news item description -->
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Body}" />
+
+                           <!-- news item timestamp - not ready -->
+                            <!--TextBlock Foreground="{StaticResource AppBarBorderThemeBrush}"  
+                               Text="{Binding Timestamp}" /-->
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -132,19 +138,19 @@
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.PrimaryCommands>
-              <AppBarButton
+              <!--AppBarButton
                 x:Name="Back"
                 x:Uid="Back"
                 Click="Back_Click"
                 Icon="Back"
-                Label="Back"/>
+                Label="Back"/-->
 
-                <AppBarButton
+                <!--AppBarButton
                 x:Name="Forward"
                 x:Uid="Forward"
                 Click="Forward_Click"
                 Icon="Forward"
-                Label="Forward"/>
+                Label="Forward"/-->
 
                 <AppBarButton
                   x:Name="Home"

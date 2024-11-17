@@ -30,19 +30,19 @@
     <Page.BottomAppBar>
       <CommandBar>
         <CommandBar.PrimaryCommands>
-          <AppBarButton
+          <!--AppBarButton
              x:Name="Back"
              x:Uid="Back"
              Click="Back_Click"
              Icon="Back"
-             Label="Back"/>
+             Label="Back"/-->
 
-          <AppBarButton
+          <!--AppBarButton
              x:Name="Forward"
              x:Uid="Forward"
              Click="Forward_Click"
              Icon="Forward"
-             Label="Forward"/>
+             Label="Forward"/-->
 
           <AppBarButton
              x:Name="Forum"

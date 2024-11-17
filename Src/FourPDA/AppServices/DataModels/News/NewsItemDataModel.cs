@@ -12,8 +12,7 @@ namespace FourPDA.AppServices.DataModels
     private string title;
     public string Title
     {
-            get; set;
-        /*get
+        get
         {
             return this.title;
         }
@@ -24,7 +23,7 @@ namespace FourPDA.AppServices.DataModels
                 return;
             this.title = value;
             this.NotifyOfPropertyChange(nameof(Title));
-        }*/
+        }
     }
 
     private string body;
@@ -36,8 +35,21 @@ namespace FourPDA.AppServices.DataModels
         if (string.Equals(this.body, value, StringComparison.Ordinal))
           return;
         this.body = value;
-        this.NotifyOfPropertyChange(nameof (Body));
+        this.NotifyOfPropertyChange(nameof(Body));
       }
+    }
+
+    private string uri;
+    public string Uri
+    {
+        get => this.uri;
+        set
+        {
+            if (string.Equals(this.uri, value, StringComparison.Ordinal))
+                return;
+            this.uri = value;
+            this.NotifyOfPropertyChange(nameof(Uri));
+        }
     }
 
     private string timestamp;
@@ -49,23 +61,8 @@ namespace FourPDA.AppServices.DataModels
         if (string.Equals(this.timestamp, value, StringComparison.Ordinal))
           return;
         this.timestamp = value;
-        this.NotifyOfPropertyChange(nameof (Timestamp));
+        this.NotifyOfPropertyChange(nameof(Timestamp));
       }
     }
-
-    private string uri;
-    public string Uri
-    {
-      get => this.uri;
-      set
-      {
-        if (string.Equals(this.uri, value, StringComparison.Ordinal))
-          return;
-        this.uri = value;
-        this.NotifyOfPropertyChange(nameof(Uri));
-      }
-    }
-
-    //public event PropertyChangedEventHandler PropertyChanged;
   }
 }

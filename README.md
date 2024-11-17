@@ -12,8 +12,9 @@ Very early bird; draft UWP application to "parse" 4PDA web site on some winphone
 
 ## Screenshots
 ![MainPivot proto](Images/shot01.png)
-![News proto](Images/shot02.png)
-![News Item Detail proto](Images/shot03.png)
+![News List proto](Images/shot02.png)
+![News Item proto](Images/shot03.png)
+![Forum proto](Images/shot04.png)
 
 ## Tech/dev details
 - Platforms: UWP only

@@ -9,14 +9,14 @@
   IgnorableNamespaces="uap mp iot uap3">
 
   <Identity
-    Name="ME.For4PDAv2"
+    Name="ME.FourPDAv2p0p2"
     Publisher="CN=Admin"
-    Version="2.0.1.0" />
+    Version="2.0.2.0" />
 
-  <mp:PhoneIdentity PhoneProductId="d4cb2a08-94c5-4c09-8393-c620cf2f9a49" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="d4cb2a08-94c5-4c09-8350-c620cf2f9a49" PhonePublisherId="00000000-94c5-0050-0000-000770000000"/>
 
   <Properties>
-    <DisplayName>FourPDA v2.0.1-alpha</DisplayName>
+    <DisplayName>FourPDA v2.0.2-alpha</DisplayName>
     <PublisherDisplayName>Admin</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -34,10 +34,10 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="FourPDA.App" >
       <uap:VisualElements
-        DisplayName="FourPDA 2.0.1-alpha"
+        DisplayName="FourPDA 2.0.2-alpha"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="FourPDA v2.0 uwp app"
+        Description="FourPDA v2 UWP app"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

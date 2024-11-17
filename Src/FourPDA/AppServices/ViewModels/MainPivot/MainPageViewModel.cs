@@ -161,9 +161,9 @@ namespace FourPDA.ViewModels
 
         /*
             This code creates a new instance of NewsDetailsPageViewModel, 
-        sets the NewsUri property to newsItem.Uri, 
+        sets the Uri property to newsItem.Uri, 
         and then navigates to the NewsDetailsPageViewModel. 
-        Note that this assumes that NewsDetailsPageViewModel has a NewsUri property. 
+        Note that this assumes that NewsDetailsPageViewModel has a Uri property. 
         If it doesn't, you'll need to modify the code accordingly.             
             */
          
@@ -178,9 +178,9 @@ namespace FourPDA.ViewModels
 
     protected override void OnInitialize()
     {
-      //base.OnInitialize(); //?
+      base.OnInitialize(); //?
                            
-      this.LoadDataAsync(); //this.LoadDataAsync(this.ForumId);
+      //this.LoadDataAsync(); //this.LoadDataAsync(this.ForumId);
      }
 
      /*
@@ -219,7 +219,7 @@ namespace FourPDA.ViewModels
         //using (this._busyIndicator.StartJob())
         try
         {
-            //await this.NewsPageViewModel.LoadDataAsync();
+            await this.NewsPageViewModel.LoadDataAsync();
 
             //TEMP
             //await this.ForumPageViewModel.LoadDataAsync(default);

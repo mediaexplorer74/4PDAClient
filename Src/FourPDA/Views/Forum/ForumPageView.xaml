@@ -22,14 +22,14 @@
     -->
 
         <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
+        
+        <!--Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions-->
 
         <!--Background="{StaticResource ForPDALightBrush}-->
-            <Border Background="LightCyan"
-                Height="72">
+            <!--Border Background="LightCyan" Height="72">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -37,7 +37,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <!--tp:RadTransitionControl
+                <tp:RadTransitionControl
                     Content="{Binding ForumName, Converter={StaticResource StringCaseConverter}, ConverterParameter=l}"
                     Name="Title">
                     <tp:RadTransitionControl.Transition>
@@ -68,25 +68,30 @@
                         </DataTemplate>
                     </tp:RadTransitionControl.ContentTemplate>
 
-                </tp:RadTransitionControl-->
+                </tp:RadTransitionControl>
 
-                <!--controls:QmsControl Grid.Column="2"
+            <controls:QmsControl Grid.Column="2"
                                      Margin="0 9 0 0"
-                                     VerticalAlignment="Center"/-->
+                                     VerticalAlignment="Center"/>
 
-            </Grid>
-        </Border>
+        </Grid>
+        </Border-->
 
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0 32 0 0">
-            
-            
+
+            <!--WebView -->
+
+            <WebView x:Name="WebViewControl" 
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"
+               NavigationCompleted="Browser_NavigationCompleted" 
+             />
+
             <!--
             behaviors:ListBoxBehavior.DisableSelection="True"
             Style="{StaticResource ListBoxStyle}"   
             -->
-                <ListBox ItemsSource="{Binding AllItems}"
-                                    
-                                    >
+                <!--ListBox ItemsSource="{Binding AllItems}"-->
                 <!--ListBox.ItemTemplateSelector>
                     <i:ForumDataTemplateSelector>
                         <i:ForumDataTemplateSelector.ForumTemplate>
@@ -147,10 +152,106 @@
                 <!--ListBox.ItemRemovedAnimation>
                     <telerik:RadFadeAnimation EndOpacity="0" StartOpacity="1" />
                 </ListBox.ItemRemovedAnimation-->
-            </ListBox>
+            <!--/ListBox-->
 
         </Grid>
     </Grid>
+
+
+
+    <!-- Bottom app bar -->
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <!--AppBarButton
+               x:Name="Back"
+               x:Uid="Back"
+               Click="Back_Click"
+               Icon="Back"
+               Label="Back"
+               Command="{Binding NavigationHelper.GoBackCommand, ElementName=pageRoot}"       
+                 /-->
+
+                <!--AppBarButton
+       x:Name="Forward"
+       x:Uid="Forward"
+       Click="Forward_Click"
+       Icon="Forward"
+       Label="Forward"/-->
+
+                <AppBarButton
+            x:Name="Home"
+            x:Uid="Home"
+            Click="Home_Click"
+            Icon="Home"
+            Label="Home"/>
+
+          <AppBarButton
+        x:Name="News"
+        x:Uid="News"
+        Click="News_Click"
+        Icon="Globe"
+        Label="News"/>
+
+                <AppBarButton
+ x:Name="ZoomIn"
+ x:Uid="ZoomIn"
+ Click="ZoomIn_Click"
+ Icon="ZoomIn"
+ Label="Zoom in"/>
+                <AppBarButton
+ x:Name="ZoomOut"
+ x:Uid="ZoomOut"
+ Click="ZoomOut_Click"
+ Icon="ZoomOut"
+ Label="Zoom out"/>
+
+            </CommandBar.PrimaryCommands>
+
+
+            <CommandBar.SecondaryCommands>
+
+                <AppBarButton
+      x:Name="Refresh"
+      x:Uid="Refresh"
+      Click="Refresh_Click"
+      Icon="Refresh"
+      Label="Refresh"/>
+
+                <AppBarButton
+      x:Name="Settings"
+      x:Uid="Settings"
+      Click="Settings_Click"
+      Icon="Setting"
+      Label="Settings"/>
+
+                <AppBarToggleButton
+       x:Name="UiThemeToggle"
+       x:Uid="UiThemeToggle"
+       Click="UiThemeToggle_Click"
+       Icon="Clock"
+       Label="Dark theme"/>
+
+                <AppBarToggleButton
+       x:Name="ForumModeToggle"
+       x:Uid="ForumModeToggle"
+       Click="ForumModeToggle_Click"
+       Icon="Document"
+       Label="Forum mode"/>
+
+                <AppBarButton
+       x:Name="AboutMe"
+       x:Uid="AboutMe"
+       Click="AboutApp_Click"
+       Icon="Contact"
+       Label="About"/>
+
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
+
 </Page>
     
 <!--

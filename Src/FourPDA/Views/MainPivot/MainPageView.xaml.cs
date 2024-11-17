@@ -116,6 +116,12 @@ namespace FourPDA.Views
             //
         }
 
+        private void Forum_Click(object sender, RoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(ForumPageView));
+        }
+
         private void UiThemeToggle_Click(object sender, RoutedEventArgs e)
         {
             //
@@ -135,13 +141,6 @@ namespace FourPDA.Views
         }
 
         private void Forward_Click(object sender, RoutedEventArgs e)
-        {
-            //
-        }
-
-
-      
-        private void Forum_Click(object sender, RoutedEventArgs e)
         {
             //
         }

@@ -25,12 +25,12 @@ namespace FourPDA.Converters
                     return (object)null;
                 return (object)new BitmapImage(new Uri((string)value))
                 {
-                    CreateOptions = (BitmapCreateOptions)18
+                    CreateOptions = BitmapCreateOptions.IgnoreImageCache//(BitmapCreateOptions)18 ?
                 };
             }
             return (object)(value as Uri) != null ? (object)new BitmapImage((Uri)value)
             {
-                CreateOptions = (BitmapCreateOptions)18
+                CreateOptions = BitmapCreateOptions.IgnoreImageCache//(BitmapCreateOptions)18 ?
             } : throw new NotSupportedException();
         }
 

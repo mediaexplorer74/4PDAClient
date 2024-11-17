@@ -1,4 +1,4 @@
-﻿// FourPDA.AppServices.ViewModels.NewsDetailsPageViewModel
+﻿// FourPDA.ViewModels.NewsDetailPageViewModel
 
 using Caliburn.Micro;
 using FourPDA.AppServices;
@@ -20,11 +20,9 @@ namespace FourPDA.ViewModels
     
     private IBrowserView _view;
 
-    //RnD
     public NewsItemDataModel Parameter { get; set; }
 
 
-    //Temp
     private string title;
     public string Title
     {
@@ -36,34 +34,60 @@ namespace FourPDA.ViewModels
         }
     }
 
-
-    private string newsuri;
-    public string NewsUri
+    private string body;
+    public string Body
     {
-      get => this.newsuri;
+        get => this.body;
+        set
+        {
+            if (string.Equals(this.body, value, StringComparison.Ordinal))
+                return;
+            this.body = value;
+            this.NotifyOfPropertyChange(nameof(Body));
+        }
+    }
+
+    private string uri;
+    public string Uri
+    {
+      get => this.uri;
       set
       {
-        if (string.Equals(this.newsuri, value, StringComparison.Ordinal))
+        if (string.Equals(this.uri, value, StringComparison.Ordinal))
           return;
-        this.newsuri = value;
-        this.NotifyOfPropertyChange(nameof (NewsUri));
+        this.uri = value;
+        this.NotifyOfPropertyChange(nameof (Uri));
       }
     }
 
 
-    private bool isloaded;
+    private bool isnotifying;
 
-    public bool IsLoaded
+    public bool IsNotifying
     {
-      get => this.isloaded;
+      get => this.isnotifying;
       set
       {
-        if (this.isloaded == value)
+        if (this.isnotifying == value)
           return;
-        this.isloaded = value;
-        this.NotifyOfPropertyChange(nameof (IsLoaded));
+        this.isnotifying = value;
+        this.NotifyOfPropertyChange(nameof (IsNotifying));
       }
     }
+
+        private string timestamp;
+        public string Timestamp
+        {
+            get => this.timestamp;
+            set
+            {
+                if (string.Equals(this.timestamp, value, StringComparison.Ordinal))
+                    return;
+                this.timestamp = value;
+                this.NotifyOfPropertyChange(nameof(Timestamp));
+            }
+        }
+
 
 
     // construct data services & nav. service
@@ -82,7 +106,35 @@ namespace FourPDA.ViewModels
     }
 
 
+   
+
+    protected override void OnActivate()
+    {
+        
+        Title = Parameter.Title;
+        Uri = Parameter.Uri;
+        Body = Parameter.Body;
+        IsNotifying = Parameter.IsNotifying;
+        Timestamp = Parameter.Timestamp;
+
+     }
+  }
+}
+
 /*
+ 
+    private async void LoadPageAsync()
+    {
+      //using (this._busyIndicator.StartJob())
+      {
+        //string html = await this._newsDataService.LoadNewsHtmlPage(
+        //    this.Uri, ScreenHelper.IsDarkTheme);
+        //this._view.LoadContent(html);
+        this.IsNotifying = true;
+      }
+    }
+
+
     protected override void OnViewLoaded(object view)
     {
       base.OnViewLoaded(view);
@@ -93,31 +145,3 @@ namespace FourPDA.ViewModels
     }
 */
 
-
-
-    private async void LoadPageAsync()
-    {
-      //using (this._busyIndicator.StartJob())
-      {
-        //string html = await this._newsDataService.LoadNewsHtmlPage(
-        //    this.NewsUri, ScreenHelper.IsDarkTheme);
-        //this._view.LoadContent(html);
-        this.IsLoaded = true;
-      }
-    }
-
-    // public event PropertyChangedEventHandler PropertyChanged;
-
-    protected override void OnActivate()
-    {
-        //this.LoadDataAsync(); // ?
-        //NewsItems = new ObservableCollection<NewsItemDataModel>
-        //{
-        //    new NewsItemDataModel {Title = "The Avengers", Body = "Joss Whedon"},
-        //    new NewsItemDataModel {Title = "Transformers", Body = "Michael Bay"},
-        //    new NewsItemDataModel {Title = "X-Men Days of the future past", Body = "Bryan Synger"}
-        //};
-        Title = Parameter.Title;
-     }
-  }
-}
