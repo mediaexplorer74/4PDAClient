@@ -118,7 +118,8 @@ namespace FourPDA.Views
 
         private void Forum_Click(object sender, RoutedEventArgs e)
         {
-            //
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(ForumPageView));
         }
 
 

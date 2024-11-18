@@ -21,10 +21,10 @@ Very early bird; draft UWP application to "parse" 4PDA web site on some winphone
 - OSes: Windows 10 (Mobile); 
 - Min. Win. OS build: 10240 (Hello, project Astoria!)
 
-## Status
+## Status / my 2 cents
 - ForPDA decomp. completed but over 100500 bugs there!
 - Draft. Prototype / Pre-Pre-Pre-Alpha version. Still exploring Caliburn.Micro "magic"...
-- News / Forum "web parsing" not realized yet (3 fake news used for simplify expore/debug process))
+- News / Forum "web parsing" not realized yet (only news feed is really parsed into News list!)
 
 
 ## Licensing
