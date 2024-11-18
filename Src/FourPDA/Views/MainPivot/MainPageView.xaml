@@ -63,12 +63,12 @@
 
          <CommandBar.SecondaryCommands>
 
-            <AppBarButton
+          <!--AppBarButton
             x:Name="Refresh"
             x:Uid="Refresh"
             Click="Refresh_Click"
             Icon="Refresh"
-            Label="Refresh"/>
+            Label="Refresh"/-->
 
             <AppBarButton
             x:Name="Settings"
@@ -77,19 +77,19 @@
             Icon="Setting"
             Label="Settings"/>
 
-            <AppBarToggleButton
+            <!--AppBarToggleButton
              x:Name="UiThemeToggle"
              x:Uid="UiThemeToggle"
              Click="UiThemeToggle_Click"
              Icon="Clock"
-             Label="Dark theme"/>
+             Label="Dark theme"/-->
              
-            <AppBarToggleButton
+            <!--AppBarToggleButton
              x:Name="ForumModeToggle"
              x:Uid="ForumModeToggle"
              Click="ForumModeToggle_Click"
              Icon="Document"
-             Label="Forum mode"/>
+             Label="Forum mode"/-->
 
             <AppBarButton
              x:Name="AboutMe"

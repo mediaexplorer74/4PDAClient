@@ -8,7 +8,8 @@
       xmlns:ctrl="clr-namespace:FourPDA.Controls"
       xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
       xmlns:cnv="clr-namespace:FourPDA.Converters"
-      xmlns:mainPivot1="using:FourPDA.Control"
+      xmlns:mainPivot1="using:FourPDA.Control" 
+      xmlns:viewmodels="using:FourPDA.ViewModels" 
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       mc:Ignorable="d"
       >
@@ -89,15 +90,24 @@
                     <mainPivot1:HeaderControl />
                 </Pivot.Title>
 
-                <!--PivotItem Header="новости">
-                    <ContentControl micro:View.Model="{Binding NewsViewModel}"/>
-                </PivotItem-->
-                <!--PivotItem Header="форумы">
-                    <ContentControl micro:View.Model="{Binding ForumsViewModel}"/>
-                </PivotItem-->
-                <PivotItem Header="каталог"/>
-                <PivotItem Header="избранное"/>
-            </Pivot>
+                <PivotItem Header="[н]овости">
+                 <Grid>
+                    <TextBlock Text="Under the construction"/>
+                    <!--ContentControl micro:View.Model="{Binding NewsPageViewModel}"/-->
+                 </Grid>
+                </PivotItem>
+                <PivotItem Header="[ф]орумы">
+                    <!--ContentControl micro:View.Model="{Binding ForumPageViewModel}"/-->
+                   <TextBlock Text="Under the construction"/>
+                </PivotItem>
+                <PivotItem Header="[к]аталог">
+                <TextBlock Text="Under the construction"/>
+                </PivotItem>
+                <PivotItem Header="[и]збранное">
+                <TextBlock Text="Under the construction"/>
+               </PivotItem>
+             
+        </Pivot>
 
     </Grid>
 </UserControl>

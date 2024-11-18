@@ -68,7 +68,7 @@ namespace FourPDA.Views
             this.InitializeComponent();
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
-            Initialize();
+            WebInitialize();
 
             //RnD
             ZoomFactor += 1;
@@ -80,7 +80,7 @@ namespace FourPDA.Views
 
 
         // Initialize
-        public void Initialize()
+        public void WebInitialize()
         {
             WebViewControl.Settings.IsJavaScriptEnabled = true;
             WebViewControl.Settings.IsIndexedDBEnabled = true;
@@ -98,16 +98,16 @@ namespace FourPDA.Views
         // StoreUIThemeData
         public void StoreUIThemeData()
         {
-            StorageManager.WriteSimpleSetting(FourPDAClientApp.SAVE_DATA_DARKMODE,
-                UiThemeToggle.IsChecked.Value);
+            //StorageManager.WriteSimpleSetting(FourPDAClientApp.SAVE_DATA_DARKMODE,
+            //    UiThemeToggle.IsChecked.Value);
         }//StoreUIThemeData
 
 
         // StoreForumModeData
         public void StoreForumModeData()
         {
-            StorageManager.WriteSimpleSetting(FourPDAClientApp.SAVE_DATA_FORUMMODE,
-                ForumModeToggle.IsChecked.Value);
+            //StorageManager.WriteSimpleSetting(FourPDAClientApp.SAVE_DATA_FORUMMODE,
+            //    ForumModeToggle.IsChecked.Value);
         }//StoreForumModeData
 
 
@@ -127,30 +127,30 @@ namespace FourPDA.Views
             Object isUiThemeToggleChecked = StorageManager.ReadSimpleSetting(
                 FourPDAClientApp.SAVE_DATA_DARKMODE);
 
-            if (isUiThemeToggleChecked != null)
-                UiThemeToggle.IsChecked = (bool)isUiThemeToggleChecked;
+            //if (isUiThemeToggleChecked != null)
+            //    UiThemeToggle.IsChecked = (bool)isUiThemeToggleChecked;
 
-            if (UiThemeToggle.IsChecked.Value)
-            {
-                UiThemeToggle_Click(null, null);
-            }
+            //if (UiThemeToggle.IsChecked.Value)
+            //{
+            //    UiThemeToggle_Click(null, null);
+            //}
 
 
             // Forum mode
             Object isForumModeChecked = StorageManager.ReadSimpleSetting(
                 FourPDAClientApp.SAVE_DATA_FORUMMODE);
 
-            if (isForumModeChecked != null)
-                ForumModeToggle.IsChecked = (bool)isForumModeChecked;
+            //if (isForumModeChecked != null)
+            //    ForumModeToggle.IsChecked = (bool)isForumModeChecked;
 
-            if (ForumModeToggle.IsChecked.Value)
-            {
-                ForumModeToggle_Click(null, null);
-            }
-            else
-            {
+            //if (ForumModeToggle.IsChecked.Value)
+            //{
+            //    ForumModeToggle_Click(null, null);
+            //}
+            //else
+            //{
                 ToFourPDAClientApp();
-            }
+            //}
 
 
             // Zoom factor
@@ -230,7 +230,7 @@ namespace FourPDA.Views
         // About click handler
         private void AboutApp_Click(object sender, RoutedEventArgs e)
         {
-            ToAboutMe();
+            //ToAboutMe();
         }//AboutApp_Click
 
         // Settings click handler
@@ -240,6 +240,14 @@ namespace FourPDA.Views
 
         }//Settings_Click
 
+
+        //Home_Click
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(MainPageView));
+
+        }//Home_Click
 
         // News click handler
         private void News_Click(object sender, RoutedEventArgs e)
@@ -263,28 +271,28 @@ namespace FourPDA.Views
         {
             if (Window.Current.Content is FrameworkElement frameworkElement)
             {
-                frameworkElement.RequestedTheme = UiThemeToggle.IsChecked.Value
-                    ? ElementTheme.Dark
-                    : ElementTheme.Light; // Color.FromArgb(255,54,192,255);
+                frameworkElement.RequestedTheme = ElementTheme.Dark;//UiThemeToggle.IsChecked.Value
+                    //? ElementTheme.Dark
+                    //: ElementTheme.Light; // Color.FromArgb(255,54,192,255);
             }
 
             //RnD
             try
             {
-                SetStatusBarColor(UiThemeToggle.IsChecked.Value
+                SetStatusBarColor((Color)this.Resources["SystemAccentColor"]/*UiThemeToggle.IsChecked.Value
                     ? (Color)this.Resources["SystemAccentColor"]
-                    : ThemeDark);
+                    : ThemeDark*/);
             }
             catch { }
 
             try
             {
-                this.Background = new SolidColorBrush(
-                    UiThemeToggle.IsChecked.Value ? ThemeDark : ThemeLight);
+                this.Background = new SolidColorBrush(ThemeDark
+                    /*UiThemeToggle.IsChecked.Value ? ThemeDark : ThemeLight*/);
             }
             catch { }
 
-            ChangeUIThemeThroughApp(UiThemeToggle.IsChecked.Value);
+            ChangeUIThemeThroughApp(/*UiThemeToggle.IsChecked.Value*/true);
 
             StoreUIThemeData();
 
@@ -295,24 +303,20 @@ namespace FourPDA.Views
         private void ForumModeToggle_Click(object sender, RoutedEventArgs e)
         {
 
-            if (ForumModeToggle.IsChecked.Value)
-            {
+            //if (ForumModeToggle.IsChecked.Value)
+            //{
                 ToForumMode();
-            }
-            else
-            {
-                ToFourPDAClientApp();
-            }
+            //}
+            //else
+            //{
+            //    ToFourPDAClientApp();
+            //}
 
             StoreForumModeData();
         }//ForumModeToggle_Click
 
 
-        //Home_Click
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-            ToFourPDAClientApp();
-        }//Home_Click
+       
 
 
 

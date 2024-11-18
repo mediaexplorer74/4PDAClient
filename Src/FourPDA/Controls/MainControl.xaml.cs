@@ -96,7 +96,7 @@ namespace FourPDA.Controls
 
         private void AboutApp_Click(object sender, RoutedEventArgs e)
         {
-            //
+            //ToAboutMe();
         }
 
         private void MainNav_OnItemInvoked(NavigationView sender, 

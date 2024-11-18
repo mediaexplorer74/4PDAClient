@@ -19,8 +19,17 @@
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <PackageCertificateKeyFile>FourPDA_TemporaryKey.pfx</PackageCertificateKeyFile>
     <LangVersion>latest</LangVersion>
-    <PackageCertificateThumbprint>5D25E77D65AC19A91B5E8890243DBD88292B7F3B</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>
+    </PackageCertificateThumbprint>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -252,18 +261,27 @@
     <Content Include="Assets\backdrop.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Icons\4pda_logo.png" />
+    <Content Include="Assets\Icons\AppListIcon.png" />
+    <Content Include="Assets\Icons\AppListIcon2.png" />
+    <Content Include="Assets\Icons\AppTileIcon.png" />
+    <Content Include="Assets\Icons\AppTileIcon2.png" />
+    <Content Include="Assets\Icons\Messages.png" />
+    <Content Include="Assets\Icons\Profile.png" />
+    <Content Include="Assets\Icons\Refresh.png" />
+    <Content Include="Assets\Icons\Search.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
-    <Content Include="Assets\Logos\logo.png">
+    <Content Include="Assets\Icons\logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Logos\Win10Logo.png">
+    <Content Include="Assets\Icons\Win10Logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Logos\Win10MLogo.png">
+    <Content Include="Assets\Icons\Win10MLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\SmallTile.scale-100.png" />
@@ -306,8 +324,6 @@
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
-    <Content Include="Html\css\phone.css" />
-    <Content Include="Html\index.html" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

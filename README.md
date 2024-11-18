@@ -1,4 +1,4 @@
-# 4PDAClient v2.0.0 (FourPDA codename) - dev branch
+# 4PDAClient v2.0.2 (FourPDA codename) - dev branch
 ![New logo](Images/logo.png)
 
 ## About
@@ -11,10 +11,9 @@ My attempt to remake fully discontinued & obsolete [ForPDA](https://4pda.to/foru
 Very early bird; draft UWP application to "parse" 4PDA web site on some winphone with Windows 10 Mobile os...
 
 ## Screenshots
-![MainPivot proto](Images/shot01.png)
-![News List proto](Images/shot02.png)
-![News Item proto](Images/shot03.png)
-![Forum proto](Images/shot04.png)
+![](Images/shot01a.png) ![](Images/shot02a.png)
+![](Images/shot03a.png) ![](Images/shot04a.png)
+
 
 ## Tech/dev details
 - Platforms: UWP only

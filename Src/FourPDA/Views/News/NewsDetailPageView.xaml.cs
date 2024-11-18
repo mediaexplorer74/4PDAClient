@@ -24,6 +24,7 @@ using System.Diagnostics;
 using System.Windows;
 using Windows.Foundation.Metadata;
 using Windows.Web.Http;
+using System.Xml.Linq;
 
 
 namespace FourPDA.Views
@@ -118,16 +119,16 @@ namespace FourPDA.Views
         // StoreUIThemeData
         public void StoreUIThemeData()
         {
-            StorageManager.WriteSimpleSetting(FourPDAClientApp.SAVE_DATA_DARKMODE,
-                UiThemeToggle.IsChecked.Value);
+            //StorageManager.WriteSimpleSetting(FourPDAClientApp.SAVE_DATA_DARKMODE,
+            //    UiThemeToggle.IsChecked.Value);
         }//StoreUIThemeData
 
 
         // StoreForumModeData
         public void StoreForumModeData()
         {
-            StorageManager.WriteSimpleSetting(FourPDAClientApp.SAVE_DATA_FORUMMODE,
-                ForumModeToggle.IsChecked.Value);
+            //StorageManager.WriteSimpleSetting(FourPDAClientApp.SAVE_DATA_FORUMMODE,
+            //    ForumModeToggle.IsChecked.Value);
         }//StoreForumModeData
 
 
@@ -148,29 +149,31 @@ namespace FourPDA.Views
                 FourPDAClientApp.SAVE_DATA_DARKMODE);
 
             if (isUiThemeToggleChecked != null)
-                UiThemeToggle.IsChecked = (bool)isUiThemeToggleChecked;
-
-            if (UiThemeToggle.IsChecked.Value)
             {
-                UiThemeToggle_Click(null, null);
+                //UiThemeToggle.IsChecked = (bool)isUiThemeToggleChecked;
             }
+
+            //if (UiThemeToggle.IsChecked.Value)
+            //{
+            //    UiThemeToggle_Click(null, null);
+            //}
 
 
             // Forum mode
-            Object isForumModeChecked = StorageManager.ReadSimpleSetting(
-                FourPDAClientApp.SAVE_DATA_FORUMMODE);
+            //Object isForumModeChecked = StorageManager.ReadSimpleSetting(
+            //    FourPDAClientApp.SAVE_DATA_FORUMMODE);
 
-            if (isForumModeChecked != null)
-                ForumModeToggle.IsChecked = (bool)isForumModeChecked;
+            //if (isForumModeChecked != null)
+            //    ForumModeToggle.IsChecked = (bool)isForumModeChecked;
 
-            if (ForumModeToggle.IsChecked.Value)
-            {
-                ForumModeToggle_Click(null, null);
-            }
-            else
-            {
+            //if (ForumModeToggle.IsChecked.Value)
+            //{
+            //    ForumModeToggle_Click(null, null);
+            //}
+            //else
+            //{
                 ToFourPDAClientApp();
-            }
+            //}
 
 
             // Zoom factor
@@ -209,10 +212,13 @@ namespace FourPDA.Views
                 Windows.Phone.UI.Input.HardwareButtons.BackPressed += (s, a) =>
                 {
                     //Debug.WriteLine("Hardware Back button Requested");
-                    if (WebViewControl.CanGoBack)
+                    /*if (WebViewControl.CanGoBack)
                     {
                         WebViewControl.GoBack();
-                    }
+                    }*/
+                    Frame rootFrame = Window.Current.Content as Frame;
+                    rootFrame.Navigate(typeof(NewsPageView));
+
                     a.Handled = true;
                 };
             }
@@ -250,7 +256,7 @@ namespace FourPDA.Views
         // About init click handler
         private void AboutApp_Click(object sender, RoutedEventArgs e)
         {
-            ToAboutMe();
+            //ToAboutMe();
         }//AboutApp_Click
 
 
@@ -259,28 +265,29 @@ namespace FourPDA.Views
         {
             if (Window.Current.Content is FrameworkElement frameworkElement)
             {
-                frameworkElement.RequestedTheme = UiThemeToggle.IsChecked.Value
-                    ? ElementTheme.Dark
-                    : ElementTheme.Light; // Color.FromArgb(255,54,192,255);
+                frameworkElement.RequestedTheme = ElementTheme.Dark;//UiThemeToggle.IsChecked.Value
+                    //? ElementTheme.Dark
+                    //: ElementTheme.Light; // Color.FromArgb(255,54,192,255);
             }
 
             //RnD
             try
             {
-                SetStatusBarColor(UiThemeToggle.IsChecked.Value
-                    ? (Color)this.Resources["SystemAccentColor"]
-                    : ThemeDark);
+                SetStatusBarColor((Color)this.Resources["SystemAccentColor"]);
+                //SetStatusBarColor(UiThemeToggle.IsChecked.Value
+                //    ? (Color)this.Resources["SystemAccentColor"]
+                //    : ThemeDark);
             }
             catch { }
 
             try
             {
-                this.Background = new SolidColorBrush(
-                    UiThemeToggle.IsChecked.Value ? ThemeDark : ThemeLight);
+                this.Background = new SolidColorBrush(ThemeDark
+                    /*UiThemeToggle.IsChecked.Value ? ThemeDark : ThemeLight*/);
             }
             catch { }
 
-            ChangeUIThemeThroughApp(UiThemeToggle.IsChecked.Value);
+            //ChangeUIThemeThroughApp(UiThemeToggle.IsChecked.Value);
 
             StoreUIThemeData();
 
@@ -291,14 +298,14 @@ namespace FourPDA.Views
         private void ForumModeToggle_Click(object sender, RoutedEventArgs e)
         {
 
-            if (ForumModeToggle.IsChecked.Value)
-            {
+            //if (ForumModeToggle.IsChecked.Value)
+            //{
                 ToForumMode();
-            }
-            else
-            {
-                ToFourPDAClientApp();
-            }
+            //}
+            //else
+            //{
+            //    ToFourPDAClientApp();
+            //}
 
             StoreForumModeData();
         }//ForumModeToggle_Click
@@ -358,10 +365,20 @@ namespace FourPDA.Views
         // ToFourPDAClientApp
         private void ToFourPDAClientApp()
         {
-            Uri NewsItemUri = default;//new Uri("https://4pda.to"); 
+            Uri NewsItemUri = default; 
             try
             {
-                NewsItemUri = new Uri(this.Uri.Text);// = FourPDAAppUri
+                string stringPartToCut = "#comments";
+                
+                string uri = this.Uri.Text;
+
+                int length = uri.Length - stringPartToCut.Length;
+
+                if (length > 0)
+                    uri = uri.Substring(0, length);
+
+
+                NewsItemUri = new Uri(uri);
             }
             catch (Exception ex)
             {
@@ -373,9 +390,10 @@ namespace FourPDA.Views
             HttpRequestMessage requestMessage = new HttpRequestMessage
             (
                 HttpMethod.Post, 
-                NewsItemUri//FourPDAAppUri
+                NewsItemUri
             );
 
+            //RnD
             //requestMessage.Headers.Add("User-Agent", UserAgentPersonal);
             
             WebViewControl.NavigateWithHttpRequestMessage(requestMessage);

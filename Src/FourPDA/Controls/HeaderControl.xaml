@@ -9,27 +9,33 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid >
+    <Grid HorizontalAlignment="Right">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="128"/>
+            <ColumnDefinition Width="128"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <!--Source="/Icons/4pda_logo.png" -->
-            <Image Source="/Logos/logo.png" 
-                        Width="131"/>
+            <Image Source="/Assets/Icons/logo.png" 
+                        Height="128"
+                        Width="128" HorizontalAlignment="Right"/>
 
-        <Grid Grid.Column="2" 
-                       VerticalAlignment="Top">
-            <Rectangle 
-                    Width="48"
-                    Height="48"
-                    Fill="{StaticResource ApplicationForegroundThemeBrush}">
-                <!--Rectangle.OpacityMask>
-                    <ImageBrush ImageSource="/Icons/Messages.png"/>
-                </Rectangle.OpacityMask-->
-            </Rectangle>
+           <Grid Grid.Column="2" 
+                 VerticalAlignment="Top" 
+                 HorizontalAlignment="Right">
+            <!--Fill="{StaticResource ApplicationForegroundThemeBrush}"-->
+                <Grid
+                    Width="64"
+                    Height="64"
+                    HorizontalAlignment="Right"
+                    >
+                   <Grid.Background>
+                    <ImageBrush ImageSource="/Assets/Icons/Messages.png"/>
+                   </Grid.Background>
+        
+            </Grid>
+               
         </Grid>
 
     </Grid>

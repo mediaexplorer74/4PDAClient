@@ -179,7 +179,7 @@ namespace FourPDA.ViewModels
                         //node.InnerText + ": " +  node.OuterHtml.ToString();
 
                         string stringPartToCut = "Комментарии к ";
-                        // индекс последнего символа
+                       
                         int startIndex = stringPartToCut.Length - 1;
 
                         string title = text;
