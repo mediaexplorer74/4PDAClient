@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<declare-styleable name="AspectRatio">
+		<attr name="aspectRatio" format="float"/>
+	</declare-styleable>
+
+	<declare-styleable name="SupportView">
+		<attr name="errorTextColor" format="color"/>
+	</declare-styleable>
+
+</resources>

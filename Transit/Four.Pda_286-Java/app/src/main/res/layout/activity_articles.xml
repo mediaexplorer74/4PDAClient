@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+	android:id="@+id/drawer_layout"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<FrameLayout
+			android:id="@+id/list_container"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+
+		<FrameLayout
+			android:id="@+id/item_container"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+
+	</FrameLayout>
+
+	<fragment
+		android:id="@+id/drawer"
+		android:name="four.pda.ui.DrawerFragment_"
+		android:layout_width="@dimen/navigation_drawer_width"
+		android:layout_height="match_parent"
+		android:layout_gravity="start" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

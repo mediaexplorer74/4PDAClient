@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/white">
+
+	<android.support.design.widget.CoordinatorLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<android.support.design.widget.AppBarLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+			<net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout
+				android:id="@+id/collapsing_toolbar"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				app:layout_scrollFlags="scroll|exitUntilCollapsed"
+				app:contentScrim="?attr/colorPrimary"
+				app:expandedTitleTextAppearance="@style/TextAppearance.ExpandedTitle">
+
+				<FrameLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<four.pda.ui.AspectRatioImageView
+						android:id="@+id/backdrop_image_view"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:scaleType="centerCrop"
+						app:layout_collapseMode="parallax"
+						app:aspectRatio="0.75" />
+
+					<four.pda.ui.AspectRatioImageView
+						android:id="@+id/backdrop_image_shadow_view"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_gravity="bottom"
+						app:aspectRatio="0.75"
+						android:background="@drawable/article_image_shadow" />
+
+				</FrameLayout>
+
+				<androidx.appcompat.widget.Toolbar
+					android:id="@+id/toolbar"
+					android:layout_width="match_parent"
+					android:layout_height="?attr/actionBarSize"
+					app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+					app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
+					app:layout_collapseMode="pin" />
+
+			</net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout>
+
+		</android.support.design.widget.AppBarLayout>
+
+		<android.support.v4.widget.NestedScrollView
+			android:id="@+id/scroll_view"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical">
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal"
+					android:paddingTop="@dimen/offset_normal"
+					android:paddingRight="@dimen/offset_normal"
+					android:paddingLeft="@dimen/offset_normal">
+
+					<TextView
+						android:id="@+id/author_view"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"/>
+
+					<TextView
+						android:id="@+id/date_view"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content" />
+
+				</LinearLayout>
+
+				<four.pda.ui.article.LabelView
+					android:id="@+id/label_view"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/offset_normal"
+					android:layout_marginRight="@dimen/offset_normal"
+					android:layout_marginLeft="@dimen/offset_normal" />
+
+				<WebView
+					android:id="@+id/web_view"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content" />
+
+			</LinearLayout>
+
+		</android.support.v4.widget.NestedScrollView>
+
+		<FrameLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_anchor="@id/scroll_view"
+			app:layout_anchorGravity="bottom|right|end">
+
+			<com.google.android.material.floatingactionbutton.FloatingActionButton
+				android:id="@+id/comments_button"
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:layout_margin="@dimen/offset_normal"
+				app:elevation="10dp" />
+
+			<TextView
+				android:id="@+id/comments_count_view"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@drawable/ic_chat_bubble_white"
+				android:textColor="@color/accent"
+				android:layout_gravity="center"
+				android:gravity="center"
+				android:elevation="10dp"
+				tools:text="123" />
+
+		</FrameLayout>
+
+	</android.support.design.widget.CoordinatorLayout>
+
+	<four.pda.ui.SupportView_
+		android:id="@+id/support_view"
+		style="@style/SupportView" />
+
+	<four.pda.ui.article.one.TextZoomPanel_
+		android:id="@+id/text_zoom_panel"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		android:visibility="gone" />
+
+</FrameLayout>
+

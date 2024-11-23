@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/white"
+	android:orientation="vertical">
+
+	<androidx.appcompat.widget.Toolbar
+		android:id="@+id/toolbar"
+		style="@style/Toolbar" />
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<EditText
+				android:id="@+id/message_edit_text"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:background="@android:color/transparent"
+				android:gravity="top"
+				android:hint="@string/add_comment_text_hint"
+				android:inputType="textMultiLine"
+				android:overScrollMode="always"
+				android:padding="@dimen/offset_normal"
+				android:scrollbarStyle="insideInset"
+				android:scrollbars="vertical"
+				android:textSize="@dimen/abc_text_size_body_1_material" />
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="end"
+				android:orientation="horizontal"
+				android:paddingEnd="@dimen/offset_small"
+				android:paddingLeft="@dimen/offset_small"
+				android:paddingRight="@dimen/offset_small"
+				android:paddingStart="@dimen/offset_small">
+
+				<TextView
+					android:id="@+id/add_comment_button"
+					style="@style/MaterialFlatButton"
+					android:layout_gravity="center"
+					android:text="@string/add_comment" />
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+		<four.pda.ui.SupportView_
+			android:id="@+id/support_view"
+			style="@style/SupportView" />
+
+	</FrameLayout>
+
+</LinearLayout>

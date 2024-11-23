@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<dimen name="navigation_drawer_width">240dp</dimen>
+	<dimen name="vertical_shadow_width">16dp</dimen>
+	<dimen name="list_panel_width">320dp</dimen>
+	<dimen name="list_item_width">240dp</dimen>
+
+	<dimen name="offset_big">24dp</dimen>
+	<dimen name="offset_normal">16dp</dimen>
+	<dimen name="offset_small">8dp</dimen>
+
+	<dimen name="button_min_height">48dp</dimen>
+	<dimen name="button_min_width">64dp</dimen>
+	<dimen name="button_internal_offset">8dp</dimen>
+
+	<dimen name="profile_photo_size">100dp</dimen>
+
+	<dimen name="icon_size">48dp</dimen>
+
+	<dimen name="search_list_item_image_width">125dp</dimen>
+	<dimen name="search_list_item_title_text_size">@dimen/abc_text_size_body_1_material</dimen>
+	<dimen name="search_list_item_description_text_size">@dimen/abc_text_size_caption_material</dimen>
+
+</resources>

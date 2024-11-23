@@ -1,0 +1,10 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'four.pda.dao.generator.FourPdaDaoGenerator'
+
+dependencies {
+
+	compile 'de.greenrobot:greendao-generator:2.1.0'
+
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+
+	<LinearLayout
+		android:id="@+id/author_info_view"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+		<TextView
+			android:id="@+id/nick_view"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:singleLine="true"
+			android:textStyle="bold"
+			tools:text="Nickname" />
+
+		<Space
+			android:layout_width="@dimen/offset_small"
+			android:layout_height="wrap_content" />
+
+		<TextView
+			android:id="@+id/date_view"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:singleLine="true"
+			tools:text="15.12.15 20:30" />
+
+		<Space
+			android:layout_width="@dimen/offset_small"
+			android:layout_height="wrap_content" />
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/delimiter"
+			android:gravity="center_vertical"
+			android:orientation="horizontal"
+			android:paddingLeft="4sp"
+			android:paddingRight="4sp">
+
+			<ImageView
+				android:id="@+id/likes_check_view"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="1dp"
+				android:src="@drawable/ic_done_white_12dp"
+				android:visibility="gone" />
+
+			<TextView
+				android:id="@+id/likes_count_view"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@android:color/white"
+				tools:text="123" />
+
+		</LinearLayout>
+
+
+	</LinearLayout>
+
+	<View
+		android:id="@+id/delimiter_view"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:background="@color/delimiter" />
+
+	<TextView
+		android:id="@+id/content_view"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

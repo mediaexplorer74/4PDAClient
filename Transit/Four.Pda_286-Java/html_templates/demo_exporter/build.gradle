@@ -1,0 +1,17 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+mainClassName = 'four.pda.templates.exporter.Exporter'
+
+dependencies {
+
+	compile project(':html_templates')
+	compile project(':client')
+
+    compile 'org.slf4j:slf4j-simple:1.7.21'
+	compile 'commons-io:commons-io:2.5'
+
+}

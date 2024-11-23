@@ -1,0 +1,93 @@
+<resources>
+
+	<string name="app_name">4PDA</string>
+	<string name="news_title">Новости</string>
+
+	<string name="category_all">Все статьи</string>
+	<string name="category_news">Новости</string>
+	<string name="category_articles">Статьи</string>
+	<string name="category_reviews">Обзоры</string>
+	<string name="category_software">Программы</string>
+	<string name="category_games">Игры</string>
+
+	<string name="about">О программе</string>
+	<string name="chooser_title">Что использовать?</string>
+	<string name="no_email_applications_installed">Нет установленных приложений для отправки писем</string>
+	<string name="no_browsers_installed">Нет установленных приложений для просмотра веб-страниц</string>
+	<string name="no_content_applications_installed">Нет установленных приложений для просмотра контента</string>
+
+	<string name="exit_message">Еще раз нажмите Назад для выхода из приложения</string>
+
+	<string name="about_description">
+		<![CDATA[
+			<p>Неофициальный клиент для сайта 4PDA (http://4pda.ru)</p>
+			<p>Исходники на GitHub:<br>https://github.com/FourPDA/FourPDA</p>
+			<p>Замечания, пожелания и предложения принимаются на почту 4pda@gigahub.org</p>
+		]]>
+	</string>
+
+	<string name="about_version">Версия: %1$s</string>
+	<string name="about_buildNumber">Номер сборки: %1$d</string>
+	<string name="about_buildType">Тип: %1$s</string>
+	<string name="about_vcsBranch">Ветка: %1$s</string>
+	<string name="about_vcsCommit">Коммит: %1$s</string>
+
+	<string name="about_developers">Разработчики</string>
+
+	<string name="about_swapi_name">Павел Савинов (swap_i)</string>
+	<string name="about_swapi_email">swapii@gmail.com</string>
+	<string name="about_swapi_4pda"><![CDATA[ <a href="http://4pda.ru/forum/index.php?showuser=2266224">Профиль на 4PDA</a> ]]></string>
+
+	<string name="about_varann_name">Анна Савинова (varann)</string>
+	<string name="about_varann_email">varann@gmail.com</string>
+	<string name="about_varann_4pda"><![CDATA[ <a href="http://4pda.ru/forum/index.php?showuser=4975039">Профиль на 4PDA</a> ]]></string>
+
+	<string name="comments_title">Комментарии</string>
+	<string name="retry_button">Повторить</string>
+
+	<string name="article_network_error">Не удалось загрузить статью</string>
+	<string name="article_list_network_error">Не удалось загрузить список статей</string>
+	<string name="comments_network_error">Не удалось загрузить комментарии</string>
+	<string name="signIn">Войти</string>
+	<string name="signOut">Выйти</string>
+	<string name="login_hint">Логин</string>
+	<string name="password_hint">Пароль</string>
+	<string name="captcha_hint">Число цифрами</string>
+	<string name="auth_title">Вход</string>
+	<string name="auth_network_error">Не удалось загрузить информацию для авторизации.</string>
+	<string name="reply">Ответить</string>
+
+	<string name="comments_new">Новый комментарий</string>
+	<string name="comments_reply_title">Ответ на комментарий</string>
+	<string name="add_comment">Оставить комментарий</string>
+	<string name="add_comment_dialog_title">Добавление комментария</string>
+	<string name="add_comment_text_hint">Важно! Мы напоминаем вам о необходимости уважать собеседников. Любые проявления хамства и неуважения к другим людям, их мнению, устройству или операционной системе наказываются переводом вашего аккаунта в режим &quot;только чтение&quot; на срок от 3 до 7 суток и автоматическому снижению кармы до отрицательных значений.</string>
+	<string name="show_comment_dialog_title">Комментарий</string>
+
+	<string name="cancel">Отменить</string>
+	<string name="add_comment_network_error">Не удалось добавить комментарий</string>
+
+	<string name="text_zoom">Размер шрифта</string>
+	<string name="text_zoom_value">%d%%</string>
+	<string name="close">Закрыть</string>
+	<string name="reset">Сбросить</string>
+	<string name="share">Поделиться</string>
+	<string name="find">Найти</string>
+
+	<string name="deleted_comment">Комментарий удален</string>
+
+	<string name="first_comment_dialog_ok">Все понял</string>
+
+	<string name="search">Поиск</string>
+	<string name="search_articles_count">Найдено: %d</string>
+	<string name="article_comment_like_error">Не удалось залайкать</string>
+	<string name="article_comment_like_already">Уже залайкано</string>
+
+	<string name="profile_title">Профиль</string>
+	<string name="profile_network_error">Не удалось загрузить информацию о профиле.</string>
+
+	<string name="feedback">Обратная связь</string>
+	<string name="feedback_subject">Обратная связь</string>
+	<string name="feedback_chooser_title">Отправить сообщение через</string>
+
+</resources>

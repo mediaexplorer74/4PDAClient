@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/layout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/white">
+
+	<com.rey.material.widget.ProgressView
+		android:id="@+id/progress_view"
+		android:layout_width="32dp"
+		android:layout_height="32dp"
+		android:layout_gravity="center"
+		android:visibility="gone"
+		app:pv_autostart="true"
+		app:pv_circular="true"
+		app:pv_progressMode="indeterminate" />
+
+	<LinearLayout
+		android:id="@+id/error_panel"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_vertical"
+		android:orientation="vertical"
+		android:padding="@dimen/offset_normal"
+		android:visibility="gone">
+
+		<TextView
+			android:id="@+id/error_message"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:gravity="center" />
+
+		<TextView
+			android:id="@+id/retry_view"
+			style="@style/MaterialFlatButton"
+			android:layout_gravity="center"
+			android:text="@string/retry_button" />
+
+	</LinearLayout>
+
+</FrameLayout>

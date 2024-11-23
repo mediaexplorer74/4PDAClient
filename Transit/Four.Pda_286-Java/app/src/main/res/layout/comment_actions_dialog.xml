@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/white"
+	android:orientation="vertical">
+
+	<androidx.appcompat.widget.Toolbar
+		android:id="@+id/toolbar"
+		style="@style/Toolbar" />
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="@dimen/offset_normal">
+
+				<include layout="@layout/comment_list_item" />
+
+			</FrameLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:paddingEnd="@dimen/offset_small"
+				android:paddingLeft="@dimen/offset_small"
+				android:paddingRight="@dimen/offset_small"
+				android:paddingStart="@dimen/offset_small">
+
+				<ImageView
+					android:id="@+id/share_button"
+					style="@style/MaterialFlatButton"
+					android:src="@drawable/ic_share_blue_18dp" />
+
+				<Space
+					android:layout_width="@dimen/offset_normal"
+					android:layout_height="wrap_content" />
+
+				<FrameLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content">
+
+					<ImageView
+						android:id="@+id/like_button"
+						style="@style/MaterialFlatButton"
+						android:layout_gravity="center"
+						android:src="@drawable/ic_thumb_up_blue_18dp" />
+
+					<ProgressBar
+						android:id="@+id/like_progress_view"
+						android:layout_width="24dp"
+						android:layout_height="24dp"
+						android:layout_gravity="center"
+						android:indeterminate="true"
+						android:visibility="invisible" />
+
+				</FrameLayout>
+
+				<Space
+					android:layout_width="@dimen/offset_normal"
+					android:layout_height="wrap_content" />
+
+				<ImageView
+					android:id="@+id/profile_button"
+					style="@style/MaterialFlatButton"
+					android:src="@drawable/ic_person_blue_24dp" />
+
+				<Space
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1" />
+
+				<TextView
+					android:id="@+id/reply_button"
+					style="@style/MaterialFlatButton"
+					android:text="@string/reply" />
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</LinearLayout>

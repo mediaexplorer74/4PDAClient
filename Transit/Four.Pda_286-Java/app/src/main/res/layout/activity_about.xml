@@ -1,0 +1,156 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/background"
+	android:orientation="vertical">
+
+	<androidx.appcompat.widget.Toolbar
+		android:id="@+id/toolbar"
+		style="@style/Toolbar" />
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="170dp"
+				android:background="@color/accent"
+				android:elevation="2dp"
+				android:scaleType="centerCrop"
+				android:src="@drawable/logo" />
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:padding="@dimen/offset_big">
+
+				<TextView
+					android:id="@+id/description_text_view"
+					style="@style/About_TextLabel"
+					android:layout_marginTop="0dp"
+					android:text="@string/about_description" />
+
+				<TextView
+					android:id="@+id/version_text_view"
+					style="@style/About_TextLabel"
+					android:layout_marginTop="0dp"
+					tools:text="@string/about_version" />
+
+				<TextView
+					android:id="@+id/build_number_text_view"
+					style="@style/About_TextLabel"
+					tools:text="@string/about_buildNumber" />
+
+				<TextView
+					android:id="@+id/build_type_text_view"
+					style="@style/About_TextLabel"
+					tools:text="@string/about_buildType" />
+
+				<TextView
+					android:id="@+id/vcs_branch_text_view"
+					style="@style/About_TextLabel"
+					tools:text="@string/about_vcsBranch" />
+
+				<TextView
+					android:id="@+id/vcs_commit_text_view"
+					style="@style/About_TextLabel"
+					tools:text="@string/about_vcsCommit" />
+
+				<LinearLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="vertical">
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="@dimen/offset_big"
+						android:text="@string/about_developers"
+						android:textColor="@color/primary_dark"
+						android:textSize="24sp" />
+
+					<LinearLayout style="@style/About_Contributor_Panel">
+
+						<TextView
+							style="@style/About_Contributor_Name"
+							android:text="@string/about_swapi_name" />
+
+						<FrameLayout style="@style/About_Contributor_Row">
+
+							<ImageView
+								style="@style/About_Contributor_Icon"
+								android:src="@mipmap/ic_email_grey600_24dp" />
+
+							<TextView
+								style="@style/About_Contributor_Param"
+								android:autoLink="email"
+								android:linksClickable="true"
+								android:text="@string/about_swapi_email" />
+
+						</FrameLayout>
+
+						<FrameLayout style="@style/About_Contributor_Row">
+
+							<ImageView
+								style="@style/About_Contributor_Icon"
+								android:src="@mipmap/ic_person_grey600_24dp" />
+
+							<TextView
+								android:id="@+id/swapi_4pda"
+								style="@style/About_Contributor_Param" />
+
+						</FrameLayout>
+
+					</LinearLayout>
+
+					<LinearLayout style="@style/About_Contributor_Panel">
+
+						<TextView
+							style="@style/About_Contributor_Name"
+							android:text="@string/about_varann_name" />
+
+						<FrameLayout style="@style/About_Contributor_Row">
+
+							<ImageView
+								style="@style/About_Contributor_Icon"
+								android:src="@mipmap/ic_email_grey600_24dp" />
+
+							<TextView
+								style="@style/About_Contributor_Param"
+								android:autoLink="email"
+								android:linksClickable="true"
+								android:text="@string/about_varann_email" />
+
+						</FrameLayout>
+
+						<FrameLayout style="@style/About_Contributor_Row">
+
+							<ImageView
+								style="@style/About_Contributor_Icon"
+								android:src="@mipmap/ic_person_grey600_24dp" />
+
+							<TextView
+								android:id="@+id/varann_4pda"
+								style="@style/About_Contributor_Param" />
+
+						</FrameLayout>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</LinearLayout>

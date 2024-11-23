@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{5D434B19-B937-4264-99A4-AED58AD63F24}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Four.Pda</RootNamespace>
+    <AssemblyName>Four.Pda</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <OutputPath>bin\ARM64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="FourPdaDaggerDummy\ClientModule.cs" />
+    <Compile Include="FourPdaDaggerDummy\DummyFourPdaClient.cs" />
+    <Compile Include="FourPdaDaggerProduction\ClientModule.cs" />
+    <Compile Include="FourPdaDaggerProduction\ForcePersistCookieJar.cs" />
+    <Compile Include="Main\analytics\Analytics.cs" />
+    <Compile Include="Main\analytics\AnalyticsTracker.cs" />
+    <Compile Include="Main\analytics\AnswersProxyTracker.cs" />
+    <Compile Include="Main\Auth.cs" />
+    <Compile Include="Main\dagger\BaseModule.cs" />
+    <Compile Include="Main\dagger\FourPdaComponent.cs" />
+    <Compile Include="Main\Dao.cs" />
+    <Compile Include="Main\DateFormats.cs" />
+    <Compile Include="Main\EventBus.cs" />
+    <Compile Include="Main\impl\StaticLoggerBinder.cs" />
+    <Compile Include="Main\logs\LoggerFactory.cs" />
+    <Compile Include="Main\logs\PdaLogger.cs" />
+    <Compile Include="Main\Preferences.cs" />
+    <Compile Include="Main\ui\AboutActivity.cs" />
+    <Compile Include="Main\ui\article\comments\actions\CommentActionsDialog.cs" />
+    <Compile Include="Main\ui\article\comments\actions\DialogParams.cs" />
+    <Compile Include="Main\ui\article\comments\actions\LikeCommentLoaderCallbacks.cs" />
+    <Compile Include="Main\ui\article\comments\actions\UserLikesSomebodyCommentEvent.cs" />
+    <Compile Include="Main\ui\article\comments\add\AddCommentCallbacks.cs" />
+    <Compile Include="Main\ui\article\comments\add\AddCommentDialog.cs" />
+    <Compile Include="Main\ui\article\comments\add\AddCommentEvent.cs" />
+    <Compile Include="Main\ui\article\comments\add\AddCommentLoader.cs" />
+    <Compile Include="Main\ui\article\comments\add\AddCommentViewHolder.cs" />
+    <Compile Include="Main\ui\article\comments\CommentActionsEvent.cs" />
+    <Compile Include="Main\ui\article\comments\CommentsAdapter.cs" />
+    <Compile Include="Main\ui\article\comments\CommentsFragment.cs" />
+    <Compile Include="Main\ui\article\comments\CommentViewHolder.cs" />
+    <Compile Include="Main\ui\article\comments\LoadArticleCommentsCallbacks.cs" />
+    <Compile Include="Main\ui\article\comments\UpdateCommentsEvent.cs" />
+    <Compile Include="Main\ui\article\gallery\ImageGalleryActivity.cs" />
+    <Compile Include="Main\ui\article\gallery\ImagesPagerAdapter.cs" />
+    <Compile Include="Main\ui\article\LabelColor.cs" />
+    <Compile Include="Main\ui\article\LabelView.cs" />
+    <Compile Include="Main\ui\article\list\ArticlesAdapter.cs" />
+    <Compile Include="Main\ui\article\list\ArticleViewHolder.cs" />
+    <Compile Include="Main\ui\article\list\ListCallbacks.cs" />
+    <Compile Include="Main\ui\article\list\ListFragment.cs" />
+    <Compile Include="Main\ui\article\NewsActivity.cs" />
+    <Compile Include="Main\ui\article\one\ArticleFragment.cs" />
+    <Compile Include="Main\ui\article\one\ArticleTaskLoader.cs" />
+    <Compile Include="Main\ui\article\one\SetTextZoomEvent.cs" />
+    <Compile Include="Main\ui\article\one\TextZoomPanel.cs" />
+    <Compile Include="Main\ui\article\SearchActivity.cs" />
+    <Compile Include="Main\ui\article\search\ItemViewHolder.cs" />
+    <Compile Include="Main\ui\article\search\SearchAdapter.cs" />
+    <Compile Include="Main\ui\article\search\SearchArticlesEvent.cs" />
+    <Compile Include="Main\ui\article\search\SearchCallbacks.cs" />
+    <Compile Include="Main\ui\article\search\SearchFragment.cs" />
+    <Compile Include="Main\ui\article\ShowArticleCommentsEvent.cs" />
+    <Compile Include="Main\ui\article\ShowArticleEvent.cs" />
+    <Compile Include="Main\ui\AspectRatioImageView.cs" />
+    <Compile Include="Main\ui\auth\AuthActivity.cs" />
+    <Compile Include="Main\ui\auth\CaptchaCallbacks.cs" />
+    <Compile Include="Main\ui\auth\LoginCallbacks.cs" />
+    <Compile Include="Main\ui\auth\ProfileCallbacks.cs" />
+    <Compile Include="Main\ui\BaseFragment.cs" />
+    <Compile Include="Main\ui\CategoryTitleMap.cs" />
+    <Compile Include="Main\ui\CursorRecyclerViewAdapter.cs" />
+    <Compile Include="Main\ui\DoubleTapListener.cs" />
+    <Compile Include="Main\ui\DrawerFragment.cs" />
+    <Compile Include="Main\ui\Images.cs" />
+    <Compile Include="Main\ui\Keyboard.cs" />
+    <Compile Include="Main\ui\LoadResult.cs" />
+    <Compile Include="Main\ui\profile\ProfileActivity.cs" />
+    <Compile Include="Main\ui\profile\ProfileCallbacks.cs" />
+    <Compile Include="Main\ui\SafeViewPager.cs" />
+    <Compile Include="Main\ui\SupportView.cs" />
+    <Compile Include="Main\ui\UpdateProfileEvent.cs" />
+    <Compile Include="Tests\AboutActivityTest.cs" />
+    <Compile Include="Tests\AllArticlesTest.cs" />
+    <Compile Include="Tests\ArticlesActivityTest.cs" />
+    <Compile Include="Tests\BaseFragmentTest.cs" />
+    <Compile Include="Tests\GamesActivityTest.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\LoginActivityTest.cs" />
+    <Compile Include="Tests\NewsActivityTest.cs" />
+    <Compile Include="Tests\ReviewsActivityTest.cs" />
+    <Compile Include="Tests\SoftwareActivityTest.cs" />
+    <Compile Include="Tests\TabletInterfaceUiTest.cs" />
+    <Compile Include="Tests\TiltInterfaceTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.2.14</Version>
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<dimen name="list_item_title_size">16sp</dimen>
+	<dimen name="category_item_size">16sp</dimen>
+	<dimen name="article_one_title_text">24sp</dimen>
+	<dimen name="profile_login_size">16sp</dimen>
+
+</resources>

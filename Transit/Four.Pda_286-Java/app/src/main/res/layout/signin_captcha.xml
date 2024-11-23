@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:divider="@drawable/divider_small"
+	android:orientation="horizontal"
+	android:showDividers="middle"
+	tools:showIn="@layout/signin">
+
+	<four.pda.ui.AspectRatioImageView
+		android:id="@+id/captcha_image_view"
+		android:layout_width="160dp"
+		android:layout_height="wrap_content"
+		android:scaleType="fitXY"
+		app:aspectRatio="0.5" />
+
+	<android.support.design.widget.TextInputLayout
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:theme="@style/EditText"
+		app:hintTextAppearance="@android:style/TextAppearance.Medium">
+
+		<android.support.design.widget.TextInputEditText
+			android:id="@+id/captcha_text_view"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/captcha_hint"
+			android:inputType="number"
+			app:et_supportSingleLine="true" />
+
+	</android.support.design.widget.TextInputLayout>
+
+</LinearLayout>

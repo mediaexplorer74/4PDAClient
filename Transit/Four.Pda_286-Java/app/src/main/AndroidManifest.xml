@@ -1,0 +1,47 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	package="four.pda">
+
+	<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+	<application
+		android:allowBackup="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:theme="@style/AppTheme"
+        android:name="four.pda.App">
+
+		<activity android:name=".ui.article.NewsActivity_">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+		<activity android:name=".ui.AboutActivity_"
+			android:parentActivityName=".ui.article.NewsActivity_" />
+
+		<activity android:name=".ui.auth.AuthActivity_"
+			android:parentActivityName=".ui.article.NewsActivity_"
+			android:theme="@style/Dialog_Activity"
+			android:windowSoftInputMode="adjustResize" />
+
+		<activity android:name=".ui.article.SearchActivity_"
+			android:windowSoftInputMode="stateHidden" />
+
+		<activity android:name=".ui.profile.ProfileActivity_"
+			android:parentActivityName=".ui.article.NewsActivity_"
+			android:theme="@style/Dialog_Activity" />
+
+		<activity android:name=".ui.article.gallery.ImageGalleryActivity_"
+			android:parentActivityName=".ui.article.NewsActivity_"
+			android:theme="@style/Transparent_Activity" />
+
+	    <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d724677e763ff1af8652a27b2a20f363c5193560" />
+
+    </application>
+
+</manifest>

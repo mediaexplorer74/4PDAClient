@@ -1,0 +1,25 @@
+apply plugin: 'com.android.library'
+
+android {
+
+	compileSdkVersion 25
+	buildToolsVersion '25.0.0'
+
+	/**
+	 * Явное указание версии SDK нужно, чтобы при слиянии манифестов
+	 * Android не добавлял неявные разрешения для targetSdkVersion < 4.
+	 *
+	 * http://developer.android.com/intl/ru/tools/building/manifest-merge.html#implicit-permissions
+	 */
+	defaultConfig {
+		minSdkVersion 16
+		targetSdkVersion 25
+	}
+
+}
+
+dependencies {
+
+	compile 'de.greenrobot:greendao:2.1.0'
+
+}

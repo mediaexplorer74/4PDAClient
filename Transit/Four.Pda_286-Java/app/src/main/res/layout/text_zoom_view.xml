@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="16dp"
+		android:background="@drawable/zoom_panel_top_shadow"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@android:color/white"
+		android:paddingTop="@dimen/offset_normal"
+		android:paddingLeft="@dimen/offset_normal"
+		android:paddingRight="@dimen/offset_normal"
+		android:orientation="vertical">
+
+		<TextView
+			style="@style/Base.TextAppearance.AppCompat.Title"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/text_zoom" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:divider="@drawable/divider_small"
+			android:showDividers="middle"
+			android:gravity="center_vertical">
+
+			<TextView
+				android:id="@+id/decrease_button"
+				style="@style/MaterialFlatButton"
+				android:layout_width="36dp"
+				android:layout_height="36dp"
+				android:gravity="center"
+				android:clickable="true"
+				android:text="&#8211;"
+				android:textSize="20sp" />
+
+			<FrameLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/text_size_view"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					tools:text="125%" />
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:visibility="invisible"
+					android:text="999%" />
+
+			</FrameLayout>
+
+			<TextView
+				android:id="@+id/increase_button"
+				style="@style/MaterialFlatButton"
+				android:layout_width="36dp"
+				android:layout_height="36dp"
+				android:gravity="center"
+				android:clickable="true"
+				android:text="+"
+				android:textSize="20sp" />
+
+			<TextView
+				android:id="@+id/reset_view"
+				style="@style/MaterialFlatButton"
+				android:text="@string/reset" />
+
+			<Space
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1" />
+
+			<TextView
+				android:id="@+id/close_view"
+				style="@style/MaterialFlatButton"
+				android:layout_marginLeft="@dimen/offset_normal"
+				android:text="@string/close" />
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>
