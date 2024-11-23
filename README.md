@@ -8,10 +8,10 @@ I have some plans to "recover" 4PDA-for-W10M. My attempt to remake fully discont
 - Research
 - Design
 - Tech
-- Drv
+- Dev
 - Intro
 
-At stage "Research" I searched all 4PDA-related github repos with c# src code. But Java code is acceptable too! I used JavaToSharp convertor to create "proto" of my future app.
+At stage "Research", I searched all 4PDA-related github repos with c# src code. But Java code is acceptable too! I used JavaToSharp convertor to create "proto" of my future app.
 
 
 ## About
