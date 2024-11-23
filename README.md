@@ -32,6 +32,7 @@ Draft UWP application created as result of "auto-parsing" Java-writed open-sourc
 
 ## References
 - https://github.com/FourPDA/Android  4PDA News Reader, 100% obsolete (target 4pda.ru not available at now) but interesting "parser thing" :)
+- https://github.com/paulirwin/JavaToCSharp Used Java to C# Converter v3.0.0 (x64, portable, gui)
 
 
 ## Licensing
