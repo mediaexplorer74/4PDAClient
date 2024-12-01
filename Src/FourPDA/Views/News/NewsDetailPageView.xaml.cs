@@ -200,11 +200,15 @@ namespace FourPDA.Views
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, a) =>
             {
                 //Debug.WriteLine("Special Back button Requested");
-                if (WebViewControl.CanGoBack)
-                {
-                    WebViewControl.GoBack();
+                //if (WebViewControl.CanGoBack)
+                //{
+                    //WebViewControl.GoBack();
+
+                    Frame rootFrame = Window.Current.Content as Frame;
+                    rootFrame.Navigate(typeof(NewsPageView));
+
                     a.Handled = true;
-                }
+                //}
             };
 
             if (ApiInformation.IsApiContractPresent("Windows.Phone.PhoneContract", 1, 0))

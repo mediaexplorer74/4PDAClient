@@ -153,68 +153,141 @@ namespace FourPDA.ViewModels
                 HtmlDocument htmlDocument = new HtmlDocument();
                 htmlDocument.LoadHtml(responseString);
 
-                // парсим ноды первого вида 
-                HtmlNodeCollection newsNodes1 =
-                htmlDocument.DocumentNode.SelectNodes("//article/*/div[@class='v-panel']/a"); //("//div[@class='v-panel']/a");
+
+                HtmlNodeCollection rootNodes = htmlDocument.DocumentNode.SelectNodes(
+                    "//article/div[@class='description']");
+
+                //**********************
+                if (rootNodes != null)
+                    foreach (HtmlNode r_node in rootNodes)
+                    {
+                        bool flag = false;
+
+                        HtmlNodeCollection childNodes = r_node.ChildNodes;
+
+
+                        if (childNodes != null)
+                        {
+                            HtmlNode[] oneNode = new HtmlNode[5];
+                            int position = 0;
+                            foreach (HtmlNode c_node in childNodes)
+                            {
+                                Debug.WriteLine(c_node);
+                                oneNode[position] = c_node;
+                                ++position;
+                            }
+
+                            if ((oneNode[0].Name=="h2") && (oneNode[1].Name=="div"))
+                            {
+                                Debug.WriteLine(oneNode[0].InnerText + " :: " + oneNode[1].InnerText);
+
+
+                                HtmlNodeCollection subNodes = oneNode[0].ChildNodes;
+
+                                string uri = "";
+                                foreach (HtmlNode item in subNodes)
+                                {
+                                    uri = item.GetAttributeValue("href", string.Empty);
+                                }
+
+                                string title = oneNode[0].InnerText;//GetAttributeValue("title", string.Empty);
+
+                                string body = oneNode[1].InnerText;
+
+                                //string uri = "777";// oneNode[0].OuterHtml.GetAttributeValue("href", string.Empty);
+
+
+                                newsItems.Add
+                                (
+                                    new NewsItemDataModel
+                                    {
+                                        Title = title,
+                                        Body = body,
+                                        Uri = uri,
+                                        IsNotifying = true,
+                                        Timestamp = "12:00" // reserved for sorting, etc.
+                                    }
+                                );
+
+                            }
+
+
+                        }
+                        else
+                        {
+                            Debug.WriteLine("rootNodes empty!");
+                        }
+                    }
+                        //**********************
+/*
+
+                        // парсим ноды первого вида 
+                        HtmlNodeCollection newsNodes1 =
+                //htmlDocument.DocumentNode.SelectNodes("//article/ * /div[@class='v-panel']/a"); //("//div[@class='v-panel']/a");
+                htmlDocument.DocumentNode.SelectNodes("//article/div[@class='description']/h2[@class='list-post-title']/a");
+                
+
+                
+
+                
 
                 // парсим ноды второго вида
                 HtmlNodeCollection newsNodes2 =
-                htmlDocument.DocumentNode.SelectNodes("//article/*/div/p[@style='text-align: justify;']");
+                //htmlDocument.DocumentNode.SelectNodes("//article/ * /div/p[@style='text-align: justify;']");
+                htmlDocument.DocumentNode.SelectNodes("//article/div[@class='description']/div[@itemprop='description']/p[@style='text-align: justify;']");
 
                 if (newsNodes2 != null)
                 {
-                    string body = "";
+                    
+                    string[] body = new string[1000];
 
+                    int counter2 = 0;
                     if (newsNodes1 != null)
                         foreach (var n_node in newsNodes2)
-                    {
-                        body = n_node.InnerText;
-                    }
+                        {
+                            //string body_text = n_node.GetAttributeValue("title", string.Empty);
+                            body[counter2] = n_node.InnerText;
+                            ++counter2; 
+                        }
 
-
+                    int counter1 = 0;
                     foreach (var node in newsNodes1)
                     {
 
-                        string text = node.GetAttributeValue("title", string.Empty);
+                        string title = node.GetAttributeValue("title", string.Empty);
                         //node.InnerText + ": " +  node.OuterHtml.ToString();
-
-                        string stringPartToCut = "Комментарии к ";
-                       
-                        int startIndex = stringPartToCut.Length - 1;
-
-                        string title = text;
-
-                        if (startIndex > 0)
-                            title = text.Substring(startIndex);
-
+                                                
                         string link = node.GetAttributeValue("href", string.Empty);
 
 
                         newsItems.Add
-                            (
+                        (
                             new NewsItemDataModel
                             { 
                                 Title = title,
-                                Body = body, // reserved for short "content body"
+                                Body = body[counter1], 
                                 Uri = link,
                                 IsNotifying = true,
                                 Timestamp = "12:00" // reserved for sorting, etc.
                             }
                         );
-                    }
+                        ++counter1;
+                    }//foreach
                     
                 }
                 else
                 {
            
                     Debug.WriteLine("[ex] News not found.");
-                }
+                }*/
             }
             catch (Exception ex)
             {
         
                 Debug.WriteLine("[ex] httpClient.GetStringAsync error: " + ex.Message);
             }
+
+            
 
             return newsItems;
         }

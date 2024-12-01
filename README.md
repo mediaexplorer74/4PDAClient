@@ -1,4 +1,4 @@
-# 4PDAClient v2.0.2 (FourPDA codename) - dev branch
+# 4PDAClient v2.0.3 (FourPDA codename) - dev branch
 ![New logo](Images/logo.png)
 
 ## About
@@ -17,7 +17,7 @@ Very early bird; draft UWP application to "parse" 4PDA web site on some winphone
 
 ## Tech/dev details
 - Platforms: UWP only
-- Targets: x64; ARM
+- Targets: x64; x64; ARM
 - OSes: Windows 10 (Mobile); 
 - Min. Win. OS build: 10240 (Hello, project Astoria!)
 
@@ -25,6 +25,7 @@ Very early bird; draft UWP application to "parse" 4PDA web site on some winphone
 - ForPDA decomp. completed but over 100500 bugs there!
 - Draft. Prototype / Pre-Pre-Pre-Alpha version. Still exploring Caliburn.Micro "magic"...
 - News / Forum "web parsing" not realized yet (only news feed is really parsed into News list!)
+- News List's "Improper news shortdescription" bug fixed
 
 
 ## Licensing
@@ -34,4 +35,4 @@ MIT License
 AS IS. No support. RnD only / DIY
 
 ## .
-[m][e] November 2024
+[m][e] December 2024
