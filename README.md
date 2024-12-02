@@ -18,7 +18,7 @@ Very early bird; draft UWP application to "parse" 4PDA web site on some winphone
 
 ## Tech/dev details
 - Platforms: UWP only
-- Targets: x64; x64; ARM
+- Targets: ARM
 - OSes: Windows 10 (Mobile); 
 - Min. Win. OS build: 10240 (Hello, project Astoria!)
 
