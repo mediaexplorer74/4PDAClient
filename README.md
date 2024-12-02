@@ -4,7 +4,7 @@
 ## About
 I have some plans to "recover" 4PDA-for-W10M. :)
 
-My attempt to remake fully discontinued & obsolete [ForPDA](https://4pda.to/forum/index.php?showtopic=478458#entry23314163) for WP7 app. 
+So, this is my attempt to remake fully discontinued & obsolete [ForPDA](https://4pda.to/forum/index.php?showtopic=478458#entry23314163) for WP7 app. 
 
 
 ## About
@@ -29,6 +29,8 @@ Very early bird; draft UWP application to "parse" 4PDA web site on some winphone
 - News List's "Improper news shortdescription" bug fixed
 - New pivot items About & Settings added (but no fuctionality yet)
 
+## References
+https://4pda.to/forum/index.php?showtopic=478458 "Обсуждение клиента 4PDA для Windows Phone" на сайте 4PDA (RU)
 
 ## Licensing
 MIT License
