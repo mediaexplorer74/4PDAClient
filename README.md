@@ -26,7 +26,7 @@ Very early bird; draft UWP application to "parse" 4PDA web site on some winphone
 - ForPDA decomp. completed but over 100500 bugs there!
 - Draft. Prototype / Pre-Pre-Pre-Alpha version. Still exploring Caliburn.Micro "magic"...
 - News / Forum "web parsing" not realized yet (only news feed is really parsed into News list!)
-- News List's "Improper news shortdescription" bug fixed
+- News List's "Improper news description" bug fixed
 - New pivot items About & Settings added (but no fuctionality yet)
 
 ## References
