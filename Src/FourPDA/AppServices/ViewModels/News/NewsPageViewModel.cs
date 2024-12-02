@@ -125,8 +125,7 @@ namespace FourPDA.ViewModels
         {
             base.OnInitialize();
 
-            //this.LoadDataAsync(); 
-
+      
             // Load real web data set
             NewsItems = await RealLoadDataAsync();
 
@@ -143,8 +142,8 @@ namespace FourPDA.ViewModels
 
             try
             {
-                // зарегистрирует кодовые страницы Windows.
-                // Тогда windows-1251 будет распознана HTTP клиентом автоматически.
+                // It will register Windows code pages. Then windows-1251
+                //     will be recognized by the HTTP client automatically.
                 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
 
@@ -172,14 +171,13 @@ namespace FourPDA.ViewModels
                             int position = 0;
                             foreach (HtmlNode c_node in childNodes)
                             {
-                                Debug.WriteLine(c_node);
                                 oneNode[position] = c_node;
                                 ++position;
                             }
 
                             if ((oneNode[0].Name=="h2") && (oneNode[1].Name=="div"))
                             {
-                                Debug.WriteLine(oneNode[0].InnerText + " :: " + oneNode[1].InnerText);
+                                //Debug.WriteLine(oneNode[0].InnerText + " :: " + oneNode[1].InnerText);
 
 
                                 HtmlNodeCollection subNodes = oneNode[0].ChildNodes;
@@ -220,15 +218,11 @@ namespace FourPDA.ViewModels
                     }
                         //**********************
 /*
-
-                        // парсим ноды первого вида 
-                        HtmlNodeCollection newsNodes1 =
+          // bad plan
+                // парсим ноды первого вида 
+                HtmlNodeCollection newsNodes1 =
                 //htmlDocument.DocumentNode.SelectNodes("//article/ * /div[@class='v-panel']/a"); //("//div[@class='v-panel']/a");
                 htmlDocument.DocumentNode.SelectNodes("//article/div[@class='description']/h2[@class='list-post-title']/a");
-                
-
-                
-
                 
 
                 // парсим ноды второго вида

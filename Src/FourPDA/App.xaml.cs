@@ -26,6 +26,7 @@ namespace FourPDA
     sealed partial class App //: Application
     {
         private WinRTContainer container;
+        internal static bool AutoNavigateAlreadyApplied = false;
 
         public App()
         {

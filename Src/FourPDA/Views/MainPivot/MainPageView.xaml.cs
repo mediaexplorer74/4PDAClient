@@ -21,6 +21,7 @@ using Windows.System;
 using Windows.UI.Popups;
 using ExceptionHelper;
 using FourPDA.AppServices;
+using Windows.Storage;
 
 // Only for Win SDK builds >= 14393
 //using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
@@ -34,13 +35,24 @@ namespace FourPDA.Views
     /// </summary>
     public sealed partial class MainPageView : Page
     {
-
+        public string _StartMode = "favorites";  
         //Frame rootFrame = Window.Current.Content as Frame;
 
         FourPDA.ViewModels.MainPageViewModel vm = default;
         public MainPageView()
         {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+
+            if (localSettings.Values.ContainsKey("StartMode"))
+            {
+                _StartMode = (string)localSettings.Values["StartMode"];
+            }
+
+            
+
             this.InitializeComponent();
+
+            this.Loaded += Page_Loaded;
 
             // ---------------------------------------------------------
             // Experimental
@@ -57,12 +69,30 @@ namespace FourPDA.Views
 
 
 
-        //private void PageLoaded(object sender, EventArgs e)
-        //{
-        //    AppBar.Setup<MainPivotViewModel>((Page)this).Third(
-        //    (Action<IApplicationBarIconButton, MainPivotViewModel>)
-        //        ((btn, vm) => vm.RefreshData()));
-        //}
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            //    AppBar.Setup<MainPivotViewModel>((Page)this).Third(
+            //    (Action<IApplicationBarIconButton, MainPivotViewModel>)
+            //        ((btn, vm) => vm.RefreshData()));
+
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            // block autonavigation after first "flip" (so, one more switch not allowed)
+            if (!App.AutoNavigateAlreadyApplied)
+            {
+                if (_StartMode == "news")
+                {
+                    rootFrame.Navigate(typeof(NewsPageView));
+                }
+
+                if (_StartMode == "forum")
+                {
+                    rootFrame.Navigate(typeof(ForumPageView));
+                }
+                App.AutoNavigateAlreadyApplied = true;
+            }
+
+        }
 
         /*
         // this is only for win sdk build >= 14393

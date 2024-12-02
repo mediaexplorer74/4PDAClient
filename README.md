@@ -11,8 +11,9 @@ My attempt to remake fully discontinued & obsolete [ForPDA](https://4pda.to/foru
 Very early bird; draft UWP application to "parse" 4PDA web site on some winphone with Windows 10 Mobile os...
 
 ## Screenshots
-![](Images/shot01a.png) ![](Images/shot02a.png)
-![](Images/shot03a.png) ![](Images/shot04a.png)
+![](Images/shot01.png) ![](Images/shot02.png)
+![](Images/shot03.png) ![](Images/shot04.png)
+![](Images/shot05.png) 
 
 
 ## Tech/dev details

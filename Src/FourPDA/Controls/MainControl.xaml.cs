@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,11 +28,22 @@ namespace FourPDA.Controls
     public sealed partial class MainControl : UserControl
     {
         FourPDA.ViewModels.MainPageViewModel vm = default;
+
+        string _StartMode = "";
         public MainControl()
         {
-            Frame rootFrame = Window.Current.Content as Frame;
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+
+            if (localSettings.Values.ContainsKey("StartMode"))
+            {
+                _StartMode = (string)localSettings.Values["StartMode"];
+            }
+
+            // Frame rootFrame = Window.Current.Content as Frame;            
+
 
             this.InitializeComponent();
+
             //((FrameworkElement) this).Loaded += new EventHandler(this.PageLoaded);
 
             // ---------------------------------------------------------
@@ -43,9 +55,30 @@ namespace FourPDA.Controls
             var HomePage = $"FourPDA.HomePage";
             var HomePageType = Type.GetType(HomePage);
 
+            if (localSettings.Values.ContainsKey("StartMode"))
+            {
+                _StartMode = (string)localSettings.Values["StartMode"];
+            }
+
+
             //ContentFrame...
             //rootFrame.Navigate(HomePageType);
         }//
+
+        private void StartModeComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            string ToSelect = string.IsNullOrEmpty(_StartMode) ? "favorites" : _StartMode;
+
+            foreach (ComboBoxItem item in StartModeComboBox.Items)
+            {
+                if ((string)item.Tag == ToSelect)
+                {
+                    StartModeComboBox.SelectedItem = item;
+                    break;
+                }
+            }
+        }
+
 
 
 
@@ -70,8 +103,7 @@ namespace FourPDA.Controls
         }//Refresh_Click
 
 
-
-
+       
         //private void PageLoaded(object sender, EventArgs e)
         //{
         //    AppBar.Setup<MainPivotViewModel>((Page)this).Third((Action<IApplicationBarIconButton, MainPivotViewModel>)
@@ -100,8 +132,9 @@ namespace FourPDA.Controls
         }
 
 
-        private void QualityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void StartModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
             ComboBox comboBox = sender as ComboBox;
 
@@ -117,13 +150,11 @@ namespace FourPDA.Controls
 
                     System.Diagnostics.Debug.WriteLine("Selected item Tag: " + selectedItem.Tag.ToString());
 
-                    string qualityTag = selectedItem.Tag.ToString();
+                    _StartMode = selectedItem.Tag.ToString();
 
-                    System.Diagnostics.Debug.WriteLine("Quality Tag: " + qualityTag);
+                    System.Diagnostics.Debug.WriteLine("StartMode Tag: " + _StartMode);
 
-                    //Settings._selectedQuality = qualityTag;
-
-                    //Settings.SelectedQuality = qualityTag;
+                    localSettings.Values["StartMode"] = _StartMode;
 
                 }
                 else
@@ -168,7 +199,7 @@ namespace FourPDA.Controls
             rootFrame.Navigate(pageType);
         }
 
-
+      
     }
 }
 

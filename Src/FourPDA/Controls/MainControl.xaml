@@ -99,7 +99,8 @@
 
                     <TextBlock Text="Избранное" FontSize="24" FontWeight="Bold" 
                          Foreground="White" Margin="0,0,0,20"/>
-                        <TextBlock Text="(не готово)"/>
+                      
+                    <!--TextBlock Text="(не готово)"/-->
                     <!--ContentControl micro:View.Model="{Binding NewsPageViewModel}"/-->
                  </StackPanel>
                     </ScrollViewer>
@@ -140,13 +141,14 @@
                                            FontSize="20" 
                                            Foreground="White"
                                VerticalAlignment="Center"/>
-                                <ComboBox x:Name="QualityComboBox"
-                                  SelectionChanged="QualityComboBox_SelectionChanged"
+                                <ComboBox x:Name="StartModeComboBox"
+                                  Loaded="StartModeComboBox_Loaded"
+                                  SelectionChanged="StartModeComboBox_SelectionChanged"
                                   Margin="20,0,0,0"
                                   Width="150">      
                                     <ComboBoxItem Content="Избранное" Tag="favorites"/>
                                     <ComboBoxItem Content="Новости" Tag="news"/>
-                                    <ComboBoxItem Content="Форумы" Tag="forums"/>                               
+                                    <ComboBoxItem Content="Форум" Tag="forum"/>                               
                                 </ComboBox>
                             </StackPanel>
                             <TextBlock Text="Выберите предпочитаемый раздел при старте программы."
@@ -155,7 +157,7 @@
                                TextWrapping="Wrap" 
                                Margin="0,0,0,20"/>  
 
-                            <TextBlock Text="(не готово)"/>
+                            <!--TextBlock Text="(не готово)"/-->
                         </StackPanel>
                     </StackPanel>
                     

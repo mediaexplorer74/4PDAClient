@@ -193,62 +193,29 @@
         Icon="Globe"
         Label="News"/>
 
- <AppBarButton
- x:Name="ZoomIn"
- x:Uid="ZoomIn"
- Click="ZoomIn_Click"
- Icon="ZoomIn"
- Label="Zoom in"/>
-<AppBarButton
- x:Name="ZoomOut"
- x:Uid="ZoomOut"
- Click="ZoomOut_Click"
- Icon="ZoomOut"
- Label="Zoom out"/>
-
- </CommandBar.PrimaryCommands>
-
-
-            <CommandBar.SecondaryCommands>
-
-    <!--AppBarButton
-      x:Name="Refresh"
-      x:Uid="Refresh"
-      Click="Refresh_Click"
-      Icon="Refresh"
-      Label="Refresh"/-->
-
-                <AppBarButton
-      x:Name="Settings"
-      x:Uid="Settings"
-      Click="Settings_Click"
-      Icon="Setting"
-      Label="Settings"/>
-
-     <!--AppBarToggleButton
-       x:Name="UiThemeToggle"
-       x:Uid="UiThemeToggle"
-       Click="UiThemeToggle_Click"
-       Icon="Clock"
-       Label="Dark theme"/-->
-
-     <!--AppBarToggleButton
-       x:Name="ForumModeToggle"
-       x:Uid="ForumModeToggle"
-       Click="ForumModeToggle_Click"
-       Icon="Document"
-       Label="Forum mode"/-->
-
      <AppBarButton
-       x:Name="AboutMe"
-       x:Uid="AboutMe"
-       Click="AboutApp_Click"
-       Icon="Contact"
-       Label="About"/>
+     x:Name="ZoomIn"
+     x:Uid="ZoomIn"
+     Click="ZoomIn_Click"
+     Icon="ZoomIn"
+     Label="Zoom in"/>
+      
+    <AppBarButton
+     x:Name="ZoomOut"
+     x:Uid="ZoomOut"
+     Click="ZoomOut_Click"
+     Icon="ZoomOut"
+     Label="Zoom out"/>
 
-            </CommandBar.SecondaryCommands>
-        </CommandBar>
-    </Page.BottomAppBar>
+   </CommandBar.PrimaryCommands>
+
+
+    <!--CommandBar.SecondaryCommands>
+
+
+    </CommandBar.SecondaryCommands-->
+  </CommandBar>
+</Page.BottomAppBar>
 
 
 

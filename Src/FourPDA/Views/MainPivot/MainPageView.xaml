@@ -11,6 +11,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
       mc:Ignorable="d"
+      Loaded="Page_Loaded"
       >
     <!--      
        xmlns:mainPivot1="clr-namespace:FourPDA.Views.MainPivot"
@@ -61,44 +62,44 @@
         </CommandBar.PrimaryCommands>
 
 
-         <CommandBar.SecondaryCommands>
+         <!--CommandBar.SecondaryCommands>
 
-          <!--AppBarButton
-            x:Name="Refresh"
-            x:Uid="Refresh"
-            Click="Refresh_Click"
-            Icon="Refresh"
-            Label="Refresh"/-->
+              <AppBarButton
+                x:Name="Refresh"
+                x:Uid="Refresh"
+                Click="Refresh_Click"
+                Icon="Refresh"
+                Label="Refresh"/>
 
-            <AppBarButton
-            x:Name="Settings"
-            x:Uid="Settings"
-            Click="Settings_Click"
-            Icon="Setting"
-            Label="Settings"/>
+                <AppBarButton
+                x:Name="Settings"
+                x:Uid="Settings"
+                Click="Settings_Click"
+                Icon="Setting"
+                Label="Settings"/>
 
-            <!--AppBarToggleButton
-             x:Name="UiThemeToggle"
-             x:Uid="UiThemeToggle"
-             Click="UiThemeToggle_Click"
-             Icon="Clock"
-             Label="Dark theme"/-->
+                <AppBarToggleButton
+                 x:Name="UiThemeToggle"
+                 x:Uid="UiThemeToggle"
+                 Click="UiThemeToggle_Click"
+                 Icon="Clock"
+                 Label="Dark theme"/>
+
+                <AppBarToggleButton
+                 x:Name="ForumModeToggle"
+                 x:Uid="ForumModeToggle"
+                 Click="ForumModeToggle_Click"
+                 Icon="Document"
+                 Label="Forum mode"/>
+
+                <AppBarButton
+                 x:Name="AboutMe"
+                 x:Uid="AboutMe"
+                 Click="AboutApp_Click"
+                 Icon="Contact"
+                 Label="About"/> 
              
-            <!--AppBarToggleButton
-             x:Name="ForumModeToggle"
-             x:Uid="ForumModeToggle"
-             Click="ForumModeToggle_Click"
-             Icon="Document"
-             Label="Forum mode"/-->
-
-            <AppBarButton
-             x:Name="AboutMe"
-             x:Uid="AboutMe"
-             Click="AboutApp_Click"
-             Icon="Contact"
-             Label="About"/> 
-             
-         </CommandBar.SecondaryCommands>
+         </CommandBar.SecondaryCommands-->
        </CommandBar>
     </Page.BottomAppBar>
 </Page>
