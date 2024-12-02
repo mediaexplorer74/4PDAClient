@@ -86,27 +86,99 @@
 
         <!--  Margin="{Binding Source={StaticResource OrientationMgr}, Path=Orientation, Converter={StaticResource MarginSelector}}"  -->
             <Pivot>
-                <Pivot.Title>
+                <!-- Logo, etc. -->
+                <!--Pivot.Title>
                     <mainPivot1:HeaderControl />
-                </Pivot.Title>
+                </Pivot.Title-->
 
-                <PivotItem Header="[н]овости">
-                 <Grid>
-                    <TextBlock Text="Under the construction"/>
-                    <!--ContentControl micro:View.Model="{Binding NewsPageViewModel}"/-->
-                 </Grid>
-                </PivotItem>
-                <PivotItem Header="[ф]орумы">
-                    <!--ContentControl micro:View.Model="{Binding ForumPageViewModel}"/-->
-                   <TextBlock Text="Under the construction"/>
-                </PivotItem>
-                <PivotItem Header="[к]аталог">
-                <TextBlock Text="Under the construction"/>
-                </PivotItem>
                 <PivotItem Header="[и]збранное">
-                <TextBlock Text="Under the construction"/>
-               </PivotItem>
-             
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                 HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="10">
+
+                    <TextBlock Text="Избранное" FontSize="24" FontWeight="Bold" 
+                         Foreground="White" Margin="0,0,0,20"/>
+                        <TextBlock Text="(не готово)"/>
+                    <!--ContentControl micro:View.Model="{Binding NewsPageViewModel}"/-->
+                 </StackPanel>
+                    </ScrollViewer>
+            </PivotItem>
+                
+                <!--PivotItem Header="[ф]орумы">
+                  <ContentControl micro:View.Model="{Binding ForumPageViewModel}"/>
+                <TextBlock Text="..."/>
+                </PivotItem-->
+                
+                <!--PivotItem Header="[к]аталог">
+                <TextBlock Text="..."/>
+                </PivotItem-->
+                
+                <!--PivotItem Header="[и]збранное">
+                <TextBlock Text="..."/>
+               </PivotItem-->
+
+
+            <PivotItem Header="[н]астройки">
+               
+                <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                                 HorizontalScrollBarVisibility="Disabled">
+                  
+                    <StackPanel Margin="10">
+                        <TextBlock Text="Настройки" FontSize="24" FontWeight="Bold" 
+                                   Foreground="White" 
+                                   Margin="0,0,0,20"/>
+
+                        <StackPanel Orientation="Vertical" 
+                             VerticalAlignment="Center" 
+                             Margin="0,20,0,0">
+                           
+                             <StackPanel Orientation="Horizontal" 
+                                         VerticalAlignment="Center" 
+                                         Margin="0,10,0,0">
+                                <TextBlock Text="Главный раздел" 
+                                           FontSize="20" 
+                                           Foreground="White"
+                               VerticalAlignment="Center"/>
+                                <ComboBox x:Name="QualityComboBox"
+                                  SelectionChanged="QualityComboBox_SelectionChanged"
+                                  Margin="20,0,0,0"
+                                  Width="150">      
+                                    <ComboBoxItem Content="Избранное" Tag="favorites"/>
+                                    <ComboBoxItem Content="Новости" Tag="news"/>
+                                    <ComboBoxItem Content="Форумы" Tag="forums"/>                               
+                                </ComboBox>
+                            </StackPanel>
+                            <TextBlock Text="Выберите предпочитаемый раздел при старте программы."
+                               FontSize="16" 
+                               Foreground="LightGray" 
+                               TextWrapping="Wrap" 
+                               Margin="0,0,0,20"/>  
+
+                            <TextBlock Text="(не готово)"/>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                </ScrollViewer>
+            </PivotItem>
+
+            <PivotItem Header="[о] программе">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                            HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Margin="10">
+                        <TextBlock Text="О программе" FontSize="24" FontWeight="Bold" 
+                 Foreground="White" 
+                 Margin="0,0,0,20"/>
+                
+                    <StackPanel Margin="10">            
+                      
+                        <mainPivot1:Logo  Margin="0,0,0,20"/>              
+
+                        <TextBlock Text="4PDAClient 2.0.4-alpha by [m][e]  2024"/>                        
+                  </StackPanel>
+                 </StackPanel>
+               </ScrollViewer>
+            </PivotItem>
         </Pivot>
 
     </Grid>
@@ -193,35 +265,4 @@
     </ctrl:CultureAwarePage>
     -->
 
-<!--Page
-     x:Class="FourPDA.Views.MainPageView"
-     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-     xmlns:local="using:FourPDA"
-     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-     xmlns:micro="using:Caliburn.Micro"
-     mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
-                <TextBox PlaceholderText="Inserisci il tuo nome..." Width="400" FontSize="26.667"
-                         x:Name="Name" />
-                <Button Content="Conferma" x:Name="Confirm" />
-            </StackPanel>
-            <TextBlock Grid.Row="1" Margin="0,20,0,0" FontSize="26.667">
-                <Run Text="Testo inserito:" />
-                <Run Text="{Binding Name}" />
-            </TextBlock>
-            <TextBlock Grid.Row="2" Margin="0,20,0,0" FontSize="32"
-                       x:Name="Greetings" />
-        </Grid>
-    </Grid>
-</Page-->
 

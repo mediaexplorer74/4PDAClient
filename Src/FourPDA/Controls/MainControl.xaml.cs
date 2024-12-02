@@ -99,6 +99,48 @@ namespace FourPDA.Controls
             //ToAboutMe();
         }
 
+
+        private void QualityComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            ComboBox comboBox = sender as ComboBox;
+
+            System.Diagnostics.Debug.WriteLine("Sender type: " + (comboBox != null ? comboBox.GetType().ToString() : "null"));
+
+            if (comboBox != null)
+            {
+
+                ComboBoxItem selectedItem = comboBox.SelectedItem as ComboBoxItem;
+
+                if (selectedItem != null)
+                {
+
+                    System.Diagnostics.Debug.WriteLine("Selected item Tag: " + selectedItem.Tag.ToString());
+
+                    string qualityTag = selectedItem.Tag.ToString();
+
+                    System.Diagnostics.Debug.WriteLine("Quality Tag: " + qualityTag);
+
+                    //Settings._selectedQuality = qualityTag;
+
+                    //Settings.SelectedQuality = qualityTag;
+
+                }
+                else
+                {
+
+                    System.Diagnostics.Debug.WriteLine("Selected item is not a ComboBoxItem.");
+                }
+            }
+            else
+            {
+
+                System.Diagnostics.Debug.WriteLine("ComboBox is null.");
+            }
+        }
+
+
+
         private void MainNav_OnItemInvoked(NavigationView sender, 
             NavigationViewItemInvokedEventArgs args)
         {

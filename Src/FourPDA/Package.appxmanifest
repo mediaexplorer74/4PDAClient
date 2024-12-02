@@ -9,9 +9,9 @@
   IgnorableNamespaces="uap mp iot uap3">
 
   <Identity
-    Name="ME.FourPDAv2p0p3"
+    Name="ME.FourPDAv2p0p4"
     Publisher="CN=Admin"
-    Version="2.0.3.0" />
+    Version="2.0.4.0" />
 
   <mp:PhoneIdentity PhoneProductId="d4cb3a08-94c5-4c09-8350-c620cf2f9a49" PhonePublisherId="00000000-94c5-0350-0000-000770000000"/>
 
@@ -34,7 +34,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="FourPDA.App" >
       <uap:VisualElements
-        DisplayName="FourPDA 2.0.3-alpha"
+        DisplayName="FourPDA 2.0.4-alpha"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="FourPDA v2 UWP app"

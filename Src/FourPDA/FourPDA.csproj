@@ -168,6 +168,9 @@
     <Compile Include="Controls\HeaderControl.xaml.cs">
       <DependentUpon>HeaderControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Logo.xaml.cs">
+      <DependentUpon>Logo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MainControl.xaml.cs">
       <DependentUpon>MainControl.xaml</DependentUpon>
     </Compile>
@@ -344,6 +347,10 @@
     <Page Include="Controls\HeaderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Logo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\MainControl.xaml">
       <Generator>MSBuild:Compile</Generator>
