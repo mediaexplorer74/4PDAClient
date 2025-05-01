@@ -10,7 +10,7 @@ For a successful installation, simply download the attached 4PDAClient_1.0_36_AR
 
 ## Features
 - In the forum reading mode (Forum section), you can change the font size by clicking on the "+" or "-" buttons.
-- Shows small advertising banners in the news display mode (Home page), to the delight of the creators of 4PDA! :)
+- Shows small advertising banners in the news display mode (Home page), to the delight of the creators of 4PDA!
 - Does not require the use of site "anti-blocking things", because it is a regular "web-view".
 - Automatically updates the design if the developers (designers) of 4PDA suddenly change the layout)
 - When restarting the program, the font size should be saved.
